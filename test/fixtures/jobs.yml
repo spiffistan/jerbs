@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  deadline: 2012-02-03
+  positions: 1
+  company: 
+
+two:
+  title: MyString
+  description: MyString
+  deadline: 2012-02-03
+  positions: 1
+  company: 
