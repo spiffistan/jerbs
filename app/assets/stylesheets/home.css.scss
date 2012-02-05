@@ -10,8 +10,15 @@ header {
   height: 70px;
 }
 
-#content {
-  background-color: $bgcolor;
-  height: 500px;
-  width: 100%;
+#primary-search { 
+  width: 400px;
+}
+
+.input-large {
+  font-size: large;
+  height: 25px;
+}
+
+.hero-unit h1 {
+  font-size: 40px;
 }

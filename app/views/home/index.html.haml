@@ -9,7 +9,23 @@
       = link_to "Registrer deg", new_user_registration_path, :class => 'btn btn-primary'
 
 .container
-  #content.span-10
-    
+  .hero-unit
+    %h1= 'Jobb med det du liker'
+    %h5= '42 IT-jobber og 343 som vil ha noe å gjøre'
+    #primary-search
+      %input.input-large(value='Hva vil du jobbe med?') 
+        %a.btn.btn-large.btn-primary= 'Søk'
+
+  .row
+    .span-12.columns
+      %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
+        %li.active
+          %a{:href => '#new_jobs', :data => { :toggle => 'tab' }}= 'Nye jobber'
+        %li
+          %a{:href => '#popular_jobs', :data => { :toggle => 'tab' }}= 'Populære jobber'
+
+      .tab-content
+        .tab-pane#new_jobs= 'Nye jobber'
+        .tab-pane#popular_jobs= 'Populære jobber' 
 
 %footer

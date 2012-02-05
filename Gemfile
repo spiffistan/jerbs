@@ -42,5 +42,5 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
                       # backend
 gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
-gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'less-rails-bootstrap'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
