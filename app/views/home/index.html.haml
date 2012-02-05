@@ -8,11 +8,17 @@
         %button.btn.btn-large.btn-success Finn jobber!
 
     .add-job 
-      Kanskje du har en jobb å tilby? 
+      Har du en jobb å tilby? 
       = link_to "Registrer firmaet ditt her", new_user_registration_path
 
+    #case-study 
+      .placeholder case study
+
+
+  -#----------------------------------------------------------------------------
+
   .row
-    .span-12.columns
+    .span12.columns
       %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
         %li.active
           %a{:href => '#new_jobs', :data => { :toggle => 'tab' }} Nye jobber
@@ -20,6 +26,10 @@
           %a{:href => '#popular_jobs', :data => { :toggle => 'tab' }} Populære jobber
 
       .tab-content
-        .tab-pane#new_jobs Nye jobber
+        .tab-pane.row#new_jobs 
+          - 0.upto(3).each do |job|
+            .span3
+              %a.thumbnail
+                <img src="http://placehold.it/260x180" alt="">
         .tab-pane#popular_jobs Populære jobber
 
