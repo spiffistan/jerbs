@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$hero-unit-bgcolor: #e6e6e6;
+$hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: whitesmoke;
 
 body {
@@ -13,11 +13,21 @@ header {
   background-color: $header-bgcolor;
   width: 100%;
   margin-bottom: 40px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
+  border-bottom: 1px dotted #ddd;
+  // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
 }
 
 nav {
   padding: 20px;
+}
+
+.status {
+}
+
+#modal-login {
+  width: 500px;
+  height: 500px;
+  background: white;
 }
 
 #nav-wrapper {
@@ -26,6 +36,9 @@ nav {
 
 #user-meta {
   float: right;
+}
+
+.container {
 }
 
 .hero-unit {
@@ -37,9 +50,9 @@ nav {
   margin-top: 20px;
 }
 
-.input-large {
+.input-search {
   font-size: large;
-  height: 25px;
+  height: 27px;
 }
 
 .hero-unit h1 {

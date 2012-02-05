@@ -12,15 +12,27 @@
     %header
       %nav.container
         .row
-          .span-4#user-meta
+          .span-4.btn-toolbar#user-meta
             - if user_signed_in?
-              = "God dag! Du er logget inn som " + current_user.email
-              = link_to "Logg ut", destroy_user_session_path, 
-                :method => :delete, :class => 'btn btn-info'
+              .status.span-3
+                God dag! Du er logget inn som
+                %strong= current_user.email
+              .btn-group.span-1
+                = link_to "Logg ut", destroy_user_session_path, 
+                  :method => :delete, 
+                  :class => 'btn btn-info btn-small'
+                %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
+                  %span.caret
             - else
-              = link_to "Logg inn", new_user_session_path
+              %a#login-button{:href => '#modal-sign-up', :data => {:toggle => 'modal'}} Logg inn
               eller
               = link_to "Registrer deg", new_user_registration_path, 
                 :class => 'btn btn-small btn-primary'
 
     = yield # main content
+
+    #modal-sign-up.modal.hide.fade
+      .modal-header
+      .modal-body
+
+    %footer
