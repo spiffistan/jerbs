@@ -1,0 +1,26 @@
+<!doctype html>
+%html{html_attrs}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title Jerbs
+    = stylesheet_link_tag :application, :media => 'all'
+    = javascript_include_tag :application
+    = csrf_meta_tags
+
+  %body
+    -# TODO move to partial
+    %header
+      %nav.container
+        .row
+          .span-4#user-meta
+            - if user_signed_in?
+              = "God dag! Du er logget inn som " + current_user.email
+              = link_to "Logg ut", destroy_user_session_path, 
+                :method => :delete, :class => 'btn btn-info'
+            - else
+              = link_to "Logg inn", new_user_session_path
+              eller
+              = link_to "Registrer deg", new_user_registration_path, 
+                :class => 'btn btn-small btn-primary'
+
+    = yield # main content
