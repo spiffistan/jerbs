@@ -24,7 +24,7 @@ header {
 }
 
 .placeholder {
-  position: absolute;
+  position: relative;
   width: 100px;
   text-align:center; 
   height: 20px;
@@ -51,11 +51,23 @@ nav {
   float: left;
 }
 
+#main-navigation {
+  float: left;
+}
+
 #user-meta {
+  float: right;
+  text-align: right;
+}
+
+#log-in-out {
   float: right;
 }
 
-.container {
+.container#main {
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
 .hero-unit {
@@ -75,6 +87,19 @@ nav {
 #primary-search { 
   width: 400px;
   margin-top: 20px;
+}
+
+#search-controls {
+  width: 100%;
+  height: 100px;
+  @include placeholder;
+  margin-top: 20px;
+}
+
+#search-results {
+  margin-top: 20px;
+  width: 100%;
+  height: 500px;
 }
 
 .input-search {

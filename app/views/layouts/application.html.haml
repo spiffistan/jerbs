@@ -12,12 +12,15 @@
     %header
       %nav.container
         .row
-          .span-4.btn-toolbar#user-meta
+          #main-navigation
+            = link_to "Forsiden", root_path
+            = link_to "Se alle jobber", jobs_path
+          #user-meta
             - if user_signed_in?
-              .status.span-3
+              .status.span3
                 God dag! Du er logget inn som
                 %strong= current_user.email
-              .btn-group.span-1
+              .btn-group.span2
                 = link_to "Logg ut", destroy_user_session_path, 
                   :method => :delete, 
                   :class => 'btn btn-info btn-small'
