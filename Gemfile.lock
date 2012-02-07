@@ -167,6 +167,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
+    yaml_db (0.2.2)
 
 PLATFORMS
   ruby
@@ -185,3 +186,4 @@ DEPENDENCIES
   spine-rails
   sqlite3
   uglifier (>= 1.0.3)
+  yaml_db

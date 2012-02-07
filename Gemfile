@@ -44,3 +44,4 @@ gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
 gem 'less-rails-bootstrap'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
+gem 'yaml_db'         # rake db:data:{load,dump}
