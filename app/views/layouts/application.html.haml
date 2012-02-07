@@ -14,7 +14,8 @@
         .row
           %ul.nav.nav-pills#main-navigation
             %li.active= link_to "Forsiden", root_path 
-            %li= link_to "Se alle jobber", jobs_path
+            %li= link_to "Se jobber", jobs_path
+            %li= link_to "Se kandidater" ,"#"
           #user-meta
             - if user_signed_in?
               .status.span3
