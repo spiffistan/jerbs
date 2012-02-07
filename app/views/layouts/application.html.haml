@@ -12,9 +12,9 @@
     %header
       %nav.container
         .row
-          #main-navigation
-            = link_to "Forsiden", root_path
-            = link_to "Se alle jobber", jobs_path
+          %ul.nav.nav-pills#main-navigation
+            %li.active= link_to "Forsiden", root_path 
+            %li= link_to "Se alle jobber", jobs_path
           #user-meta
             - if user_signed_in?
               .status.span3
@@ -27,10 +27,11 @@
                 %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
                   %span.caret
             - else
-              %a#login-button{:href => '#modal-sign-up', :data => {:toggle => 'modal'}} Logg inn
+              %a#login-button{:href => '#modal-sign-up', 
+                              :data => {:toggle => 'modal'}} Logg inn
               eller
               = link_to "Registrer deg", new_user_registration_path, 
-                :class => 'btn btn-small btn-primary'
+                :class => 'btn btn-small btn-primary', :id => 'register-button'
 
     = yield # main content
 
@@ -39,3 +40,5 @@
       .modal-body
 
     %footer
+      .container A Capasit Labs Project
+         

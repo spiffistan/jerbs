@@ -17,10 +17,19 @@ header {
   // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
 }
 
+footer {
+  margin-top: 20px;
+  color: #777;
+  font-size: 11px;
+}
+
 @mixin placeholder {
   background: url('placeholder.png');
   border: 1px solid red;
   color: red;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .placeholder {
@@ -35,7 +44,7 @@ header {
 }
 
 nav {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .status {
