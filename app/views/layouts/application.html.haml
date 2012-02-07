@@ -13,9 +13,21 @@
       %nav.container
         .row
           %ul.nav.nav-pills#main-navigation
-            %li.active= link_to "Forsiden", root_path 
-            %li= link_to "Se jobber", jobs_path
-            %li= link_to "Se kandidater" ,"#"
+            - if params[:controller] == 'home' # TODO split into helper
+              %li.active= link_to "Forsiden", root_path 
+            - else
+              %li.inactive= link_to "Forsiden", root_path
+
+            - if params[:controller] == 'jobs'
+              %li.active= link_to "Se jobber", jobs_path
+            - else
+              %li.inactive= link_to "Se jobber", jobs_path
+
+            - if params[:controller] == 'users'
+              %li.active= link_to "Se kandidater", "#"
+            - else
+              %li.inactive= link_to "Se kandidater", "#"
+
           #user-meta
             - if user_signed_in?
               .status.span3
