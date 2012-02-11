@@ -20,10 +20,10 @@ first_by_freq.sort()
 last_by_freq.sort()
 
 def first_by_frequency():
-    print first_by_freq
+    return first_by_freq
 
 def last_by_frequency():
-    print last_by_freq
+    return last_by_freq
 
 def random_name():
   first_name = ""
