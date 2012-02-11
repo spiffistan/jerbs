@@ -19,7 +19,11 @@ for line in last.readlines():
 first_by_freq.sort()
 last_by_freq.sort()
 
-print first_by_freq
+def first_by_frequency():
+    print first_by_freq
+
+def last_by_frequency():
+    print last_by_freq
 
 def random_name():
   first_name = ""
@@ -45,5 +49,5 @@ def random_name():
 
   return first_name + " " + last_name
 
-print random_name()
-
+if __name__ == '__main__':
+    print random_name()
