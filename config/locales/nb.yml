@@ -1,0 +1,49 @@
+nb: 
+  search_title: "Jobb med det du liker"
+  search_placeholder: "Hva vil du jobbe med?"
+  new_company_text: "Har du en jobb å tilby?"
+  info_text: "%d ledige IT-jobber og %d som vil ha noe å gjøre."
+  find_jobs_button: "Finn jobber!"
+  selected_jobs_tab: "Utvalgte jobber"
+  new_jobs_tab: "Nye jobber"
+  popular_jobs_tab: "Populære jobber"
+
+  errors:
+    messages:
+      not_found: "ikke funnet"
+      already_confirmed: "har allerede blitt bekreftet. Prøv å logg inn."
+      not_locked: "var ikke låst"
+      not_saved:
+        one: "Derp! Du har en feil i skjemaet:"
+        other: "Herpiderp! Du har flere feil i skjemaet:"
+
+  activerecord:
+    models:
+      user: "bruker"
+    attributes:
+      user:
+        login: "Brukernavn"
+        email: "Epost"
+        password: "Passord"
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              blank: "kan ikke være blankt"
+            password: 
+              confirmation: "kan ikke være blankt"
+              blank:  "kan ikke være blankt"
+              too_short: "for kort!"
+            login:
+              taken: "er allerede tatt. Prøv et annet."
+              blank: "kan ikke være blankt."
+              too_short: "for kort!"
+            email:
+              taken: "er allerede tatt. Prøv et annet."
+              blank: "kan ikke være blankt."
+              too_short: "for kort!"
+              invalid: "er ikke en gyldig epost-adresse."
+      template:
+        header: "Logg inn"
+        body: ""
