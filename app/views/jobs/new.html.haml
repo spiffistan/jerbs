@@ -1,37 +1,5 @@
 %h1 Add job
 
-= form_tag "/jobs", :class => 'form-vertical'
-= form_for(@job) do |f|
-  .control-group
-    = f.label :title, :class => "control-label"
-    .controls
-      = f.text_field :title, :class => "focused"
-  .control-group
-    = f.label :description, :class => "control-label"
-    .controls
-      = f.text_area :description
-      %p.help-block Describe the job briefly.
-  .control-group
-    = f.label :deadline, :class => "control-label"
-    .controls
-      = f.text_field :deadline
-  .control-group
-    = f.label :positions, :class => "control-label"
-    .controls
-      = select_tag :positions, options_for_select([1,2,3], 1), :class => 'span1', :id => 'job_positions', :name => 'job[positions]'
-      %p.help-block Number of jobs available.
-  .control-group
-    = f.label :freedom, :class => "control-label"
-    .controls
-      = f.text_field :freedom
-  .control-group
-    = f.label :company_id, :class => "control-label"
-    .controls
-      = f.text_field :company_id, :value => "1"
-  .control-group
-    = f.label :percentage, :class => "control-label"
-    .controls
-      = f.text_field :percentage, :value => "1"
-  = f.submit :class => 'btn btn-primary btn-large'
-  
-  
+= semantic_form_for @job do |f|
+  = f.inputs :title, :description
+  = f.actions
