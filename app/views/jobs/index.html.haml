@@ -7,10 +7,10 @@
   %table.table.table-striped.table-bordered.table-condensed
     %tr
       %th Stilling
-      %th Firma
+      -# %th Firma
       %th Beskrivelse
     - @jobs.each do |job|
       %tr
         %td= job.title
-        %td= job.company.name
+        -# %td= job.company.name
         %td= job.description

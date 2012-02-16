@@ -17,11 +17,11 @@ class JobsController < ApplicationController
   end
   
   def create
-    @job = Job.new(params[:post])
+    @job = Job.new(params[:job])
       if @job.save
-        format.html { redirect_to(@job)}
-    else
-      format.html { render :action => "new" }
+          
+      else
+        format.html { render :action => "new" }
     end
   end
 end

@@ -1,6 +1,6 @@
 %h1 Add job
 
-= form_tag "new", :class => 'form-vertical'
+= form_tag "/jobs", :class => 'form-vertical'
 = form_for(@job) do |f|
   .control-group
     = f.label :title, :class => "control-label"
@@ -24,6 +24,14 @@
     = f.label :freedom, :class => "control-label"
     .controls
       = f.text_field :freedom
+  .control-group
+    = f.label :company_id, :class => "control-label"
+    .controls
+      = f.text_field :company_id, :value => "1"
+  .control-group
+    = f.label :percentage, :class => "control-label"
+    .controls
+      = f.text_field :percentage, :value => "1"
   = f.submit :class => 'btn btn-primary btn-large'
   
   
