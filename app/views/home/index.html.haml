@@ -1,13 +1,13 @@
 .hero-unit
-  %h1= t :search_title 
-  %p= (t :info_text) % [@num_jobs, @num_users]
+  %h1= t 'frontpage.search.title'
+  %p= (t 'frontpage.search.info') % [@num_jobs, @num_users]
 
   %form.form-horizontal#primary-search
-    %input.input-search{:placeholder => (t :search_placeholder)}
-      %button.btn.btn-large.btn-success= t :find_jobs_button 
+    %input.input-search{:placeholder => (t 'frontpage.search.input.placeholder')}
+      %button.btn.btn-large.btn-success= t 'frontpage.search.input.button'
 
   .add-job 
-    = link_to (t :new_company_text), new_user_registration_path
+    = link_to (t 'frontpage.search.company_new'), new_user_registration_path
 
   #case-study 
     .placeholder case study carousel
@@ -20,13 +20,13 @@
     %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
       %li.active
         %a{:href => '#selected-jobs', :data => { :toggle => 'tab' }} 
-          = t :selected_jobs_tab
+          = t 'frontpage.tabs.selected_jobs.title'
       %li
         %a{:href => '#new-jobs', :data => { :toggle => 'tab' }} 
-          = t :new_jobs_tab
+          = t 'frontpage.tabs.new_jobs.title'
       %li
         %a{:href => '#popular-jobs', :data => { :toggle => 'tab' }}
-          = t :popular_jobs_tab
+          = t 'frontpage.tabs.popular_jobs.title' 
 
     .tab-content
       .tab-pane.active#selected-jobs

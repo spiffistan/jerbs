@@ -1,13 +1,20 @@
 nb: 
-  search_title: "Jobb med det du liker"
-  search_placeholder: "Hva vil du jobbe med?"
-  new_company_text: "Har du en jobb å tilby?"
-  info_text: "%d ledige IT-jobber og %d som vil ha noe å gjøre."
-  find_jobs_button: "Finn jobber!"
-  selected_jobs_tab: "Utvalgte jobber"
-  new_jobs_tab: "Nye jobber"
-  popular_jobs_tab: "Populære jobber"
-
+  frontpage:
+    search:
+      title: "Jobb med det du liker"
+      info: "%d ledige IT-jobber og %d som vil ha noe å gjøre."
+      input:
+        placeholder: "Hva vil du jobbe med?"
+        button: "Finn jobber!"
+      company_new: "Har du en jobb å tilby?"
+    tabs:
+      selected_jobs:
+        title: "Utvalgte jobber"
+      new_jobs:
+        title: "Nye jobber"
+      popular_jobs: 
+        title: "Populære jobber"
+        
   errors:
     messages:
       not_found: "ikke funnet"
@@ -30,10 +37,10 @@ nb:
         user:
           attributes:
             password_confirmation:
-              blank: "kan ikke være blankt"
+              blank: "kan ikke være blankt."
             password: 
-              confirmation: "kan ikke være blankt"
-              blank:  "kan ikke være blankt"
+              confirmation: "kan ikke være blankt."
+              blank:  "kan ikke være blankt."
               too_short: "for kort!"
             login:
               taken: "er allerede tatt. Prøv et annet."

@@ -23,10 +23,10 @@
             - else
               %li.inactive= link_to "Se jobber", jobs_path
 
-            - if params[:controller] == 'users'
-              %li.active= link_to "Se kandidater", "#"
+            - if params[:controller] == 'user_profiles'
+              %li.active= link_to "Se kandidater", user_profiles_path
             - else
-              %li.inactive= link_to "Se kandidater", "#"
+              %li.inactive= link_to "Se kandidater", user_profiles_path
 
           #user-meta
             - if user_signed_in?
