@@ -46,7 +46,8 @@
               = link_to "Registrer deg", new_user_registration_path, 
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
 
-    = yield # main content
+    .container#main
+      = yield # main content
 
     #modal-sign-up.modal.hide.fade
       .modal-header

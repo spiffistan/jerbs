@@ -1,0 +1,9 @@
+'no': # Strange bug, need quotes here. Is interpreted as boolean no (false) if not. 
+  search_title: "Jobb med det du liker"
+  search_placeholder: "Hva vil du jobbe med?"
+  new_company_text: "Har du en jobb å tilby?"
+  info_text: "%d ledige IT-jobber og %d som vil ha noe å gjøre."
+  find_jobs_button: "Finn jobber!"
+  selected_jobs_tab: "Utvalgte jobber"
+  new_jobs_tab: "Nye jobber"
+  popular_jobs_tab: "Populære jobber"
