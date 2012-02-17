@@ -3,8 +3,9 @@
 = semantic_form_for @job do |f|
   = f.inputs do
     = f.input :title
-    = f.input :description
+    = f.input :description, :as => :text, :input_html => { :class => 'autogrow', :rows => 10, :maxlength => 1000  }
     = f.input :freedom
     = f.input :positions
     = f.input :percentage
-  = f.actions
+  = f.actions do
+    = f.action :submit, :wrapper_html => { :class => 'btn-large'}, :label => (t 'jobs.add_job.submit')

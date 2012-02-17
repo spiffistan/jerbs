@@ -18,6 +18,19 @@ nb:
   jobs:
     add_job:
       title: "Legg til en jobb"
+      submit: "Sett inn annonsen!"
+
+  formtastic:
+    labels:
+      job:
+        title: "Jobbtittel"
+        description: "Beskrivelse"
+        freedom: "Frihet"
+        positions: "Antall stillinger"
+        percentage: "Stillingsprosent"
+    actions:
+      job:
+        create: "Sett inn annonsen!"
 
   errors:
     messages:
