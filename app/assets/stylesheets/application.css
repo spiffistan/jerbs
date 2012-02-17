@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require twitter/bootstrap
- *= require formtastic 
+ * require formtastic // commented out 
  *= require formtastic-bootstrap
  *= require_tree .
 */

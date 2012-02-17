@@ -14,7 +14,11 @@ nb:
         title: "Nye jobber"
       popular_jobs: 
         title: "Populære jobber"
-        
+
+  jobs:
+    add_job:
+      title: "Legg til en jobb"
+
   errors:
     messages:
       not_found: "ikke funnet"

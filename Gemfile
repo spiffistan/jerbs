@@ -43,6 +43,10 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
 gem 'less-rails-bootstrap'
-gem 'formtastic-bootstrap'
+
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
 gem 'yaml_db'         # rake db:data:{load,dump}
+
+# Life on the edge!
+gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branch => '2.1-stable'
+gem 'formtastic-bootstrap', :git => 'https://github.com/cgunther/formtastic-bootstrap.git', :branch => 'bootstrap2-rails3-2-formtastic-2-1'

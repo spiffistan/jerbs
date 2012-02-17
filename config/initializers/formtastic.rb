@@ -68,6 +68,14 @@
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
 # Formtastic::FormBuilder.i18n_lookups_by_default = false
 
+# Specifies if I18n lookups of the default I18n Localizer should be cached to improve performance.
+# Defaults to false.
+# Formtastic::FormBuilder.i18n_cache_lookups = true
+
+# Specifies the class to use for localization lookups. You can create your own
+# class and use it instead by subclassing Formtastic::Localizer (which is the default).
+# Formtastic::FormBuilder.i18n_localizer = MyOwnLocalizer
+
 # You can add custom inputs or override parts of Formtastic by subclassing Formtastic::FormBuilder and
 # specifying that class here.  Defaults to Formtastic::FormBuilder.
 # Formtastic::Helpers::FormHelper.builder = MyCustomBuilder

@@ -1,5 +1,10 @@
-%h1 Add job
+%h1= t 'jobs.add_job.title'
 
 = semantic_form_for @job do |f|
-  = f.inputs :title, :description
+  = f.inputs do
+    = f.input :title
+    = f.input :description
+    = f.input :freedom
+    = f.input :positions
+    = f.input :percentage
   = f.actions
