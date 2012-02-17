@@ -12,9 +12,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Java
+  shortname: java
 
 two:
-  name: MyString
-  description: MyString
+  name: Python
+  description: python
+  
+three:
+  name: Django
+  shortname: django
+  
+four:
+  name: Ruby
+  shortname: ruby
+
+five:
+  name: Ruby on Rails
+  shortname: rails
