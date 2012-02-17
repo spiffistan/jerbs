@@ -13,4 +13,10 @@
  * require formtastic // commented out 
  *= require formtastic-bootstrap
  *= require_tree .
-*/
+ */
+
+form {
+
+  margin-top: 20px !important;
+
+}

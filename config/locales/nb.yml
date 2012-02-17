@@ -20,6 +20,16 @@ nb:
       title: "Legg til en jobb"
       submit: "Sett inn annonsen!"
 
+  register:
+    submit: 'Lag konto'
+    cancel: 'Avbryt'
+    job_seeker:
+      title: 'Registrer jobbsøker'
+
+  login:
+    title: 'Logg inn'
+    submit: 'Logg inn'
+
   formtastic:
     labels:
       job:
@@ -50,6 +60,7 @@ nb:
         email: "Epost"
         password: "Passord"
         password_confirmation: "Bekreft passord"
+        remember_me: "Husk meg"
     errors:
       models:
         user:
@@ -61,11 +72,11 @@ nb:
               blank:  "kan ikke være blankt."
               too_short: "for kort!"
             login:
-              taken: "er allerede tatt. Prøv et annet."
+              taken: "er allerede tatt."
               blank: "kan ikke være blankt."
               too_short: "for kort!"
             email:
-              taken: "er allerede tatt. Prøv et annet."
+              taken: "er allerede tatt."
               blank: "kan ikke være blankt."
               too_short: "for kort!"
               invalid: "er ikke en gyldig epost-adresse."

@@ -3,11 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  new_user_registration_path = '/users/sign_up'
 
   $('#frontpage-tabs a:first').tab('show')
 
-  $('#modal-sign-up').on('show', ->
-    $('#modal-sign-up .modal-body').load(new_user_registration_path)
-  )
+  $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6, height: 20});
+  
 
