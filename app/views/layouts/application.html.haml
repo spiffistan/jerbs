@@ -40,8 +40,8 @@
                 %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
                   %span.caret
             - else
-              %a#login-button{:href => '#modal-sign-up', 
-                              :data => {:toggle => 'modal'}} Logg inn
+              = link_to "Logg inn", new_user_session_path, 
+                :id => 'login-button'
               eller
               = link_to "Registrer deg", new_user_registration_path, 
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
@@ -49,10 +49,5 @@
     .container#main
       = yield # main content
 
-    #modal-sign-up.modal.hide.fade
-      .modal-header
-      .modal-body
-
     %footer
       .container A Capasit Labs Project
-         
