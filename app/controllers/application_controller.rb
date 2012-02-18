@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_filter do
     # Rails Admin always english
-    I18n.locale = :en if is_a?(RailsAdmin::ApplicationController)
+    if self.kind_of? RailsAdmin::ApplicationController
+       I18n.locale = :en
+    end
   end
 end
