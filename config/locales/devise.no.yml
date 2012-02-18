@@ -18,6 +18,7 @@ nb:
       send_instructions: 'Du vil snart motta en epost med instruksjoner for å aktivere din konto.'
       confirmed: 'Din konto er aktivert og du er nå innlogget.'
     registrations:
+      submit: 'Lag bruker'
       signed_up: 'Velkommen! Din registrering er vellykket.'
       signed_up_but_REASON: 'Din registrering er vellykket, men vi kunne ikke logge deg inn på grunn av at din konto er %{reason}.'
       updated: 'Din profil er oppdatert.'

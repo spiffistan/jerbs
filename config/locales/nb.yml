@@ -15,16 +15,30 @@ nb:
       popular_jobs: 
         title: "Populære jobber"
 
+  # TODO move to devise namespace?
+  form_links:
+    register: 'Har du ikke konto?'
+    login: 'Har du konto?'
+    forgot_password: 'Glemt passord?'
+    no_confirmation: 'Ikke mottatt epost om aktivering av konto?'
+    no_unlock: 'Ikke mottatt epost om gjenåpning av konto?'
+    login_with: 'Logg inn med'
+
   jobs:
     add_job:
       title: "Legg til en jobb"
       submit: "Sett inn annonsen!"
 
+  user_profiles:
+    add_user_profile:
+      title: "Lag profil"
+      submit: "Lag profil"
+
   register:
     submit: 'Lag konto'
     cancel: 'Avbryt'
     job_seeker:
-      title: 'Registrer jobbsøker'
+      title: 'Registrer deg som jobbsøker'
 
   login:
     title: 'Logg inn'
