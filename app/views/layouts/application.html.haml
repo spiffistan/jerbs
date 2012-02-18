@@ -24,9 +24,9 @@
               %li.inactive= link_to "Se jobber", jobs_path
 
             - if params[:controller] == 'user_profiles'
-              %li.active= link_to "Se kandidater", user_profiles_path
+              %li.active= link_to "Se kandidater", job_seekers_path
             - else
-              %li.inactive= link_to "Se kandidater", user_profiles_path
+              %li.inactive= link_to "Se kandidater", job_seekers_path
 
           #user-meta
             - if user_signed_in?
