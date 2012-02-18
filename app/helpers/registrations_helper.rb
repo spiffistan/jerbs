@@ -13,4 +13,8 @@ module RegistrationsHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def job_seeker?
+    params[:role] == :job_seeker
+  end
 end

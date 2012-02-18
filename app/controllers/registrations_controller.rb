@@ -4,6 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+
   protected
 
   # This is needed for sign up redirect

@@ -2,11 +2,14 @@ Jerbs::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   # Use custom controller for registrations part
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations" } do
+    match 'employer/sign_up' => 'registrations#new', :role => :employer
+    match 'job_seeker/sign_up' => 'registrations#new', :role => :job_seeker
+  end
 
   # TODO flesh out
   resources :jobs
-  resources :user_profiles
+  resources :job_seekers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

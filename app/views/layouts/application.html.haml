@@ -43,10 +43,10 @@
               = link_to "Logg inn", new_user_session_path, 
                 :id => 'login-button'
               eller
-              = link_to "Registrer deg", new_user_registration_path, 
+              = link_to "Registrer deg", job_seeker_sign_up_path, 
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
               .row
-                #employer-link= link_to "Arbeidsgiver?", '#'
+                #employer-link= link_to "Arbeidsgiver?", employer_sign_up_path
 
     .container#main
       = yield # main content

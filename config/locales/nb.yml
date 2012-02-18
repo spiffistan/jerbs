@@ -39,6 +39,8 @@ nb:
     cancel: 'Avbryt'
     job_seeker:
       title: 'Registrer deg som jobbsøker'
+    employer:
+      title: 'Registrer deg som arbeidsgiver'
 
   login:
     title: 'Logg inn'
