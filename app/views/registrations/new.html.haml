@@ -1,3 +1,5 @@
+-# TODO split into two views?
+
 - if job_seeker?
   %h2= t 'register.job_seeker.title'
 - else
@@ -12,6 +14,7 @@
     = f.label :email, :class => "control-label"
     .controls
       = f.email_field :email
+      %p.help-block Du bruker epost-adressen for å logge deg inn
   .control-group
     = f.label :password
     .controls
@@ -20,6 +23,29 @@
     = f.label :password_confirmation
     .controls
       = f.password_field :password_confirmation
+
+
+
+  - if not job_seeker?
+    = fields_for(resource.rolable) do |r|
+      -# Set rolable type from params
+      = r.hidden_field :rolable_type, :value => resource.rolable_type
+      .control-group
+        = r.label (t 'register.employer.contact_name')
+        .controls
+          = r.text_field :name
+          %p.help-block Navnet på firmaets kontaktperson
+
+      = fields_for(resource.rolable.company) do |c|
+        .control-group
+          = c.label (t 'register.employer.company_name')
+          .controls
+            = c.text_field :name
+            %p.help-block 
+              Tips: Bruk samme navn som firmaet er registrert med.
+              %br/
+              F.eks: Statoil ASA eller Tine SA
+
   .form-actions
     = f.submit (t 'register.submit'), :class => 'btn btn-primary btn-large'
 

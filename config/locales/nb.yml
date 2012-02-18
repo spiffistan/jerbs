@@ -41,6 +41,8 @@ nb:
       title: 'Registrer deg som jobbsøker'
     employer:
       title: 'Registrer deg som arbeidsgiver'
+      company_name: 'Firmanavn'
+      contact_name: 'Kontakt'
 
   login:
     title: 'Logg inn'

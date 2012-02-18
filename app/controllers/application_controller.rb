@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     # Rails Admin always english
     if self.kind_of? RailsAdmin::ApplicationController
        I18n.locale = :en
+    else
+       I18n.locale = :nb
     end
   end
 end

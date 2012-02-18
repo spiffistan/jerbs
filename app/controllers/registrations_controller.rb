@@ -1,10 +1,23 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def new
+    resource = build_resource({})
+
+    if params[:role] == :job_seeker
+      resource.rolable = JobSeeker.new
+    else
+      resource.rolable = Employer.new
+      resource.rolable.company = Company.new
+    end
+
+    respond_with resource
+  end
+
   # Overriding due to multiple roles
   def create
     build_resource
 
-    if job_seeker?
+    if params[:role] == :job_seeker
       resource.rolable = JobSeeker.new
     else
       resource.rolable = Employer.new
@@ -34,7 +47,7 @@ class RegistrationsController < Devise::RegistrationsController
   # This is needed for sign up redirect
   def after_sign_up_path_for(resource_or_scope)
     if resource_or_scope.is_a?(User) # TODO different paths for different folks
-      new_user_profile_path
+      root_path
     else
       super
     end
