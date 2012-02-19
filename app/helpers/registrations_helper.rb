@@ -17,4 +17,5 @@ module RegistrationsHelper
   def job_seeker?
     params[:role] == :job_seeker
   end
+
 end

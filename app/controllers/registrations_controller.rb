@@ -8,6 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       resource.rolable = Employer.new
       resource.rolable.company = Company.new
+      resource.rolable.company.jobs.push(Job.new)
     end
 
     respond_with resource

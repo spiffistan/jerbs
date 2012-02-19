@@ -40,9 +40,16 @@ nb:
     job_seeker:
       title: 'Registrer deg som jobbsøker'
     employer:
-      title: 'Registrer deg som arbeidsgiver'
+      title: 'Registrer ny jobb'
+      contact:
+        name: 'Kontaktperson'
+        position: 'Tittel'
+      job:
+        title: 'Jobbtittel'
+        description: 'Beskrivelse'
+        technologies: 'Teknologier'
       company_name: 'Firmanavn'
-      contact_name: 'Kontakt'
+      company_description: 'Firmabeskrivelse'
 
   login:
     title: 'Logg inn'
