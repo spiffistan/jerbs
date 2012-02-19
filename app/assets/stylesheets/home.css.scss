@@ -4,6 +4,7 @@
 
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: none;
+$header-bgimage: url('header-rainbow.jpg');
 
 body {
   background-image: url('wood.png')
@@ -11,12 +12,16 @@ body {
 
 header {
   background-color: $header-bgcolor;
+  background-image: $header-bgimage;
+  background-position: center;
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
 }
+
+
 
 footer {
   margin-top: 20px;
@@ -68,6 +73,10 @@ nav {
 #user-meta {
   float: right;
   text-align: right;
+}
+
+#user-meta a:not(.btn) {
+  color: white;
 }
 
 #employer-link {
