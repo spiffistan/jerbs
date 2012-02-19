@@ -1,0 +1,91 @@
+= form_for(resource, :as => resource_name,
+  :url => registration_path(resource_name),
+  :html => {:class => "new_user form-horizontal"}) do |f|
+
+  = f.hidden_field :rolable_type, :value => resource.rolable_type
+
+  = fields_for(resource.rolable.company.jobs.pop) do |j|
+    %fieldset
+      %legend Om jobben
+      .control-group
+        = j.label (t 'register.employer.job.title')
+        .controls
+          = j.text_field :title
+          %p.help-block F.eks 'Systemutvikler' eller 'Teknisk leder'
+      -# TODO add location to job
+
+      .control-group
+        = j.label (t 'register.employer.job.description')
+        .controls
+          = j.text_area :description, :rows => 2, :style => 'width: 500px !important'
+          %p.help-block
+            Brukes i søkeresultater.
+            Du kan gi en utfyllende beskrivelse på neste side.
+
+      .control-group
+        = j.label (t 'register.employer.job.technologies')
+        .controls
+          = j.select :technologies,
+            Technology.all.collect { |x| [x.shortname, x.id]}, {}, :multiple => true
+
+  - if not job_seeker?
+    = fields_for(resource.rolable) do |r|
+      -# Set rolable type from params
+      %fieldset
+        %legend Om firmaet
+
+        = fields_for(resource.rolable.company) do |c|
+          .control-group
+            = c.label (t 'register.employer.company.name')
+            .controls
+              = c.text_field :name
+              %p.help-block 
+                Tips: Bruk samme navn som firmaet er registrert med.
+                %br/
+                F.eks: Statoil ASA eller Tine SA
+          .control-group
+            = c.label (t 'register.employer.company.description')
+            .controls
+              = c.text_area :description, :rows => 10, :style => 'width: 500px !important'
+
+          .control-group
+            = c.label 'Sektor'
+            .controls
+              - Company::SECTORS.each do |sector, i|
+                %label.radio.inline
+                  = c.radio_button :sector, i
+                  = t "register.employer.company.sector.#{sector}"
+
+        .control-group
+          = r.label (t 'register.employer.contact.name')
+          .controls
+            = r.text_field :name
+            %p.help-block Navnet på firmaets kontaktperson
+
+        .control-group
+          = r.label (t 'register.employer.contact.position')
+          .controls
+            = r.text_field :position
+            %p.help-block Kontaktpersonens stilling, f.eks 'Teknisk sjef'
+
+
+
+  %fieldset
+    %legend Kontoinformasjon
+    .control-group
+      = f.label :email
+      .controls
+        = f.email_field :email
+        %p.help-block Du bruker epostadressen for å logge deg inn
+    .control-group
+      = f.label :password
+      .controls
+        = f.password_field :password
+    .control-group
+      = f.label :password_confirmation
+      .controls
+        = f.password_field :password_confirmation
+
+  .form-actions
+    = f.submit (t 'register.submit'), :class => 'btn btn-primary btn-large'
+

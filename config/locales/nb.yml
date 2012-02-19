@@ -1,19 +1,22 @@
 nb: 
   frontpage:
     search:
-      title: "Jobb med det du liker"
-      info: "%d ledige IT-jobber og %d som vil ha noe å gjøre."
+      title: 'Jobb med det du liker'
+      info: '%d ledige IT-jobber og %d som vil ha noe å gjøre.'
       input:
-        placeholder: "Hva vil du jobbe med?"
-        button: "Finn jobber!"
-      company_new: "Har du en jobb å tilby?"
+        placeholder: 'Hva vil du jobbe med?'
+        button: 'Finn jobber!'
+      company_new: 'Har du en jobb å tilby?'
     tabs:
       selected_jobs:
-        title: "Utvalgte jobber"
+        title: 'Utvalgte jobber'
       new_jobs:
-        title: "Nye jobber"
+        title: 'Nye jobber'
       popular_jobs: 
-        title: "Populære jobber"
+        title: 'Populære jobber'
+    menu:
+      employer: 'Har du en jobb å tilby?'
+      job_seeker: 'Registrer deg'
 
   # TODO move to devise namespace?
   form_links:
@@ -26,13 +29,13 @@ nb:
 
   jobs:
     add_job:
-      title: "Legg til en jobb"
-      submit: "Sett inn annonsen!"
+      title: 'Legg til en jobb'
+      submit: 'Sett inn annonsen!'
 
   user_profiles:
     add_user_profile:
-      title: "Lag profil"
-      submit: "Lag profil"
+      title: 'Lag profil'
+      submit: 'Lag profil'
 
   register:
     submit: 'Lag konto'
@@ -48,8 +51,13 @@ nb:
         title: 'Jobbtittel'
         description: 'Beskrivelse'
         technologies: 'Teknologier'
-      company_name: 'Firmanavn'
-      company_description: 'Firmabeskrivelse'
+      company:
+        sector:
+          public: 'Offentlig'
+          private: 'Privat'
+          ideal: 'Ideell'
+        name: 'Firmanavn'
+        description: 'Firmabeskrivelse'
 
   login:
     title: 'Logg inn'
@@ -58,53 +66,53 @@ nb:
   formtastic:
     labels:
       job:
-        title: "Jobbtittel"
-        description: "Beskrivelse"
-        freedom: "Frihet"
-        positions: "Antall stillinger"
-        percentage: "Stillingsprosent"
+        title: 'Jobbtittel'
+        description: 'Beskrivelse'
+        freedom: 'Frihet'
+        positions: 'Antall stillinger'
+        percentage: 'Stillingsprosent'
     actions:
       job:
-        create: "Sett inn annonsen!"
+        create: 'Sett inn annonsen!'
 
   errors:
     messages:
-      not_found: "ikke funnet"
-      already_confirmed: "har allerede blitt bekreftet. Prøv å logg inn."
-      not_locked: "var ikke låst"
+      not_found: 'ikke funnet'
+      already_confirmed: 'har allerede blitt bekreftet. Prøv å logg inn.'
+      not_locked: 'var ikke låst'
       not_saved:
-        one: "Derp! Du har en feil i skjemaet:"
-        other: "Herpiderp! Du har flere feil i skjemaet:"
+        one: 'Derp! Du har en feil i skjemaet:'
+        other: 'Herpiderp! Du har flere feil i skjemaet:'
 
   activerecord:
     models:
-      user: "bruker"
+      user: 'bruker'
     attributes:
       user:
-        login: "Brukernavn"
-        email: "Epost"
-        password: "Passord"
-        password_confirmation: "Bekreft passord"
-        remember_me: "Husk meg"
+        login: 'Brukernavn'
+        email: 'Epost'
+        password: 'Passord'
+        password_confirmation: 'Bekreft passord'
+        remember_me: 'Husk meg'
     errors:
       models:
         user:
           attributes:
             password_confirmation:
-              blank: "kan ikke være blankt."
+              blank: 'kan ikke være blankt.'
             password: 
-              confirmation: "kan ikke være blankt."
-              blank:  "kan ikke være blankt."
-              too_short: "for kort!"
+              confirmation: 'kan ikke være blankt.'
+              blank:  'kan ikke være blankt.'
+              too_short: 'for kort!'
             login:
-              taken: "er allerede tatt."
-              blank: "kan ikke være blankt."
-              too_short: "for kort!"
+              taken: 'er allerede tatt.'
+              blank: 'kan ikke være blankt.'
+              too_short: 'for kort!'
             email:
-              taken: "er allerede tatt."
-              blank: "kan ikke være blankt."
-              too_short: "for kort!"
-              invalid: "er ikke en gyldig epost-adresse."
+              taken: 'er allerede tatt.'
+              blank: 'kan ikke være blankt.'
+              too_short: 'for kort!'
+              invalid: 'er ikke en gyldig epost-adresse.'
       template:
-        header: "Logg inn"
-        body: ""
+        header: 'Logg inn'
+        body: ''
