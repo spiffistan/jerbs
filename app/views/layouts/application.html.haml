@@ -19,30 +19,31 @@
               %li.inactive= link_to "Forsiden", root_path
 
             - if params[:controller] == 'jobs'
-              %li.active= link_to "Se jobber", jobs_path
+              %li.active= link_to "Jobber", jobs_path
             - else
-              %li.inactive= link_to "Se jobber", jobs_path
+              %li.inactive= link_to "Jobber", jobs_path
 
-            - if params[:controller] == 'user_profiles'
-              %li.active= link_to "Se kandidater", job_seekers_path
+            - if params[:controller] == 'job_seekers'
+              %li.active= link_to "Kandidater", job_seekers_path
             - else
-              %li.inactive= link_to "Se kandidater", job_seekers_path
+              %li.inactive= link_to "Kandidater", job_seekers_path
 
           #user-meta
             - if user_signed_in?
-              .status.span3
+              .btn-group.row
+                %span{:style => 'float: right'}
+                  = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),
+                    destroy_user_session_path,
+                    :method => :delete, 
+                    :class => 'btn btn-info btn-small'
+                  %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
+                    %span.caret
+              .row
                 God dag! Du er logget inn som
                 %strong= current_user.email
-              .btn-group.span2
-                = link_to "Logg ut", destroy_user_session_path, 
-                  :method => :delete, 
-                  :class => 'btn btn-info btn-small'
-                %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
-                  %span.caret
             - else
               = link_to "Logg inn", new_user_session_path, 
                 :id => 'login-button'
-              eller
               = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path, 
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
               .row

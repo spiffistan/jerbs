@@ -33,18 +33,27 @@
         .row
           - 0.upto(3).each do |job|
             .span3
-              %a.thumbnail
-                <img src="http://placehold.it/260x380" alt="">
+              .job-box
+                .new
+                %h3 Systemutvikler
+                %p
+                  %strong
+                    Starbucks, Oslo
+                %p
+                  Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
+                  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                %p
+                  %span.label C
+                  %span.label Erlang
+                  %span.label Java
+                  %span.label Ruby
+                %a{:class => 'btn btn-mini btn-info'} Interessert!
       .tab-pane#new-jobs
         .row 
           - 0.upto(3).each do |job|
             .span3
-              %a.thumbnail
-                <img src="http://placehold.it/260x380" alt="">
       .tab-pane#popular-jobs
         .row 
           - 0.upto(3).each do |job|
             .span3
-              %a.thumbnail
-                <img src="http://placehold.it/260x380" alt=""> 
 

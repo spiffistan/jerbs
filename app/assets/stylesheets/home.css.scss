@@ -21,8 +21,6 @@ header {
   // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
 }
 
-
-
 footer {
   margin-top: 20px;
   color: #777;
@@ -56,18 +54,16 @@ nav {
 .status {
 }
 
-#modal-login {
-  width: 500px;
-  height: 500px;
-  background: white;
-}
-
-#nav-wrapper {
-  float: left;
-}
-
 #main-navigation {
   float: left;
+}
+
+#main-navigation li a {
+  font-weight: bold;
+}
+
+.nav-pills .active > a {
+  background: rgba(0, 136, 204, 0.1);
 }
 
 #user-meta {
@@ -86,6 +82,14 @@ nav {
 
 #log-in-out {
   float: right;
+}
+
+#login-button {
+  margin-right: 20px;
+}
+
+.container {
+  position: relative;
 }
 
 .container#main {
@@ -134,4 +138,28 @@ nav {
 
 .hero-unit h1 {
   font-size: 40px;
+}
+
+.top-links {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.job-box {
+  width: 200px;
+  height: 280px;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  padding: 10px;
+  position: relative;
+}
+
+.job-box .new {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  background-color: pink;
 }

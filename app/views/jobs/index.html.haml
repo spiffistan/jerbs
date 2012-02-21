@@ -7,10 +7,15 @@
   %table.table.table-striped.table-bordered.table-condensed
     %tr
       %th Stilling
-      -# %th Firma
+      %th Firma
       %th Beskrivelse
+      %th Topp tre teknologier
     - @jobs.each do |job|
       %tr
         %td= job.title
-        -# %td= job.company.name
+        %td= job.company.name
         %td= job.description
+        %td
+          - job.technologies.each_with_index do |tech, i|
+            - break if (i > 3)
+            %span.label= tech.shortname

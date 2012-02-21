@@ -1,6 +1,6 @@
-%h1= t 'user_profiles.add_user_profile.title'
+%h1= t 'job_seekers.actions.add.title'
 
-= semantic_form_for @user_profile do |f|
+= semantic_form_for @job_seeker do |f|
   = f.inputs do
     = f.input :name
     = f.input :url
@@ -8,4 +8,4 @@
   = f.actions do
     = f.action :submit,
       :wrapper_html => { :class => 'btn-large'},
-      :label => (t 'user_profiles.add_user_profile.submit')
+      :label => (t 'job_seekers.actions.add.submit')

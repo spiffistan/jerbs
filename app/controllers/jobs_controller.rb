@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   end
 
   def list_results
-    @jobs = Job.find(:all)
+    @jobs = Job.all
   end
 
   def new
