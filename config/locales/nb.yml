@@ -6,7 +6,7 @@ nb:
       input:
         placeholder: 'Hva vil du jobbe med?'
         button: 'Finn jobber!'
-      company_new: 'Har du en jobb å tilby?'
+      company_new: 'Har du en jobb å tilby? %d gratis annonseuker igjen!'
     tabs:
       selected_jobs:
         title: 'Utvalgte jobber'

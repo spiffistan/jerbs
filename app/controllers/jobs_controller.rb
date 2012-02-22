@@ -3,9 +3,6 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
-  def list_results
-    @jobs = Job.all
-  end
 
   def new
     @job = Job.new
@@ -24,4 +21,13 @@ class JobsController < ApplicationController
         format.html { render :action => "new" }
     end
   end
+
+  def search
+    @jobs = Job.find_with_index(params[:query])
+
+    respond_to do |format|
+      format.json { render :json => @jobs }
+    end
+  end
+
 end

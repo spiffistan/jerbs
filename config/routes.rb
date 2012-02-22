@@ -11,6 +11,8 @@ Jerbs::Application.routes.draw do
   resources :jobs
   resources :job_seekers
 
+  match 'jobs/find/:query' => 'jobs#search', :as => :job_search
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

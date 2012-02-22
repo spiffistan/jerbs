@@ -19,9 +19,14 @@
               %li.inactive= link_to "Forsiden", root_path
 
             - if params[:controller] == 'jobs'
-              %li.active= link_to "Jobber", jobs_path
+              %li.active= link_to "Jerbs", jobs_path
             - else
-              %li.inactive= link_to "Jobber", jobs_path
+              %li.inactive= link_to "Jerbs", jobs_path
+
+            - if params[:controller] == 'jobs'
+              %li.active= link_to "Søk", jobs_path
+            - else
+              %li.inactive= link_to "Søk", jobs_path
 
             - if params[:controller] == 'job_seekers'
               %li.active= link_to "Kandidater", job_seekers_path

@@ -120,15 +120,21 @@ nav {
 
 #search-controls {
   width: 100%;
-  height: 100px;
-  @include placeholder;
+  height: 50px;
   margin-top: 20px;
+  border-bottom: 1px solid whitesmoke;
 }
 
 #search-results {
   margin-top: 20px;
   width: 100%;
   height: 500px;
+}
+
+.search-icon {
+  float: right;
+  opacity: 0.3;
+  margin: 2px 0;
 }
 
 .input-search {
@@ -162,4 +168,19 @@ nav {
   width: 30px;
   height: 30px;
   background-color: pink;
+}
+
+.job-box.small {
+  width: 200px;
+  height: 100px;
+}
+
+.job-box.medium {
+  width: 200px;
+  height: 200px;
+}
+
+.job-box.large {
+  width: 200px;
+  height: 400px;
 }
