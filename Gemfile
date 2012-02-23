@@ -39,8 +39,10 @@ gem 'jquery-rails'
 gem 'geokit-rails3'   # geolocation
 gem 'devise'          # authentication
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
-gem 'acts_as_indexed'
-                      # backend
+gem 'sunspot'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
 gem 'less-rails-bootstrap'
