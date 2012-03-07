@@ -11,31 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218181303) do
-
-  create_table "companies", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.text     "address"
-    t.integer  "location_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "sector"
-  end
-
-  add_index "companies", ["location_id"], :name => "index_companies_on_location_id"
-
-  create_table "company_divisions", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120307195523) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
     t.string   "position"
-    t.integer  "company_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "company_name"
+    t.string   "company_description"
+    t.text     "company_address"
+    t.integer  "location_id"
   end
 
   create_table "job_seekers", :force => true do |t|
@@ -55,14 +41,14 @@ ActiveRecord::Schema.define(:version => 20120218181303) do
     t.string   "description"
     t.date     "deadline"
     t.integer  "positions"
-    t.integer  "company_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.float    "freedom"
     t.integer  "percentage"
+    t.integer  "employer_id"
   end
 
-  add_index "jobs", ["company_id"], :name => "index_jobs_on_company_id"
+  add_index "jobs", ["employer_id"], :name => "index_jobs_on_employer_id"
 
   create_table "jobs_technologies", :id => false, :force => true do |t|
     t.integer "job_id"

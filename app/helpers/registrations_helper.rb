@@ -2,12 +2,12 @@ module RegistrationsHelper
 
   # These are needed due to customizing devise
 
-  def resource_name
+  def resource
     :user
   end
 
-  def resource
-    @resource ||= User.new
+  def resource_name
+    :user
   end
 
   def devise_mapping

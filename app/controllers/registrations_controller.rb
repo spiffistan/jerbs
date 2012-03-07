@@ -1,32 +1,20 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  # GET /resource/sign_up
   def new
     resource = build_resource({})
-
-    if params[:role] == :job_seeker
-      resource.rolable = JobSeeker.new
-    else
-      resource.rolable = Employer.new
-      resource.rolable.company = Company.new
-      resource.rolable.company.jobs.push(Job.new)
-    end
-
+    resource.rolable = Employer.new
     respond_with resource
   end
 
-  # Overriding due to multiple roles
+  # POST /resource
   def create
-    build_resource
+    #build_resource
+    resource = build_resource(params[:user])
+    resource.rolable = Employer.new(params[:employer])
 
-    if params[:role] == :job_seeker
-      resource.rolable = JobSeeker.new
-    else
-      resource.rolable = Employer.new
-    end
 
-    valid = resource.valid? && resource.rolable.valid?
-
-    if valid && resource.save
+    if resource.save && resource.valid? && resource.rolable.valid?
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
@@ -38,9 +26,8 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      respond_with resource
+      respond_with resource #, :location => after_inactive_sign_up_path_for(resource)
     end
-
   end
 
   protected

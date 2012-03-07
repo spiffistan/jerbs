@@ -3,94 +3,136 @@
   = link_to 'Logg inn først', new_user_session_path
   %i.icon-arrow-right
 
-= form_for(resource, :as => resource_name,
-  :url => registration_path(resource_name),
-  :html => {:class => "new_user form-horizontal"}) do |f|
 
-  = f.hidden_field :rolable_type, :value => resource.rolable_type
+  -# = form_for(resource, :as => resource_name,
+    :url => registration_path(resource_name),
+    :html => {:class => "new_user form-horizontal"}) do |u|
 
-  = fields_for(resource.rolable.company.jobs.pop) do |j|
-    %fieldset
-      %legend Om jobben
-      .control-group
-        = j.label (t 'register.employer.job.title')
-        .controls
-          = j.text_field :title
-          %p.help-block F.eks 'Systemutvikler' eller 'Teknisk leder'
-      -# TODO add location to job
+  -#= f.hidden_field :rolable_type, :value => resource.rolable_type # 'employer' or 'job_seeker'
 
-      .control-group
-        = j.label (t 'register.employer.job.description')
-        .controls
-          = j.text_area :description, :rows => 2, :style => 'width: 500px !important'
-          %p.help-block
-            Brukes i søkeresultater.
-            Du kan gi en utfyllende beskrivelse på neste side.
+= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+  :html => {:class => "new_user form-horizontal"}) do |user|
 
-      .control-group
-        = j.label (t 'register.employer.job.technologies')
-        .controls
-          = j.select :technologies,
-            Technology.all.collect { |x| [x.shortname, x.id]}, {}, :multiple => true
+  = user.inputs do
+    %legend Kontoinformasjon
+    = user.input :email, :hint => 'Du bruker epostadressen for å logge deg inn', :hint_class => 'help-block'
+    = user.input :password
+    = user.input :password_confirmation
 
-  - if not job_seeker?
-    = fields_for(resource.rolable) do |r|
-      -# Set rolable type from params
-      %fieldset
-        %legend Om firmaet
+  = semantic_fields_for(resource.rolable) do |employer|
 
-        = fields_for(resource.rolable.company) do |c|
-          .control-group
-            = c.label (t 'register.employer.company.name')
-            .controls
-              = c.text_field :name
-              %p.help-block 
-                Tips: Bruk samme navn som firmaet er registrert med.
-                %br/
-                F.eks: Statoil ASA eller Tine SA
-          .control-group
-            = c.label (t 'register.employer.company.description')
-            .controls
-              = c.text_area :description, :rows => 10, :style => 'width: 500px !important'
-
-          .control-group
-            = c.label 'Sektor'
-            .controls
-              - Company::SECTORS.each do |sector, i|
-                %label.radio.inline
-                  = c.radio_button :sector, i
-                  = t "register.employer.company.sector.#{sector}"
-
-        .control-group
-          = r.label (t 'register.employer.contact.name')
-          .controls
-            = r.text_field :name
-            %p.help-block Navnet på firmaets kontaktperson
-
-        .control-group
-          = r.label (t 'register.employer.contact.position')
-          .controls
-            = r.text_field :position
-            %p.help-block Kontaktpersonens stilling, f.eks 'Teknisk sjef'
+    = employer.input :name, :hint => 'Navnet på firmaets kontaktperson', :hint_class => 'help-block'
+    = employer.input :position, :hint => 'Kontaktpersonens stilling', :hint_class => 'help-block'
+    %legend Om firmaet
+    = employer.input :company_name
+    = employer.input :company_description,
+      :as => :text, :input_html => { :rows => 10, :style => 'width: 500px !important' }
 
 
+  -#
+    .control-group
+      %label.control-label Sektor
+      .controls
+        - Company::SECTORS.sort_by {|k,v| v}.each do |sector, i|
+          %label.radio.inline
+            - if i == 1
+              = company.radio_button :sector, i, :checked => 'checked'
+            - else
+              = company.radio_button :sector, i
+            = t "register.employer.company.sector.#{sector}"
 
+  = user.actions do
+    = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }
+
+
+-#
   %fieldset
     %legend Kontoinformasjon
+
     .control-group
-      = f.label :email
+      %label.control-label Epost
       .controls
-        = f.email_field :email
+        = user.email_field :email
         %p.help-block Du bruker epostadressen for å logge deg inn
     .control-group
-      = f.label :password
+      %label.control-label Passord
       .controls
-        = f.password_field :password
+        = user.password_field :password
     .control-group
-      = f.label :password_confirmation
+      %label.control-label Bekreft passord
       .controls
-        = f.password_field :password_confirmation
+        = user.password_field :password_confirmation
+
+  = fields_for(resource.rolable) do |employer|
+
+    .control-group
+      %label.control-label= (t 'register.employer.contact.name')
+      .controls
+        = employer.text_field :name
+        %p.help-block Navnet på firmaets kontaktperson
+
+    .control-group
+      %label.control-label= (t 'register.employer.contact.position')
+      .controls
+        = employer.text_field :position
+        %p.help-block Kontaktpersonens stilling, f.eks 'Teknisk sjef'
+
+
+  = fields_for(resource.rolable.company) do |c|
+
+    %fieldset
+      %legend Om firmaet
+
+      .control-group
+        %label.control-label= (t 'register.employer.company.name')
+        .controls
+          = c.text_field :name
+          %p.help-block
+            Tips: Bruk samme navn som firmaet er registrert med.
+            %br/
+            F.eks: Statoil ASA eller Tine SA
+
+      .control-group
+        %label.control-label= (t 'register.employer.company.description')
+        .controls
+          = c.text_area :description, :rows => 10, :style => 'width: 500px !important'
+
+      .control-group
+        %label.control-label= 'Sektor'
+        .controls
+          - Company::SECTORS.sort_by {|k,v| v}.each do |sector, i|
+            %label.radio.inline
+              - if i == 1 # Private
+                = c.radio_button :sector, i, :checked => 'checked'
+              - else
+                = c.radio_button :sector, i
+              = t "register.employer.company.sector.#{sector}"
+    -#
+
+      = c.fields_for(resource.rolable.company.jobs[0]) do |j|
+
+        %fieldset
+          %legend Om jobben
+          .control-group
+            %label.control-label= (t 'register.employer.job.title')
+            .controls
+              = j.text_field :title
+              %p.help-block F.eks 'Systemutvikler' eller 'Teknisk leder'
+
+          .control-group
+            %label.control-label= (t 'register.employer.job.description')
+            .controls
+              = j.text_area :description, :rows => 2, :style => 'width: 500px !important'
+              %p.help-block
+                Brukes i søkeresultater.
+                Du kan gi en utfyllende beskrivelse på neste side.
+
+          .control-group
+            %label.control-label= (t 'register.employer.job.technologies')
+            .controls
+              = j.select :technologies,
+                Technology.all.collect { |x| [x.shortname, x.id]}, {}, :multiple => true
 
   .form-actions
-    = f.submit (t 'register.submit'), :class => 'btn btn-primary btn-large'
+    = user.submit (t 'register.submit'), :class => 'btn btn-primary btn-large'
 

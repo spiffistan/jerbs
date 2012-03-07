@@ -19,6 +19,8 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
+#  rolable_id             :integer
+#  rolable_type           :string(255)
 #
 
 require 'test_helper'

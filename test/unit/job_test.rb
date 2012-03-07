@@ -7,11 +7,11 @@
 #  description :string(255)
 #  deadline    :date
 #  positions   :integer
-#  company_id  :integer
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  freedom     :float
 #  percentage  :integer
+#  employer_id :integer
 #
 
 require 'test_helper'

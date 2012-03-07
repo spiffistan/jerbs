@@ -1,11 +1,11 @@
 nb: 
   frontpage:
     search:
-      title: 'Jobb med det du liker'
-      info: '%d ledige IT-jobber og %d som vil ha noe å gjøre.'
+      title: 'Jobb med teknologien du liker'
+      info: 'Motta en epost en gang i uka med nye relevante jobber i nærheten.'
       input:
-        placeholder: 'Hva vil du jobbe med?'
-        button: 'Finn jobber!'
+        placeholder: 'Din e-post'
+        button: 'Lag konto!'
       company_new: 'Har du en jobb å tilby? %d gratis annonseuker igjen!'
     tabs:
       selected_jobs:
@@ -113,6 +113,22 @@ nb:
               blank: 'kan ikke være blankt.'
               too_short: 'for kort!'
               invalid: 'er ikke en gyldig epost-adresse.'
+        employer:
+          attributes:
+            name:
+              blank: 'kan ikke være blankt.'
+            position:
+              blank:  'kan ikke være blankt.'
+        company:
+          attributes:
+            name:
+              blank: 'kan ikke være blankt.'
+            description:
+              blank:  'kan ikke være blankt.'
       template:
         header: 'Logg inn'
         body: ''
+
+  support:
+    array:
+      two_words_connector: ' '
