@@ -6,10 +6,10 @@
     %input.input-search{:placeholder => (t 'frontpage.search.input.placeholder')}
       %button.btn.btn-large.btn-primary= t 'frontpage.search.input.button'
 
-  .add-job 
+  .add-job
     = link_to (t 'frontpage.search.company_new') % 1000, employer_sign_up_path
 -#
-  #case-study 
+  #case-study
     .placeholder case study carousel
 
 
@@ -19,14 +19,14 @@
   .span12.columns
     %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
       %li.active
-        %a{:href => '#selected-jobs', :data => { :toggle => 'tab' }} 
+        %a{:href => '#selected-jobs', :data => { :toggle => 'tab' }}
           = t 'frontpage.tabs.selected_jobs.title'
       %li
-        %a{:href => '#new-jobs', :data => { :toggle => 'tab' }} 
+        %a{:href => '#new-jobs', :data => { :toggle => 'tab' }}
           = t 'frontpage.tabs.new_jobs.title'
       %li
         %a{:href => '#popular-jobs', :data => { :toggle => 'tab' }}
-          = t 'frontpage.tabs.popular_jobs.title' 
+          = t 'frontpage.tabs.popular_jobs.title'
 
     .tab-content
       .tab-pane.active#selected-jobs
@@ -40,20 +40,19 @@
                   %strong
                     Starbucks, Oslo
                 %p
-                  Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
+                  Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
                   Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                 %p
                   %span.label C
                   %span.label Erlang
                   %span.label Java
                   %span.label Ruby
-                %a{:class => 'btn btn-mini btn-info'} Interessert!
       .tab-pane#new-jobs
-        .row 
+        .row
           - 0.upto(3).each do |job|
             .span3
       .tab-pane#popular-jobs
-        .row 
+        .row
           - 0.upto(3).each do |job|
             .span3
 

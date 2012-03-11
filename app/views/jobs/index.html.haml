@@ -1,18 +1,32 @@
 %h1 Søk etter jobber
 
-%form#search-controls.form-search
-  %input.search-query
-  %a.btn
-    %i.icon-search
+.alert.alert-info
+  %strong Nyhet!
+  Du kan nå søke med det Latinske Alfabetet.
 
-  %span.btn-group{:style => 'float: right'}
-    %a.btn
-      %i.icon-th
-    %a.btn
-      %i.icon-th-list
-
+%form#search-controls.form-search.row-fluid
+  .span4.btn-toolbar
+    %input.search-query
+      %a.btn.btn-success
+        Søk
+  .span8.btn-toolbar
+    .btn-group
+      %a.btn.active
+        %i.icon-th-list
+      %a.btn
+        %i.icon-th
+    .btn-group#search-list-quantity{:data => { :toggle => 'buttons-radio'}}
+      %a.btn.btn-small.active
+        20
+      %a.btn.btn-small
+        60
+      %a.btn.btn-small
+        100
+    .btn-group{:data => { :toggle => 'buttons-checkbox'}}
+      %a.btn.btn-small
+        Avansert
 .search-results
-  %table.table.table-striped.table-bordered.table-condensed
+  %table.table.table-striped.table-condensed
     %tr
       %th Stilling
       %th Firma

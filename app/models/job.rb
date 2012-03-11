@@ -21,9 +21,9 @@ class Job < ActiveRecord::Base
   attr_accessible :title, :description, :positions
 
   searchable do
-    string :title
-    string :description
-    date   :deadline
+    text :title
+    text :description
+    integer :positions
   end
 
   validates_presence_of :title, :description, :positions

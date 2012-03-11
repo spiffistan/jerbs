@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource.rolable.jobs << Job.new(params[:job])
 
     unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
-      clean_up_passwords
+      clean_up_passwords resource
       respond_with resource
       return
     end

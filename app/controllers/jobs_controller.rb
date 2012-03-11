@@ -23,7 +23,13 @@ class JobsController < ApplicationController
   end
 
   def search
-    @jobs = Job.find_with_index(params[:query])
+    search = Job.search do
+      keywords params[:query]
+    end
+
+    @jobs = search.results
+
+    logger.info @jobs.inspect
 
     respond_to do |format|
       format.json { render :json => @jobs }
