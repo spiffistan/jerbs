@@ -1,7 +1,12 @@
 .top-links
-  Har du allerede konto?
-  = link_to 'Logg inn først', new_user_session_path
-  %i.icon-arrow-right
+  %p
+    Har du allerede konto?
+    = link_to 'Logg inn først', new_user_session_path
+    %i.icon-arrow-right
+  %p
+    Er du jobbsøker?
+    = link_to 'Lag konto her', job_seeker_sign_up_path
+    %i.icon-arrow-right
 
 
   -# = form_for(resource, :as => resource_name,

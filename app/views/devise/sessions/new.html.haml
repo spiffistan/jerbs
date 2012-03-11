@@ -1,19 +1,12 @@
 %h2= t 'login.title'
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f|
-  .control-group
-    = f.label :email, :class => "control-label"
-    .controls
-      = f.email_field :email
-  .control-group
-    = f.label :password
-    .controls
-      = f.password_field :password
+
+= semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name),
+  :html => {:class => "form-horizontal"}) do |f|
+  = f.input :email
+  = f.input :password
   - if devise_mapping.rememberable?
-    .control-group
-      = f.label :remember_me
-      .controls
-        = f.check_box :remember_me
-    .form-actions
-      = f.submit (t 'login.submit'), :class => 'btn btn-primary btn-large'
+    = f.input :remember_me, :as => :boolean
+  = f.actions do
+    = f.action :submit, :button_html => { :value => 'Logg inn', :class => 'btn-primary btn-large' }
 
 = render "links"

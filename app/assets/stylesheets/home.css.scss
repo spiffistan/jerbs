@@ -3,11 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
-$header-bgcolor: none;
-$header-bgimage: url('header-rainbow.jpg');
+$header-bgcolor: rgba(0,0,0,0.2);
+$header-bgimage: none; // url('header-rainbow.jpg');
 
 body {
-  background-image: url('tile.png');
+  background-image: url('leaves.jpg');
+  font-family: 'Myriad Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 header {
@@ -17,7 +18,7 @@ header {
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px dotted rgba(0,0,0,0.2);
   // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
 }
 
@@ -107,8 +108,8 @@ nav {
 
 .container#main {
   padding: 20px;
-  // background: white;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  background: white;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
 
@@ -163,15 +164,17 @@ nav {
   position: absolute;
   top: 30px;
   right: 30px;
+  text-align: right;
 }
 
 .job-box {
-  width: 200px;
+  width: 198px;
   height: 280px;
   border-radius: 3px;
-  background-color: whitesmoke;
+  border: 1px solid #eee;
   padding: 10px;
   position: relative;
+  box-shadow: inset 0px 0px 2px rgba(0,0,0,0.3)
 }
 
 .job-box .new {
@@ -180,20 +183,16 @@ nav {
   right: 0px;
   width: 30px;
   height: 30px;
-  background-color: pink;
 }
 
 .job-box.small {
-  width: 200px;
   height: 100px;
 }
 
 .job-box.medium {
-  width: 200px;
   height: 200px;
 }
 
 .job-box.large {
-  width: 200px;
   height: 400px;
 }

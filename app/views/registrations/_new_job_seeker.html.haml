@@ -1,29 +1,22 @@
 .top-links
-  Har du allerede konto?
-  = link_to 'Logg inn først', new_user_session_path
-  %i.icon-arrow-right
+  %p
+    Har du allerede konto?
+    = link_to 'Logg inn først', new_user_session_path
+    %i.icon-arrow-right
+  %p
+    Er du arbeidsgiver?
+    = link_to 'Legg til en ny jobb', employer_sign_up_path
+    %i.icon-arrow-right
 
-= form_for(resource, :as => resource_name,
+= semantic_form_for(resource, :as => resource_name,
   :url => registration_path(resource_name),
-  :html => {:class => "new_user form-horizontal"}) do |f|
+  :html => {:class => "new_user form-horizontal"}) do |user|
 
-  -#= f.hidden_field :rolable_type, :value => resource.rolable_type
+  = user.inputs :name => 'Kontoinformasjon' do
 
-  %fieldset
-    %legend Kontoinformasjon
-    .control-group
-      = f.label :email
-      .controls
-        = f.email_field :email
-        %p.help-block Du bruker epostadressen for å logge deg inn
-    .control-group
-      = f.label :password
-      .controls
-        = f.password_field :password
-    .control-group
-      = f.label :password_confirmation
-      .controls
-        = f.password_field :password_confirmation
+    = user.input :email, :hint => 'Du bruker epostadressen for å logge deg inn', :hint_class => 'help-block'
+    = user.input :password, :hint_class => 'help-block'
+    = user.input :password_confirmation, :hint_class => 'help-block'
 
-  .form-actions
-    = f.submit (t 'register.submit'), :class => 'btn btn-primary btn-large'
+  = user.actions do
+    = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }

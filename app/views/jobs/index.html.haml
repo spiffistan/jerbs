@@ -2,10 +2,16 @@
 
 %form#search-controls.form-search
   %input.search-query
-    %a.btn
-      %i.icon-search
+  %a.btn
+    %i.icon-search
 
-#search-results
+  %span.btn-group{:style => 'float: right'}
+    %a.btn
+      %i.icon-th
+    %a.btn
+      %i.icon-th-list
+
+.search-results
   %table.table.table-striped.table-bordered.table-condensed
     %tr
       %th Stilling

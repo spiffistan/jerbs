@@ -4,10 +4,12 @@
 
 $ ->
 
-
-  $('.container#main').blurjs({
-    overlay: 'rgba(255,255,255,0.9)',
-    source: 'body'
+  $('.job-box').blurjs({
+    source: 'body',
+    radius: 15,
+    overlay: 'rgba(255,255,055,0.7)',
+    offset: { x: -5, y: -5 },
+    draggable: true
   });
 
   $('#frontpage-tabs a:first').tab('show')
