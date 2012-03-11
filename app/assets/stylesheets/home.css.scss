@@ -7,7 +7,7 @@ $header-bgcolor: none;
 $header-bgimage: url('header-rainbow.jpg');
 
 body {
-  background-image: url('wood.png')
+  background-image: url('tile.png');
 }
 
 header {
@@ -27,6 +27,19 @@ footer {
   font-size: 11px;
 }
 
+.alert {
+  margin-top: 20px;
+}
+
+.alert ul {
+  margin-left: 10px;
+}
+
+.alert ul li {
+  list-style-type: none;
+  padding: 1px;
+}
+
 @mixin placeholder {
   background: url('placeholder.png');
   border: 1px solid red;
@@ -39,7 +52,7 @@ footer {
 .placeholder {
   position: relative;
   width: 100px;
-  text-align:center; 
+  text-align:center;
   height: 20px;
   top: 50%;
   left: 50%;
@@ -94,7 +107,7 @@ nav {
 
 .container#main {
   padding: 20px;
-  background: white;
+  // background: white;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
 }
@@ -113,7 +126,7 @@ nav {
   @include placeholder;
 }
 
-#primary-search { 
+#primary-search {
   width: 400px;
   margin-top: 20px;
 }

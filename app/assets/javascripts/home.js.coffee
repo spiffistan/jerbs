@@ -4,8 +4,10 @@
 
 $ ->
 
+
+  $('.container#main').blurjs({
+    overlay: 'rgba(255,255,255,0.9)',
+    source: 'body'
+  });
+
   $('#frontpage-tabs a:first').tab('show')
-
-  $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6, height: 20});
-  
-

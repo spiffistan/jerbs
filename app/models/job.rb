@@ -18,9 +18,14 @@ class Job < ActiveRecord::Base
   belongs_to :employer
   has_and_belongs_to_many :technologies
 
+  attr_accessible :title, :description, :positions
+
   searchable do
     string :title
     string :description
     date   :deadline
   end
+
+  validates_presence_of :title, :description, :positions
+  validates_numericality_of :positions, :greater_than_or_equal_to => 1
 end

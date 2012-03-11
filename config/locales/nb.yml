@@ -85,15 +85,24 @@ nb:
         other: 'Herpiderp! Du har flere feil i skjemaet:'
 
   activerecord:
-    models:
-      user: 'bruker'
     attributes:
       user:
         login: 'Brukernavn'
-        email: 'Epost'
+        email: 'E-post'
         password: 'Passord'
         password_confirmation: 'Bekreft passord'
         remember_me: 'Husk meg'
+      employer:
+        name: 'Kontaktperson'
+        position: 'Stilling'
+        company_name: 'Firmanavn'
+        company_description: 'Firmabeskrivelse'
+      rolable: # XXX for devise_errors
+        name: 'Kontaktperson'
+        position: 'Stilling'
+        company_name: 'Firmanavn'
+        company_description: 'Firmabeskrivelse'
+        jobs: 'Jobben'
     errors:
       models:
         user:
@@ -119,9 +128,22 @@ nb:
               blank: 'kan ikke være blankt.'
             position:
               blank:  'kan ikke være blankt.'
+            company_name:
+              blank: 'kan ikke være blankt.'
+              taken: 'er allerede tatt.'
+            company_description:
+              blank: 'kan ikke være blankt.'
+            jobs:
+              invalid: 'er ikke gyldig.'
         company:
           attributes:
             name:
+              blank: 'kan ikke være blankt.'
+            description:
+              blank:  'kan ikke være blankt.'
+        job:
+          attributes:
+            title:
               blank: 'kan ikke være blankt.'
             description:
               blank:  'kan ikke være blankt.'

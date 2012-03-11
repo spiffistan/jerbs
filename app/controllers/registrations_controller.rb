@@ -1,9 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  # GET /resource/sign_up
+  # GET /:resource/sign_up
   def new
     resource = build_resource({})
     resource.rolable = Employer.new
+    resource.rolable.jobs << Job.new
     respond_with resource
   end
 
@@ -12,9 +13,15 @@ class RegistrationsController < Devise::RegistrationsController
     #build_resource
     resource = build_resource(params[:user])
     resource.rolable = Employer.new(params[:employer])
+    resource.rolable.jobs << Job.new(params[:job])
 
+    unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
+      clean_up_passwords
+      respond_with resource
+      return
+    end
 
-    if resource.save && resource.valid? && resource.rolable.valid?
+    if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)

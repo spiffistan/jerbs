@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2009 Mattt Thompson
  * Licensed under the MIT licenses.
- * 
+ *
  * Inspired by HashMask by Chris Dary
  * http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/
  */
@@ -41,9 +41,9 @@
 
         var trigger = function(e) {
           var input = $(this);
-          
+
           if(input.val() == "" ){
-            chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
+            chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0, display: 'none'});
             return;
           }
 
@@ -60,7 +60,8 @@
                           height:     height - 6 + "px",
                           width:      6 + "px",
                           margin:     0 + "px",
-                          marginLeft: -6 * (++i) + "px"
+                          marginLeft: -6 * (++i) + "px",
+                          display:    'block'
                         }
             if($.browser.safari){
               properties.marginTop = 3 + "px";
@@ -101,7 +102,7 @@
           for(c in colors) {
             $(this).after('<label for="' + $(this).attr('id') + '" class="' + colors[c] + ' chroma-hash"></label>');
           }
-          chromaHashesForElement(this).css({backgroundColor: "#FFF", opacity: 0})
+          chromaHashesForElement(this).css({backgroundColor: "#FFF", opacity: 0, display: 'none'})
 
           $(this).bind('keyup', trigger).bind('blur', trigger);
         });

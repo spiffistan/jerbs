@@ -14,7 +14,7 @@
         .row
           %ul.nav.nav-pills#main-navigation
             - if params[:controller] == 'home' # TODO split into helper
-              %li.active= link_to "Forsiden", root_path 
+              %li.active= link_to "Forsiden", root_path
             - else
               %li.inactive= link_to "Forsiden", root_path
 
@@ -39,7 +39,7 @@
                 %span{:style => 'float: right'}
                   = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),
                     destroy_user_session_path,
-                    :method => :delete, 
+                    :method => :delete,
                     :class => 'btn btn-info btn-small'
                   %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
                     %span.caret
@@ -47,9 +47,9 @@
                 God dag! Du er logget inn som
                 %strong= current_user.email
             - else
-              = link_to "Logg inn", new_user_session_path, 
+              = link_to "Logg inn", new_user_session_path,
                 :id => 'login-button'
-              = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path, 
+              = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path,
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
               .row
                 #employer-link= link_to (t 'frontpage.menu.employer'), employer_sign_up_path
@@ -59,3 +59,5 @@
 
     %footer
       .container A Capasit Labs Project
+    = javascript_include_tag '/javascripts/chroma-hash.js'
+    <script> $(document).ready(function() { $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6, height: 20}); }); </script>
