@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120311230333) do
+ActiveRecord::Schema.define(:version => 20120312000816) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
@@ -38,14 +38,15 @@ ActiveRecord::Schema.define(:version => 20120311230333) do
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
-    t.text     "description", :limit => 255
+    t.text     "description",   :limit => 255
     t.date     "deadline"
     t.integer  "positions"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.float    "freedom"
     t.integer  "percentage"
     t.integer  "employer_id"
+    t.boolean  "deadline_asap",                :default => true
   end
 
   add_index "jobs", ["employer_id"], :name => "index_jobs_on_employer_id"

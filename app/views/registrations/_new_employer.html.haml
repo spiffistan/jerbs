@@ -19,33 +19,51 @@
   :html => {:class => "new_user form-horizontal"}) do |user|
 
   %legend Om jobben
-  = semantic_fields_for resource.rolable.jobs[-1] do |job|
+  %fieldset
+    = semantic_fields_for resource.rolable.jobs[-1] do |job|
+      .part.one
 
-    = job.input :title, :hint => "F.eks: 'Systemutvikler'", :hint_class => 'help-block'
-    = job.input :description, :as => :text,
-      :input_html => { :rows => 10, :style => 'width: 500px !important' }
-    = job.input :positions, :as => :number, :step => 1, :input_html => { :value => 1 }
-    -# = job.input :technologies, :as => :select,
-      :collection => Technology.all.collect { |x| [x.shortname, x.id]},
-      :input_html => { :multiple => true }
+      = job.input :title, :hint => "F.eks: 'Systemutvikler'", :hint_class => 'help-block'
+      = job.input :description, :as => :text,
+        :input_html => { :rows => 7, :style => 'width: 500px !important' }
+      .control-group
+        .controls
+          %p.help-block
+            %i.icon-plus
+            %a Legg til nøkkelkompetanefelt
+          %p.help-block
+            %i.icon-plus
+            %a Legg til kvalifikasjonsfelt
+      = job.input :positions, :as => :number, :step => 1, :input_html => { :value => 1 }
+
+      = job.input :deadline, :as => :date, :order => [:day,:month,:year], :input_html => { :value => '' }
+      = job.input :deadline_asap, :as => :boolean
+      = job.input :technologies, :as => :select,
+        :collection => Technology.all.collect { |x| [x.shortname, x.id]},
+        :input_html => { :multiple => true }
 
   %legend Om firmaet
-  = semantic_fields_for resource.rolable do |employer|
+  %fieldset
+    = semantic_fields_for resource.rolable do |employer|
+      .part.two
 
-    = employer.input :name, :hint => 'Navnet på firmaets kontaktperson'
-    = employer.input :position, :hint => 'Kontaktpersonens stilling'
-    = employer.input :company_name
-    = employer.input :company_description,
-      :as => :text, :input_html => { :rows => 10, :style => 'width: 500px !important' }
+      = employer.input :name, :hint => 'Navnet på firmaets kontaktperson'
+      = employer.input :position, :hint => 'Kontaktpersonens stilling'
+      = employer.input :company_name
+      = employer.input :company_description,
+        :as => :text, :input_html => { :rows => 7, :style => 'width: 500px !important' }
 
-  = user.inputs :name => 'Kontoinformasjon' do
+  %legend Konto
+  %fieldset
+    = semantic_fields_for resource do |user|
+      .part.three
 
-    = user.input :email, :hint => 'Du bruker epostadressen for å logge deg inn', :hint_class => 'help-block'
-    = user.input :password, :hint_class => 'help-block'
-    = user.input :password_confirmation, :hint_class => 'help-block'
+      = user.input :email, :hint => 'Du bruker epostadressen for å logge deg inn', :hint_class => 'help-block'
+      = user.input :password, :hint_class => 'help-block'
+      = user.input :password_confirmation, :hint_class => 'help-block'
 
-  = user.actions do
-    = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }
+    = user.actions do
+      = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }
 
 
 -#

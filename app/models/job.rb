@@ -4,7 +4,7 @@
 #
 #  id          :integer         not null, primary key
 #  title       :string(255)
-#  description :string(255)
+#  description :text(255)
 #  deadline    :date
 #  positions   :integer
 #  created_at  :datetime        not null
@@ -18,7 +18,7 @@ class Job < ActiveRecord::Base
   belongs_to :employer
   has_and_belongs_to_many :technologies
 
-  attr_accessible :title, :description, :positions
+  attr_accessible :title, :description, :positions, :deadline
 
   searchable do
     text :title

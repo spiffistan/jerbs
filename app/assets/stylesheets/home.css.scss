@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$color-gray: whitesmoke;
+
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: rgba(0,0,0,0.2);
 $header-bgimage: none; // url('header-rainbow.jpg');
@@ -114,9 +116,7 @@ nav {
 }
 
 .container > h2 {
-
   margin-bottom: 30px;
-
 }
 
 .hero-unit {
@@ -211,4 +211,28 @@ nav {
 
 .label {
   background-color: rgba(0,0,0,0.2)
+}
+
+fieldset {
+  position: relative;
+}
+
+.part {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 82px;
+  font-weight: bold;
+  color: $color-gray;
+
+  &.one:after {
+      content: '1'
+  }
+  &.two:after {
+      content: '2'
+  }
+  &.three:after {
+      content: '3'
+  }
+
 }
