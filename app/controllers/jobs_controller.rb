@@ -3,6 +3,13 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
+  def show
+   @job = Job.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :html => @job }
+    end
+  end
 
   def new
     @job = Job.new
