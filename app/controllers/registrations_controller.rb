@@ -25,16 +25,16 @@ class RegistrationsController < Devise::RegistrationsController
 
       unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
         clean_up_passwords resource
-        respond_with resource, :location => employer_sign_up_path
+        respond_with resource, :location => employer_sign_up_url
         return
       end
     elsif (params[:role] == 'job_seeker')
       resource = build_resource
       resource.rolable = JobSeeker.new(params[:job_seeker])
 
-      unless resource.valid?
+      unless resource.valid? && resource.rolable.valid?
         clean_up_passwords resource
-        respond_with resource, :location => job_seeker_sign_up_path
+        respond_with resource, :location => job_seeker_sign_up_url
         return
       end
     else

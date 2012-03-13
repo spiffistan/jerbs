@@ -13,7 +13,12 @@
 
 class JobSeeker < ActiveRecord::Base
   has_one :user, :as => :rolable
+  # has_and_belongs_to_many :technologies
   accepts_nested_attributes_for :user
+
+  attr_accessible :name, :url
+
+  validates_presence_of :name
 
   belongs_to :location
 end

@@ -15,7 +15,7 @@ module RegistrationsHelper
   end
 
   def job_seeker?
-    params[:role] == :job_seeker
+    params[:role] == 'job_seeker' || params[:role] == :job_seeker # TODO fixme
   end
 
 end

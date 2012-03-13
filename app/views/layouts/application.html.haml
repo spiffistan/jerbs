@@ -31,9 +31,16 @@
           #user-meta
             - if user_signed_in?
               .btn-toolbar
-                .btn-group
-                  - if current_user.rolable_type == 'Employer'
+                - if current_user.rolable_type == 'Employer'
+                  .btn-group
+                    = link_to 'Ny jobb', employer_url(current_user.rolable_id),
+                      :class => 'btn btn-inverse btn-small'
+                  .btn-group
                     = link_to 'Min firmaprofil', employer_url(current_user.rolable_id),
+                      :class => 'btn btn-primary btn-small'
+                - elsif current_user.rolable_type == 'JobSeeker'
+                  .btn-group
+                    = link_to 'Min profil', job_seeker_url(current_user.rolable_id),
                       :class => 'btn btn-primary btn-small'
                 .btn-group
                   = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),

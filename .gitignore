@@ -18,5 +18,8 @@
 /solr/data/*
 /solr/pids/*
 
+# Ignore uploads
+/public/system/*
+
 *.DS_Store
 *.pyc
