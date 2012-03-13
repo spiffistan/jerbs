@@ -1,14 +1,16 @@
 -# TODO split into two views?
 -# TODO translate help text
 
-%h2
-  - if job_seeker?
-    = t 'register.job_seeker.title'
-  - else
-    = t 'register.employer.title'
+.page-header
+  %h1
+    - if job_seeker?
+      = t 'register.job_seeker.title'
+    - else
+      = t 'register.employer.title'
 
 = devise_error_messages!
 
+#signup
 - if job_seeker?
   = render 'new_job_seeker'
 - else

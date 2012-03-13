@@ -17,9 +17,12 @@ class Employer < ActiveRecord::Base
   has_one :user, :as => :rolable
   has_many :jobs
 
+  has_attached_file :logo, :styles => { :medium => "300x300>", :small => "150x150>" }
+
   belongs_to :location
 
-  attr_accessible :name, :position, :company_name, :company_description, :company_address, :location_id
+  attr_accessible :name, :position, :company_name, :company_description,
+                  :company_address, :location_id, :logo
 
   validates_presence_of :name, :position, :company_name
   validates_uniqueness_of :company_name

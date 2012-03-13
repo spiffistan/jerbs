@@ -10,6 +10,10 @@ Jerbs::Application.routes.draw do
   # TODO flesh out
   resources :jobs
   resources :job_seekers
+  resources :employers
+  #
+
+  # match 'employers/:company_name' => 'employers#show', :as => 'show_employer', :via => :get
 
   match 'jobs/find/:query' => 'jobs#search', :as => :job_search
 

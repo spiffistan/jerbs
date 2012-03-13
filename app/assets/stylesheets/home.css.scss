@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$color-gray: whitesmoke;
+$color-gray: #eeeee1;
 
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: rgba(0,0,0,0.2);
@@ -30,17 +30,17 @@ footer {
   font-size: 11px;
 }
 
-.alert {
+#signup.alert {
   margin-top: 20px;
-}
 
-.alert ul {
-  margin-left: 10px;
-}
+  & ul {
+    margin-left: 10px;
 
-.alert ul li {
-  list-style-type: none;
-  padding: 1px;
+    & li {
+      list-style-type: none;
+      padding: 1px;
+    }
+  }
 }
 
 @mixin placeholder {

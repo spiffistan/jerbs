@@ -1,0 +1,32 @@
+// Place all the styles related to the employers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#employer-profile {
+
+  position: relative;
+
+  & #logo {
+
+    width: 150px;
+    height: 150px;
+
+  }
+
+  & .company_description {
+
+
+  }
+}
+
+.spacer300 {
+
+  height: 300px;
+
+}
+
+.spacer50 {
+
+  height: 50px;
+
+}

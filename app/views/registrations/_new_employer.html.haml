@@ -13,10 +13,11 @@
     :url => registration_path(resource_name),
     :html => {:class => "new_user form-horizontal"}) do |u|
 
-  -#= f.hidden_field :rolable_type, :value => resource.rolable_type # 'employer' or 'job_seeker'
 
 = semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
-  :html => {:class => "new_user form-horizontal"}) do |user|
+  :html => {:class => "new_user form-horizontal", :multipart => true }) do |user|
+
+  = hidden_field_tag(:role, params[:role])
 
   %legend Om jobben
   %fieldset
@@ -25,7 +26,8 @@
 
       = job.input :title, :hint => "F.eks: 'Systemutvikler'", :hint_class => 'help-block'
       = job.input :description, :as => :text,
-        :input_html => { :rows => 7, :style => 'width: 500px !important' }
+        :input_html => { :rows => 7, :style => 'width: 500px !important' },
+        :hint => "Du kan bruke Markdown her. Se <a>denne listen</a> for mulighetene.".html_safe, :hint_class => 'help-block'
       .control-group
         .controls
           %p.help-block
@@ -35,7 +37,6 @@
             %i.icon-plus
             %a Legg til kvalifikasjonsfelt
       = job.input :positions, :as => :number, :step => 1, :input_html => { :value => 1 }
-
       = job.input :deadline, :as => :date, :order => [:day,:month,:year], :input_html => { :value => '' }
       = job.input :deadline_asap, :as => :boolean
       = job.input :technologies, :as => :select,
@@ -49,9 +50,10 @@
 
       = employer.input :name, :hint => 'Navnet på firmaets kontaktperson'
       = employer.input :position, :hint => 'Kontaktpersonens stilling'
-      = employer.input :company_name
+      = employer.input :company_name, :hint => 'firmanavn.jerbs.no', :hint_class => 'help-block'
       = employer.input :company_description,
         :as => :text, :input_html => { :rows => 7, :style => 'width: 500px !important' }
+      = employer.input :logo
 
   %legend Konto
   %fieldset

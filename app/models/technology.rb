@@ -10,5 +10,5 @@
 #
 
 class Technology < ActiveRecord::Base
-  has_and_belongs_to_many :jobs
+  has_and_belongs_to_many :jobs, :join_table => "jobs_technologies"
 end

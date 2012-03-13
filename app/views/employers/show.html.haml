@@ -1,0 +1,54 @@
+#employer-profile
+
+  - if @employer.user == current_user
+    .alert.alert-info
+      %p
+        %strong Morn!
+        Dette er din profil.
+      %a.btn Endre profilen
+
+  .page-header
+    %h1= @employer.company_name
+
+
+  .row.fluid-row
+    .span8.company_description
+      = BlueCloth.new(@employer.company_description).to_html.html_safe
+
+    .span3.offset1
+      #logo= image_tag @employer.logo.url(:small)
+
+
+  .spacer50
+
+  .row.fluid-row
+    .span12
+      %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
+        %li.active
+          %a{:href => '#selected-jobs', :data => { :toggle => 'tab' }}
+            Jobber hos
+            = @employer.company_name # TODO translate
+
+      .tab-content
+        .tab-pane.active#selected-jobs
+          %table.table.table-striped.table-condensed
+            %tr
+              %th Stilling
+              %th Frist
+              %th Topp tre teknologier
+              %th{ :style => 'width: 90px' }
+                %i.icon-pencil
+            - @employer.jobs.each do |job|
+              %tr
+                %td
+                  = job.title
+                %td
+                  - if job.deadline_asap # TODO translate
+                    Snarest
+                %td
+                  - job.technologies.each_with_index do |tech, i|
+                    - break if (i > 3)
+                    %span.label= tech.shortname
+                %td
+                  %a.btn.btn-mini.btn-success
+                    Søk på jobben

@@ -2,22 +2,43 @@ class RegistrationsController < Devise::RegistrationsController
 
   # GET /:resource/sign_up
   def new
+
     resource = build_resource({})
-    resource.rolable = Employer.new
-    resource.rolable.jobs << Job.new
+
+    if(params[:role] == :employer)
+      resource.rolable = Employer.new
+      resource.rolable.jobs << Job.new
+    elsif(params[:role] == :job_seeker)
+      resource.rolable = JobSeeker.new
+    end
+
     respond_with resource
   end
 
   # POST /resource
   def create
-    #build_resource
-    resource = build_resource(params[:user])
-    resource.rolable = Employer.new(params[:employer])
-    resource.rolable.jobs << Job.new(params[:job])
 
-    unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
-      clean_up_passwords resource
-      respond_with resource
+    if(params[:role] == 'employer')
+      resource = build_resource(params[:user])
+      resource.rolable = Employer.new(params[:employer])
+      resource.rolable.jobs << Job.new(params[:job])
+
+      unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
+        clean_up_passwords resource
+        respond_with resource, :location => employer_sign_up_path
+        return
+      end
+    elsif (params[:role] == 'job_seeker')
+      resource = build_resource
+      resource.rolable = JobSeeker.new(params[:job_seeker])
+
+      unless resource.valid?
+        clean_up_passwords resource
+        respond_with resource, :location => job_seeker_sign_up_path
+        return
+      end
+    else
+      # TODO edge case
       return
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312000816) do
+ActiveRecord::Schema.define(:version => 20120312211345) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20120312000816) do
     t.string   "company_description"
     t.text     "company_address"
     t.integer  "location_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "job_seekers", :force => true do |t|

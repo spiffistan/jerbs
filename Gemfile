@@ -38,7 +38,6 @@ gem 'jquery-rails'
 #
 gem 'geokit-rails3'   # geolocation
 gem 'devise'          # authentication
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'sunspot'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
@@ -47,9 +46,12 @@ gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
 gem 'less-rails-bootstrap'
 
-gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
 gem 'yaml_db'         # rake db:data:{load,dump}
+gem 'paperclip'       # image assets
+gem 'bluecloth'       # markdown
 
 # Life on the edge!
 gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branch => '2.1-stable'
 gem 'formtastic-bootstrap', :git => 'https://github.com/cgunther/formtastic-bootstrap.git', :branch => 'bootstrap2-rails3-2-formtastic-2-1'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

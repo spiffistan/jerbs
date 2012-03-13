@@ -16,9 +16,11 @@
 
 class Job < ActiveRecord::Base
   belongs_to :employer
-  has_and_belongs_to_many :technologies
+  has_and_belongs_to_many :technologies, :join_table => "jobs_technologies"
 
-  attr_accessible :title, :description, :positions, :deadline
+  attr_accessible :title, :description, :positions, :deadline, :deadline_asap
+  attr_accessible :technology_ids
+  accepts_nested_attributes_for :technologies
 
   searchable do
     text :title

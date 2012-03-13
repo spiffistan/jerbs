@@ -23,11 +23,6 @@
             - else
               %li.inactive= link_to "Jerbs", jobs_path
 
-            - if params[:controller] == 'jobs'
-              %li.active= link_to "Søk", jobs_path
-            - else
-              %li.inactive= link_to "Søk", jobs_path
-
             - if params[:controller] == 'job_seekers'
               %li.active= link_to "Kandidater", job_seekers_path
             - else
@@ -35,8 +30,12 @@
 
           #user-meta
             - if user_signed_in?
-              .btn-group.row
-                %span{:style => 'float: right'}
+              .btn-toolbar
+                .btn-group
+                  - if current_user.rolable_type == 'Employer'
+                    = link_to 'Min firmaprofil', employer_url(current_user.rolable_id),
+                      :class => 'btn btn-primary btn-small'
+                .btn-group
                   = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),
                     destroy_user_session_path,
                     :method => :delete,
