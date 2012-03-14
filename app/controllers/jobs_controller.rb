@@ -1,14 +1,13 @@
 class JobsController < ApplicationController
 
   def index
-    @jobs = Job.order(:created_at).page params[:page]
+    @jobs = Job.order(:id).page params[:page]
   end
 
   def index_by_technology
-    # TODO work in progress
 
-    @technology = Technology.find(params[:technology_id])
-    @jobs = Job.joins(:technologies).where(['technologies.id = ?', @technology.id]).order(:id).page(params[:page])
+    @jobs = Job.joins(:technologies).where(['technologies.id = ?', params[:technology_id]])
+               .order(:id).page(params[:page])
 
     render 'index'
 
