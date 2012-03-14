@@ -47,7 +47,10 @@
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|
             - break if (i >= 3)
-            = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label'
+            - if user_signed_in? && current_user.rolable.technologies.include?(tech)
+              = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label label-warning'
+            - else
+              = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label'
 
 = paginate @jobs
 

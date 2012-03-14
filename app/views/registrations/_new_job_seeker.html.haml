@@ -23,6 +23,7 @@
   = semantic_fields_for(resource.rolable) do |job_seeker|
     = job_seeker.input :name
     = job_seeker.input :url
+    = job_seeker.input :technologies
 
   = user.actions do
     = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }

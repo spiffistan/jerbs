@@ -13,10 +13,12 @@
 
 class JobSeeker < ActiveRecord::Base
   has_one :user, :as => :rolable
-  # has_and_belongs_to_many :technologies
-  accepts_nested_attributes_for :user
+  has_and_belongs_to_many :technologies, :join_table => 'job_seekers_technologies'
+
+  accepts_nested_attributes_for :technologies
 
   attr_accessible :name, :url
+  attr_accessible :technology_ids
 
   validates_presence_of :name
 

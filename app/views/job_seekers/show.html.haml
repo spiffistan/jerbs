@@ -10,5 +10,8 @@
   .page-header
     %h1= @job_seeker.name
 
+  %h4 Mine teknologier
+  - @job_seeker.technologies.each do |tech|
+    %span.label= tech.shortname
 
   .spacer50
