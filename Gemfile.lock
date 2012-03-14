@@ -222,6 +222,7 @@ DEPENDENCIES
   geokit-rails3
   haml-rails
   jquery-rails
+  kaminari
   less-rails-bootstrap
   paperclip
   rails (= 3.2.0)

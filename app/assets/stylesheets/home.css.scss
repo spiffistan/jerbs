@@ -240,3 +240,19 @@ fieldset {
   }
 
 }
+
+// Bootstrap overrides
+
+.pagination li.active,
+.pagination li.gap {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0
+}
+
+.pagination li.active {
+  background-color: whitesmoke;
+}
