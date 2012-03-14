@@ -1,6 +1,17 @@
 class JobsController < ApplicationController
+
   def index
-    @jobs = Job.order(:id).page params[:page]
+    @jobs = Job.order(:created_at).page params[:page]
+  end
+
+  def index_by_technology
+    # TODO work in progress
+
+    @technology = Technology.find(params[:technology_id])
+    @jobs = Job.joins(:technologies).where(['technologies.id = ?', @technology.id]).order(:id).page(params[:page])
+
+    render 'index'
+
   end
 
   def show
@@ -22,10 +33,12 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(params[:job])
-      if @job.save
+    if @job.save
 
-      else
+    else
+      respond_to do |format|
         format.html { render :action => "new" }
+      end
     end
   end
 

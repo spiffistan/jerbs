@@ -11,11 +11,15 @@ Jerbs::Application.routes.draw do
   resources :jobs
   resources :job_seekers
   resources :employers
+
+  match 'jobs/technology/:technology_id' => 'jobs#index_by_technology', :as => :jobs_by_technology, :via => :get
+  match 'jobs/find/:query' => 'jobs#search', :as => :job_search, :via => :get
   #
 
   # match 'employers/:company_name' => 'employers#show', :as => 'show_employer', :via => :get
 
-  match 'jobs/find/:query' => 'jobs#search', :as => :job_search
+  # custom routes
+  #
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

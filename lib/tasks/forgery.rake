@@ -4,11 +4,27 @@ namespace :db do
   desc 'Fill database with fake data'
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
+
+    50.times do
+      name = Forgery(:jerbs).technology
+      if name.length < 5
+        shortname = name
+      elsif name =~ / /
+        shortname = name.split(" ").map {|name| name[0].chr }.join
+      else
+        shortname = name.slice(0..4)
+      end
+      technology = Technology.new(:name => name, :shortname => shortname)
+      puts technology.inspect
+      technology.save
+    end
+
     100.times do
       name = Forgery(:name).full_name
       position = Forgery(:name).job_title
       company_name = Forgery(:name).company_name
-      company_description = Forgery(:lorem_ipsum).paragraphs
+      num_pars = 1+rand(6)
+      company_description = Forgery(:lorem_ipsum).paragraphs(num_pars)
       company_address = Forgery(:address).street_address
 
       email = Forgery(:email).address
@@ -21,9 +37,14 @@ namespace :db do
 
       (1+rand(3)).times do
         title = Forgery(:name).job_title
-        description = Forgery(:lorem_ipsum).paragraphs
+        num_pars = 1+rand(6)
+        description = Forgery(:lorem_ipsum).paragraphs(num_pars)
         positions = 1
-        resource.rolable.jobs << Job.new(:title => title, :description => description, :positions => positions)
+        job = Job.new(:title => title, :description => description, :positions => positions)
+        (1+rand(5)).times do
+          job.technologies << Technology.random
+        end
+        resource.rolable.jobs << job
       end
 
       puts resource.inspect

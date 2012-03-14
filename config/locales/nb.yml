@@ -158,3 +158,11 @@ nb:
   support:
     array:
       two_words_connector: ' '
+
+  views:
+    pagination:
+      truncate: '...'
+      previous: '<i class="icon-step-backward"></i>'
+      first: '<i class="icon-fast-backward"></i>'
+      next: '<i class="icon-step-forward"></i>'
+      last: '<i class="icon-fast-forward"></i>'

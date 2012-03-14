@@ -8,8 +8,17 @@
       %a.btn Endre jobben
 
   .page-header
-    %h1= @job.title
+    %h1
+      = @job.title
+      %small
+        hos
+        = link_to @job.employer.company_name, employer_path(@job.employer.id)
 
+  %p
+    Frist:
+    %span
+      - if @job.deadline_asap
+        Snarest
 
   .row.fluid-row
     .span8.company_description

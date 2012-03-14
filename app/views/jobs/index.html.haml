@@ -26,6 +26,10 @@
     .btn-group{:data => { :toggle => 'buttons-checkbox'}}
       %a.btn.btn-small
         Avansert
+
+- if @jobs.length > 9
+  = paginate @jobs
+
 .search-results
   %table.table.table-striped
     %tr
@@ -36,14 +40,14 @@
     - @jobs.each do |job|
       %tr
         %td
-          = job.title
+          = link_to job.title, job_path(job.id)
         %td
           = link_to job.employer.company_name, employer_path(job.employer.id)
         %td
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|
-            - break if (i > 3)
-            %span.label= tech.shortname
+            - break if (i >= 3)
+            = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label'
 
-  = paginate @jobs
+= paginate @jobs
 

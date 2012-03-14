@@ -16,7 +16,8 @@
       = BlueCloth.new(@employer.company_description).to_html.html_safe
 
     .span3.offset1
-      #logo= image_tag @employer.logo.url(:small)
+      - if @employer.logo?
+        #logo= image_tag @employer.logo.url(:small)
 
 
   .spacer50
