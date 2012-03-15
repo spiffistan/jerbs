@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
     # ip = request.remote_ip
     ip = '195.214.206.132'
 
-    latlng = Geokit::Geocoders::MultiGeocoder.geocode(ip)
+    latlng = MultiGeocoder.geocode(ip)
 
     res = GoogleGeocoder.reverse_geocode(latlng)
 

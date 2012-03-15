@@ -18,6 +18,7 @@
     .span3.offset1
       - if @employer.logo?
         #logo= image_tag @employer.logo.url(:small)
+      = render :partial => 'google_maps' # TODO normalize?
 
     .span12
       %h3 Teknologier vi bruker
@@ -53,7 +54,10 @@
                 %td
                   - if job.deadline_asap # TODO translate
                     Snarest
-                %td= distance_of_time_in_words_to_now job.created_at
+                %td
+                  For
+                  = distance_of_time_in_words_to_now job.created_at
+                  siden
                 %td
                   - job.technologies.each_with_index do |tech, i|
                     - break if (i > 3)

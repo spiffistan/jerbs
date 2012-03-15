@@ -1,7 +1,12 @@
 class EmployersController < ApplicationController
 
   def show
-    @employer = Employer.find(params[:id])
+    if params[:id].nil?
+      # TODO this is a dirty hack.
+      @employer = Employer.where('company_name = ?', request.subdomain.capitalize).first
+    else
+      @employer = Employer.find(params[:id])
+    end
 
     @techs = []
     @employer.jobs.each do |job|
