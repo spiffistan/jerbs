@@ -1,0 +1,54 @@
+= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false'
+
+:javascript
+  var geocoder;
+  var map;
+  var markersArray = [];
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 7,
+      zoomControl: false,
+      rotateControl: false,
+      panControl: false,
+      streetViewControl: false,
+      mapTypeControl: false,
+      scrollwheel: false
+    }
+    map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+  }
+
+  function clearOverlays() {
+    if (markersArray) {
+      for (i in markersArray) {
+        markersArray[i].setMap(null);
+      }
+    }
+  }
+
+  function codeAddress() {
+    var address = document.getElementById("employer_company_address").innerHTML;
+    geocoder.geocode( { 'address': address + ', Norway'}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        clearOverlays();
+        markersArray.push(marker);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+#map-canvas.thumbnail{ :style => 'width: 210px; height: 210px' }
+
+:javascript
+  initialize();
+  codeAddress();

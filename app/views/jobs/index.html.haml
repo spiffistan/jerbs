@@ -48,7 +48,7 @@
           For
           = distance_of_time_in_words_to_now job.created_at
           siden
-        %td
+        %td= job.employer.company_address
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|
             - break if (i >= 3)

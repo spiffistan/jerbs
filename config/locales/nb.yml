@@ -2,6 +2,7 @@ nb:
   datetime:
     distance_in_words:
       about_x_hours: '%{count} timer'
+      x_minutes: '%{count} minutter'
 
   frontpage:
     search:

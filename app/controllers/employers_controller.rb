@@ -1,8 +1,11 @@
 class EmployersController < ApplicationController
 
   def show
-    @employer = Employer.first(:conditions => { :slug => request.subdomain })
-    # @employer = Employer.find(params[:id])
+    if not params[:slug].nil?
+      @employer = Employer.first(:conditions => { :slug => request.subdomain })
+    else
+      @employer = Employer.find(params[:id])
+    end
 
     @techs = []
     @employer.jobs.each do |job|

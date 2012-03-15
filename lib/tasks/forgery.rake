@@ -1,4 +1,5 @@
 require 'forgery'
+include Geokit::Geocoders
 
 namespace :db do
   desc 'Fill database with fake data'
@@ -25,7 +26,9 @@ namespace :db do
       company_name = Forgery(:name).company_name
       num_pars = 1+rand(6)
       company_description = Forgery(:lorem_ipsum).paragraphs(num_pars)
-      company_address = Forgery(:address).street_address
+      company_address = Forgery(:jerbs).nor_cities
+      # location = Location.new()
+      # latlng = GoogleGeocoder.geocode(company_address)
 
       email = Forgery(:email).address
       password = Forgery(:basic).password

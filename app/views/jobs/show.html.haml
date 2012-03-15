@@ -14,13 +14,11 @@
         hos
         = link_to @job.employer.company_name, employer_path(@job.employer.id)
 
-  %p
-    Frist:
-    %span
-      - if @job.deadline_asap
-        Snarest
-
   .row.fluid-row
     .span8.company_description
       = BlueCloth.new(@job.description).to_html.html_safe
+
+    .span3.offset1
+      %a.btn.btn-large.btn-success Søk på denne jobben
+
 
