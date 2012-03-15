@@ -28,31 +28,50 @@
         %a{:href => '#popular-jobs', :data => { :toggle => 'tab' }}
           = t 'frontpage.tabs.popular_jobs.title'
 
-    .tab-content
+    .tab-content{:style => 'margin: -5px -20px; padding: 5px 20px;'}
       .tab-pane.active#selected-jobs
         .row
-          - 0.upto(3).each do |job|
+          - @selected_jobs.each do |job|
             .span3
               .job-box
                 .new
-                %h3 Systemutvikler
+                %h3= job.title
                 %p
                   %strong
-                    Starbucks, Oslo
+                    = job.employer.company_name
                 %p
-                  Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                  =h truncate(job.description, :length => 250)
                 %p
-                  %span.label C
-                  %span.label Erlang
-                  %span.label Java
-                  %span.label Ruby
+                  - job.technologies.each do |tech|
+                    %span.label= tech.shortname
       .tab-pane#new-jobs
         .row
-          - 0.upto(3).each do |job|
+          - @new_jobs.each do |job|
             .span3
+              .job-box
+                .new
+                %h3= job.title
+                %p
+                  %strong
+                    = job.employer.company_name
+                %p
+                  =h truncate(job.description, :length => 250)
+                %p
+                  - job.technologies.each do |tech|
+                    %span.label= tech.shortname
       .tab-pane#popular-jobs
         .row
-          - 0.upto(3).each do |job|
+          - @popular_jobs.each do |job|
             .span3
+              .job-box
+                .new
+                %h3= job.title
+                %p
+                  %strong
+                    = job.employer.company_name
+                %p
+                  =h truncate(job.description, :length => 250)
+                %p
+                  - job.technologies.each do |tech|
+                    %span.label= tech.shortname
 

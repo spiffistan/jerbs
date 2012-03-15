@@ -19,6 +19,11 @@
       - if @employer.logo?
         #logo= image_tag @employer.logo.url(:small)
 
+    .span12
+      %h3 Teknologier vi bruker
+      %p
+        - @techs.each do |tech|
+          %span.label= tech.shortname
 
   .spacer50
 
@@ -36,6 +41,7 @@
             %tr
               %th Stilling
               %th Frist
+              %th Lagt inn
               %th Topp tre teknologier
               %th{ :style => 'width: 90px' }
                 %i.icon-pencil
@@ -47,6 +53,7 @@
                 %td
                   - if job.deadline_asap # TODO translate
                     Snarest
+                %td= distance_of_time_in_words_to_now job.created_at
                 %td
                   - job.technologies.each_with_index do |tech, i|
                     - break if (i > 3)

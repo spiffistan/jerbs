@@ -35,6 +35,7 @@
     %tr
       %th Stilling
       %th Firma
+      %th Lagt inn
       %th Sted
       %th Topp tre teknologier
     - @jobs.each do |job|
@@ -44,11 +45,16 @@
         %td
           = link_to job.employer.company_name, employer_path(job.employer.id)
         %td
+          For
+          = distance_of_time_in_words_to_now job.created_at
+          siden
+        %td
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|
             - break if (i >= 3)
             - if user_signed_in? && current_user.rolable.technologies.include?(tech)
-              = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label label-warning'
+              = link_to tech.shortname, jobs_by_technology_path(tech.id),
+                :class => 'label label-warning'
             - else
               = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label'
 

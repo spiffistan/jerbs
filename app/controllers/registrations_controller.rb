@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  include Geokit::Geocoders
+
   # GET /:resource/sign_up
   def new
 
@@ -11,6 +13,15 @@ class RegistrationsController < Devise::RegistrationsController
     elsif(params[:role] == :job_seeker)
       resource.rolable = JobSeeker.new
     end
+
+    # ip = request.remote_ip
+    ip = '195.214.206.132'
+
+    latlng = Geokit::Geocoders::MultiGeocoder.geocode(ip)
+
+    res = GoogleGeocoder.reverse_geocode(latlng)
+
+    @location = "#{res.city}" # , #{res.country}"
 
     respond_with resource
   end

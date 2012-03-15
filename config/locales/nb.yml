@@ -1,4 +1,8 @@
-nb: 
+nb:
+  datetime:
+    distance_in_words:
+      about_x_hours: '%{count} timer'
+
   frontpage:
     search:
       title: 'Jobb med teknologien du liker'
@@ -106,6 +110,7 @@ nb:
         position: 'Stilling'
         company_name: 'Firmanavn'
         company_description: 'Firmabeskrivelse'
+        company_description: 'Adresse'
         jobs: 'Jobben'
     errors:
       models:
