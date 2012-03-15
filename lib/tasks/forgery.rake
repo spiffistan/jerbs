@@ -32,8 +32,10 @@ namespace :db do
       password_confirmation = password
 
       resource = User.new(:email => email, :password => password, :password_confirmation => password_confirmation)
-      resource.rolable = Employer.new(:name => name, :position => position, :company_name => company_name,
-                                      :company_description => company_description, :company_address => company_address)
+      resource.rolable = Employer.new(:name => name, :position => position,
+                                      :company_name => company_name,
+                                      :company_description => company_description,
+                                      :company_address => company_address)
 
       (1+rand(3)).times do
         title = Forgery(:name).job_title
