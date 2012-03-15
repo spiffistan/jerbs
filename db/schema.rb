@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314214649) do
+ActiveRecord::Schema.define(:version => 20120315153758) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(:version => 20120314214649) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "slug"
   end
+
+  add_index "employers", ["slug"], :name => "index_employers_on_slug", :unique => true
 
   create_table "job_seekers", :force => true do |t|
     t.integer  "user_id"

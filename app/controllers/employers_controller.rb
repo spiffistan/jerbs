@@ -1,12 +1,8 @@
 class EmployersController < ApplicationController
 
   def show
-    if params[:id].nil?
-      # TODO this is a dirty hack.
-      @employer = Employer.where('company_name = ?', request.subdomain.capitalize).first
-    else
-      @employer = Employer.find(params[:id])
-    end
+    @employer = Employer.first(:conditions => { :slug => request.subdomain })
+    # @employer = Employer.find(params[:id])
 
     @techs = []
     @employer.jobs.each do |job|

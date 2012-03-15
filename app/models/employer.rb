@@ -14,6 +14,7 @@
 #
 
 class Employer < ActiveRecord::Base
+
   has_one :user, :as => :rolable
   has_many :jobs
 
@@ -26,4 +27,8 @@ class Employer < ActiveRecord::Base
 
   validates_presence_of :name, :position, :company_name
   validates_uniqueness_of :company_name
+
+  extend FriendlyId
+
+  friendly_id :company_name, :use => :slugged
 end
