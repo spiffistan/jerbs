@@ -33,7 +33,7 @@
               .btn-toolbar
                 - if current_user.rolable_type == 'Employer'
                   .btn-group
-                    = link_to 'Ny jobb', employer_url(current_user.rolable_id),
+                    = link_to 'Ny jobb', new_job_url,
                       :class => 'btn btn-inverse btn-small'
                   .btn-group
                     = link_to 'Min firmaprofil', employer_url(current_user.rolable_id),

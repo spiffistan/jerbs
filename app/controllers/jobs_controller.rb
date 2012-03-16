@@ -1,5 +1,7 @@
 class JobsController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:show, :index, :search]
+
   def index
     @jobs = Job.order(:id).page params[:page]
   end
@@ -32,8 +34,10 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(params[:job])
-    if @job.save
+    @job.employer = User.find(current_user.id).rolable
 
+    if @job.save
+      redirect_to root_path
     else
       respond_to do |format|
         format.html { render :action => "new" }

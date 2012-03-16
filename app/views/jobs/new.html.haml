@@ -1,11 +1,25 @@
 %h1= t 'jobs.add_job.title'
 
-= semantic_form_for @job do |f|
-  = f.inputs do
-    = f.input :title
-    = f.input :description, :as => :text, :input_html => { :class => 'autogrow', :rows => 10, :maxlength => 1000  }
-    = f.input :freedom
-    = f.input :positions
-    = f.input :percentage
-  = f.actions do
-    = f.action :submit, :wrapper_html => { :class => 'btn-large'}, :label => (t 'jobs.add_job.submit')
+= semantic_form_for( @job, :html => {:class => "new_user form-horizontal"}) do |job|
+  = job.input :title, :hint => "F.eks: 'Systemutvikler'", :hint_class => 'help-block'
+  = job.input :description, :as => :text,
+    :input_html => { :rows => 7, :style => 'width: 500px !important' },
+    :hint => "Du kan bruke Markdown her. Se <a>denne listen</a> for mulighetene.".html_safe, :hint_class => 'help-block'
+  .control-group
+    .controls
+      %p.help-block
+        %i.icon-plus
+        %a Legg til nøkkelkompetanefelt
+      %p.help-block
+        %i.icon-plus
+        %a Legg til kvalifikasjonsfelt
+  = job.input :positions, :as => :number, :step => 1, :input_html => { :value => 1 }
+  = job.input :deadline, :as => :date, :order => [:day,:month,:year], :input_html => { :value => '' }
+  = job.input :deadline_asap, :as => :boolean
+  = job.input :technologies, :as => :select,
+    :collection => Technology.all.collect { |x| [x.shortname, x.id]},
+    :input_html => { :multiple => true }
+
+  = job.actions do
+    = job.action :submit, :button_html => { :value => 'Legg til jobb', :class => 'btn-primary btn-large' }
+

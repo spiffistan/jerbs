@@ -52,7 +52,7 @@
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|
             - break if (i >= 3)
-            - if user_signed_in? && current_user.rolable.technologies.include?(tech)
+            - if user_signed_in? && user_job_seeker? && current_user.rolable.technologies.include?(tech)
               = link_to tech.shortname, jobs_by_technology_path(tech.id),
                 :class => 'label label-warning'
             - else

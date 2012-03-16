@@ -1,16 +1,17 @@
 nb:
   devise:
     failure:
-      unauthenticated: 'Du må logge inn eller registrere deg for å kunne fortsette.'
-      unconfirmed: 'Du må bekrefte kontoen din for å kunne fortsette.'
-      locked: 'Din konto er låst.'
-      invalid: 'Epost-adresse eller passord er ikke gyldig.'
-      invalid_token: 'Ugyldig autentiserings-token.'
-      timeout: 'Din sesjon er utløpt. Logg inn igjen for å kunne fortsette.'
-      inactive: 'Din konto er ikke aktivert.'
+      unauthenticated: 'Du må logge inn for å fortsette.'  
+      unconfirmed: 'Du må bekrefte kontoen din før du kan fortsette.'  
+      locked: 'Denne kontoen er låst.'  
+      invalid: 'Feil e-post eller passord.'  
+      invalid_token: 'Feil autentiseringskode.'  
+      timeout: 'Tidsavbrudd. Vennligst logg inn igjen for å fortsette.'  
+      inactive: 'Denne kontoen er ikke aktivert enda.'  
+
     sessions:
-      signed_in: 'Du er nå innlogget.'
-      signed_out: 'Du er nå logget ut.'
+      signed_in: 'Du er nå logget inn!'
+      signed_out: 'Du har nå logget ut.'
     passwords:
       send_instructions: 'Du vil snart motta en epost med instruksjoner for å nullstille passordet ditt.'
       updated: 'Ditt passord er endret og du er nå innlogget.'

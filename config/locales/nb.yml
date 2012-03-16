@@ -3,6 +3,7 @@ nb:
     distance_in_words:
       about_x_hours: '%{count} timer'
       x_minutes: '%{count} minutter'
+      less_than_x_minutes: 'mindre enn %{count} minutter'
 
   frontpage:
     search:
