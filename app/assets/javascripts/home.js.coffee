@@ -4,13 +4,10 @@
 
 $ ->
 
-#  $('.job-box').blurjs({
-#    source: 'body',
-#    radius: 15,
-#    overlay: 'rgba(255,255,255,0.7)',
-#    offset: { x: -5, y: -5 },
-#    draggable: true,
-#    cached: true
-#  });
+  $('header').blurjs({
+    source: 'body',
+    radius: 5,
+    overlay: 'rgba(255,255,255,0.1)'
+  });
 
   $('#frontpage-tabs a:first').tab('show')

@@ -5,8 +5,9 @@
 $color-gray: #eeeee1;
 
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
-$header-bgcolor: rgba(0,0,0,0.6);
+$header-bgcolor: none; // rgba(0,0,0,0.6);
 $header-bgimage: none; // url('header-rainbow.jpg');
+$text-color: #333;
 
 body {
   background-image: url('wood.png');
@@ -19,9 +20,43 @@ header {
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px dotted rgba(0,0,0,0.2);
-  color: white;
-  // box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
+  padding-top: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.10);
+
+  .container {
+    width: 980px;
+  }
+
+  .row {
+    margin-left: 0px;
+  }
+
+  a {
+    color: $text-color;
+  }
+
+  #employer-link {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+  #log-in-out {
+    float: right;
+  }
+
+  #user-meta {
+    float: right;
+    text-align: right;
+  }
+
+  #user-meta a:not(.btn) {
+    color: $text-color;
+  }
+
+  #login-button {
+    margin-right: 20px;
+  }
+
 }
 
 footer {
@@ -78,30 +113,24 @@ nav {
   font-weight: bold;
 }
 
+.nav-pills a {
+  border: 1px solid transparent;
+}
+
 .nav-pills .active > a {
-  background: rgba(0, 136, 204, 0.1);
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: $text-color;
 }
 
-#user-meta {
-  float: right;
-  text-align: right;
+.nav-pills .active a:hover {
+  background: rgba(0, 136, 204, 0.10);
+  color: #333;
 }
 
-#user-meta a:not(.btn) {
-  color: white;
-}
-
-#employer-link {
-  margin-top: 3px;
-  font-size: 11px;
-}
-
-#log-in-out {
-  float: right;
-}
-
-#login-button {
-  margin-right: 20px;
+.nav-pills a:hover {
+  background: rgba(0, 136, 204, 0.10);
+  color: #333;
 }
 
 .container {
