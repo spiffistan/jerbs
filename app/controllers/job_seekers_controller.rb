@@ -1,6 +1,6 @@
 class JobSeekersController < ApplicationController
   def index
-    @job_seekers = JobSeeker.all
+    @job_seekers = JobSeeker.order(:created_at).page(params[:page])
   end
 
   def show

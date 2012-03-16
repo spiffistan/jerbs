@@ -45,9 +45,7 @@
         %td
           = link_to job.employer.company_name, employer_path(job.employer.id)
         %td
-          For
           = distance_of_time_in_words_to_now job.created_at
-          siden
         %td= job.employer.company_address
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|

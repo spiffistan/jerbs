@@ -1,12 +1,56 @@
-%h1 Job Seekers
+.page-header
+  %h1 Jobbsøkere
 
-#search-controls
-  .placeholder søkekontroller
+.alert.alert-info
+  %strong Glooping blutenfoofers.
+  Work in progress. Like a Sir.
 
-#search-results
-  %table.table.table-striped.table-bordered.table-condensed
+%form#search-controls.form-search.row-fluid
+  .span4.btn-toolbar
+    %input.search-query
+      %a.btn.btn-success
+        Søk
+  .span8.btn-toolbar
+    .btn-group
+      %a.btn.active
+        %i.icon-th-list
+      %a.btn
+        %i.icon-th
+    .btn-group#search-list-quantity{:data => { :toggle => 'buttons-radio'}}
+      %a.btn.btn-small.active
+        20
+      %a.btn.btn-small
+        60
+      %a.btn.btn-small
+        100
+    .btn-group{:data => { :toggle => 'buttons-checkbox'}}
+      %a.btn.btn-small
+        Avansert
+
+- if @job_seekers.length > 9
+  = paginate @job_seekers
+
+.search-results
+  %table.table.table-striped
     %tr
       %th Navn
-      %th Distanse
-      %th Beskrivelse
+      %th Sted
       %th Topp tre teknologier
+    - @job_seekers.each do |job_seeker|
+      %tr
+        %td
+          = link_to job_seeker.name, job_seeker_path(job_seeker.id)
+        %td
+        %td{:style => 'width: 200px' }
+          - job_seeker.technologies.each_with_index do |tech, i|
+            - break if (i >= 3)
+            - if user_signed_in? && user_job_seeker? && current_user.rolable.technologies.include?(tech)
+              = link_to tech.shortname, jobs_by_technology_path(tech.id),
+                :class => 'label label-warning'
+            - else
+              = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label'
+
+= paginate @job_seekers
+
+= (page_entries_info @job_seekers).html_safe
+

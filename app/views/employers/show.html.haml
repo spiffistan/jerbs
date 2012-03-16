@@ -57,9 +57,7 @@
                   - if job.deadline_asap # TODO translate
                     Snarest
                 %td
-                  For
                   = distance_of_time_in_words_to_now job.created_at
-                  siden
                 %td
                   - job.technologies.each_with_index do |tech, i|
                     - break if (i > 3)
