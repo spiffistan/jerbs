@@ -26,7 +26,7 @@
       %h3 Teknologier vi bruker
       %p
         - @techs.each do |tech|
-          %span.label= tech.shortname
+          %span.label.label-tech= tech.shortname
 
   .spacer50
 
@@ -61,7 +61,7 @@
                 %td
                   - job.technologies.each_with_index do |tech, i|
                     - break if (i > 3)
-                    %span.label= tech.shortname
+                    %span.label.label-tech= tech.shortname
                 %td
                   %a.btn.btn-mini.btn-success
                     Søk på jobben

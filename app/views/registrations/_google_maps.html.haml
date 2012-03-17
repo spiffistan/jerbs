@@ -7,7 +7,7 @@
 
   function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(#{@latlng.lat}, #{@latlng.lng});
     var myOptions = {
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -31,13 +31,17 @@
   }
 
   function codeAddress() {
-    var address = document.getElementById("employer_company_address").value;
+    // var address = document.getElementById("employer_company_address").value;
+    var address = $('.geolocation').val();
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
+        var loc = results[0].geometry.location;
+        $('.geolocation-lat').val(loc.lat());
+        $('.geolocation-lng').val(loc.lng());
+        map.setCenter(loc);
         var marker = new google.maps.Marker({
             map: map,
-            position: results[0].geometry.location
+            position: loc
         });
         clearOverlays();
         markersArray.push(marker);
@@ -56,6 +60,6 @@
   initialize();
   codeAddress();
 
-  $('#employer_company_address').change(function() {
+  $('.geolocation').change(function() {
     codeAddress();
   });

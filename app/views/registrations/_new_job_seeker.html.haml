@@ -24,6 +24,20 @@
     = job_seeker.input :name
     = job_seeker.input :url
     = job_seeker.input :technologies
+    .control-group
+      %label.control-label Plassering
+      .controls
+        %input.geolocation{ :type => 'text', :value => @geoloc }
+          .help-block
+            Plasseringen blir ikke lagret, men gir en omtrentlig plassering innen 2km.
+            %br/
+            Denne brukes til å finne jobber i nærheten av deg.
+
+  = semantic_fields_for(:location) do |location|
+    = location.input :lat, :as => :hidden, :input_html => { :class => 'geolocation-lat' }
+    = location.input :lng, :as => :hidden, :input_html => { :class => 'geolocation-lng' }
+
+    = render :partial => 'google_maps', :locals => { :location => @geoloc, :latlng => @latlng }
 
   = user.actions do
     = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }

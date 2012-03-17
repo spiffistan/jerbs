@@ -28,6 +28,6 @@ class Job < ActiveRecord::Base
     integer :positions
   end
 
-  validates_presence_of :title, :description, :positions, :employer
+  validates_presence_of :title, :description, :positions
   validates_numericality_of :positions, :greater_than_or_equal_to => 1
 end

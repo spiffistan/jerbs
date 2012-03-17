@@ -17,4 +17,8 @@
       - unless user_signed_in? && user_employer?
         %a.btn.btn-large.btn-success Søk på denne jobben
 
-
+    .span12
+      %h3 Teknologier som brukes i jobben
+      %p
+        - @job.technologies.each do |tech|
+          %span.label.label-tech= tech.shortname

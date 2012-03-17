@@ -17,11 +17,9 @@ class RegistrationsController < Devise::RegistrationsController
     # ip = request.remote_ip
     ip = '195.214.206.132'
 
-    latlng = MultiGeocoder.geocode(ip)
-
-    res = GoogleGeocoder.reverse_geocode(latlng)
-
-    @location = "#{res.city}" # , #{res.country}"
+    @latlng = MultiGeocoder.geocode(ip)
+    res = GoogleGeocoder.reverse_geocode(@latlng)
+    @geoloc = "#{res.city}" # , #{res.country}"
 
     respond_with resource
   end
@@ -32,6 +30,7 @@ class RegistrationsController < Devise::RegistrationsController
     if(params[:role] == 'employer')
       resource = build_resource(params[:user])
       resource.rolable = Employer.new(params[:employer])
+      resource.rolable.location = Location.new(params[:location])
       resource.rolable.jobs << Job.new(params[:job])
 
       unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
@@ -42,6 +41,7 @@ class RegistrationsController < Devise::RegistrationsController
     elsif (params[:role] == 'job_seeker')
       resource = build_resource
       resource.rolable = JobSeeker.new(params[:job_seeker])
+      resource.rolable.location = Location.new(params[:location])
 
       unless resource.valid? && resource.rolable.valid?
         clean_up_passwords resource

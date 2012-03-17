@@ -8,13 +8,15 @@ namespace :db do
 
     50.times do
       name = Forgery(:jerbs).technology
-      if name.length < 5
-        shortname = name
-      elsif name =~ / /
-        shortname = name.split(" ").map {|name| name[0].chr }.join
-      else
-        shortname = name.slice(0..4)
-      end
+      shortname = name
+      
+#      if name.length < 5
+#        shortname = name
+#      elsif name =~ / /
+#        shortname = name.split(" ").map {|name| name[0].chr }.join
+#      else
+#        shortname = name.slice(0..4)
+#      end
       technology = Technology.new(:name => name, :shortname => shortname)
       puts technology.inspect
       technology.save
@@ -52,9 +54,10 @@ namespace :db do
         resource.rolable.jobs << job
       end
 
-      puts resource.inspect
 
       resource.save
+
+      puts resource.errors.inspect
 
     end
   end
