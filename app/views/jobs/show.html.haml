@@ -15,7 +15,8 @@
 
     .span3.offset1
       - unless user_signed_in? && user_employer?
-        %a.btn.btn-large.btn-success Søk på denne jobben
+        = link_to 'Søk på denne jobben', job_application_path(@job.id), :class => 'btn btn-large btn-success'
+
 
     .span12
       %h3 Teknologier som brukes i jobben

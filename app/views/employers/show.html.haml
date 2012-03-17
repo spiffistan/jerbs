@@ -63,5 +63,4 @@
                     - break if (i > 3)
                     %span.label.label-tech= tech.shortname
                 %td
-                  %a.btn.btn-mini.btn-success
-                    Søk på jobben
+                  = link_to 'Søk på jobben', job_application_path(job.id), :class => 'btn btn-mini btn-success'

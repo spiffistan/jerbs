@@ -15,7 +15,7 @@ Jerbs::Application.routes.draw do
   # TODO refactor
   match 'jobs/technology/:technology_id' => 'jobs#index_by_technology', :as => :jobs_by_technology, :via => :get
   match 'jobs/find/:query' => 'jobs#search', :as => :job_search, :via => :get
-  match 'jobs/:id/apply' => 'jobs#apply', :as => :job_apply, :via => :get
+  match 'jobs/:id/apply' => 'jobs#apply', :as => :job_application, :via => :get
 
   match '/' => 'home#index', :constraints => { :subdomain => 'www' }
   match '/' => 'employers#show', :constraints => { :subdomain => /.+/ }
