@@ -24,9 +24,14 @@
               %li.inactive= link_to "Jerbs", jobs_path
 
             - if params[:controller] == 'job_seekers'
-              %li.active= link_to "Kandidater", job_seekers_path
+              %li.active= link_to "Jobbsøkere", job_seekers_path
             - else
-              %li.inactive= link_to "Kandidater", job_seekers_path
+              %li.inactive= link_to "Jobbsøkere", job_seekers_path
+
+            - if params[:controller] == 'home'
+              %li.active= link_to "Kart", map_path
+            - else
+              %li.inactive= link_to "Kart", map_path
 
           #user-meta
             - if user_signed_in?

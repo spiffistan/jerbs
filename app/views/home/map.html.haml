@@ -1,0 +1,37 @@
+= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false'
+
+:javascript
+  var geocoder;
+  var map;
+  var markersArray = [];
+  var locations = #{@locations.to_json};
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var myOptions = {
+      center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 8,
+      zoomControl: true,
+      rotateControl: true,
+      panControl: true,
+      streetViewControl: false,
+      mapTypeControl: false,
+      scrollwheel: false
+    }
+
+    map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+    for (var i in locations) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(locations[i].lat, locations[i].lng)
+      });
+    }
+  }
+
+#map-canvas
+
+:javascript
+  initialize();
+
