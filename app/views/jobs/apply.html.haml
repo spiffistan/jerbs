@@ -1,0 +1,41 @@
+= content_for :title, (@job.title + " <small>hos #{@job.employer.company_name}</small>").html_safe
+
+%p= @job.description
+
+= semantic_form_for(:job_application, :html => {:class => "new_user form-horizontal"}) do |job_application|
+
+  %legend Om deg
+  = job_application.input :name
+  = job_application.input :email
+  = job_application.input :telephone
+  = job_application.input :cover_letter, :as => :text,
+    :input_html => { :rows => 10,
+    :style => 'width: 500px !important' }
+
+  - if job_seeker_signed_in? and not current_user.rolable.technologies.empty?
+    .control-group
+      %label.control-label Mine teknologier
+      .controls
+        %p
+        - current_user.rolable.technologies.each do |tech|
+          %span.label= tech.shortname
+
+    -#= job_application.input :resume, :as => :file
+    .control-group
+      %label.control-label CV
+      .controls
+        %a.btn Last opp CV
+        - if job_seeker_signed_in?
+          %a.btn Autogenerer CV
+        - else
+          %a.btn.disabled Autogenerer CV
+          %p.help-block
+            Autogenerering av CV krever konto.
+            = link_to 'Logg inn', new_user_session_url
+            eller
+            = link_to 'lag konto', job_seeker_sign_up_url
+
+  - else
+
+  = job_application.actions do
+    = job_application.action :submit, :button_html => { :value => 'Forhåndsvis', :class => 'btn-success btn-large'}

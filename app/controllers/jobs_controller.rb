@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index, :search]
+  before_filter :authenticate_user!, :except => [:show, :index, :search, :apply]
 
   def index
     @jobs = Job.order(:id).page params[:page]
@@ -57,6 +57,11 @@ class JobsController < ApplicationController
     respond_to do |format|
       format.json { render :json => @jobs }
     end
+  end
+
+  def apply
+    @job = Job.find(params[:id])
+
   end
 
 end
