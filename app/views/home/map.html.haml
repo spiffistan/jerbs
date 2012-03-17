@@ -20,7 +20,7 @@
       scrollwheel: false
     }
 
-    map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+    map = new google.maps.Map(document.getElementById("map-canvas-large"), myOptions);
 
     for (var i in locations) {
       var marker = new google.maps.Marker({
@@ -30,7 +30,7 @@
     }
   }
 
-#map-canvas
+#map-canvas-large
 
 :javascript
   initialize();

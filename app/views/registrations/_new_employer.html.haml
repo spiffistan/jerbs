@@ -53,8 +53,8 @@
       = employer.input :company_name, :hint => 'firmanavn.jerbs.no', :hint_class => 'help-block'
       = employer.input :company_description,
         :as => :text, :input_html => { :rows => 7, :style => 'width: 500px !important' }
-      = employer.input :company_address, :input_html => { :value => @location, :rows => 3, :style => 'width: 210px !important', :class => 'geolocation' }
-      = render :partial => 'google_maps', :locals => { :location => @location }
+      = employer.input :company_address, :input_html => { :value => @geoloc, :rows => 3, :style => 'width: 210px !important', :class => 'geolocation' }
+      = render :partial => 'google_maps', :locals => { :location => @geoloc }
       = employer.input :logo
       = employer.input :location, :as => :hidden, :input_html => { :class => 'geolocation-latlng' }
 

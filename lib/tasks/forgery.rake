@@ -9,7 +9,7 @@ namespace :db do
     50.times do
       name = Forgery(:jerbs).technology
       shortname = name
-      
+ 
 #      if name.length < 5
 #        shortname = name
 #      elsif name =~ / /

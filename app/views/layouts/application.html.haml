@@ -13,7 +13,8 @@
       %nav.container
         .row
           %ul.nav.nav-pills#main-navigation
-            - if params[:controller] == 'home' # TODO split into helper
+            - if params[:controller] == 'home' && params[:action] == 'index'
+              -# TODO split into helper
               %li.active= link_to "Forsiden", root_path
             - else
               %li.inactive= link_to "Forsiden", root_path
@@ -28,7 +29,7 @@
             - else
               %li.inactive= link_to "Jobbsøkere", job_seekers_path
 
-            - if params[:controller] == 'home'
+            - if params[:controller] == 'home' && params[:action] == 'map'
               %li.active= link_to "Kart", map_path
             - else
               %li.inactive= link_to "Kart", map_path
