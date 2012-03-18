@@ -13,6 +13,9 @@ nb:
       x_days:
         one: 'I går'
         other: 'For %{count} dager siden'
+      about_x_months:
+        one: 'For 1 måned siden'
+        other: 'For %{count} måneder siden'
 
   frontpage:
     search:

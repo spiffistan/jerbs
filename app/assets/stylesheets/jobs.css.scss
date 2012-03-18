@@ -1,3 +1,23 @@
 // Place all the styles related to the Jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+
+.search-results {
+
+  table {
+    tr.today td:nth-child(odd),
+    tr.today td:nth-child(even), {
+      background-color: #EEFDD8 !important;
+      border-top: 1px solid #CAE5A4;
+    }
+  }
+
+  i.icon {
+    opacity: 0.5;
+  }
+}
+
+.label-new {
+  background-color: rgba(0,0,0,0.2);
+}

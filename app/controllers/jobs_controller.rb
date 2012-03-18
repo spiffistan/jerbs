@@ -1,15 +1,19 @@
 class JobsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index, :search, :apply]
+  before_filter :authenticate_user!, :except => [:show, :index, :search, :apply, :index_by_technology]
 
   def index
-    @jobs = Job.order(:id).page params[:page]
+    @jobs = Job.order('created_at DESC').page(params[:page])
   end
 
+  # XXX should this be here?
   def index_by_technology
 
-    @jobs = Job.joins(:technologies).where(['technologies.id = ?', params[:technology_id]])
-               .order(:id).page(params[:page])
+    @jobs = Job.joins(:technologies)
+               .where(['technologies.id = ?', params[:technology_id]])
+               .order('created_at DESC')
+               .group('jobs.id')
+               .page(params[:page])
 
     render 'index'
 

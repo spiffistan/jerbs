@@ -19,6 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     @latlng = MultiGeocoder.geocode(ip)
     res = GoogleGeocoder.reverse_geocode(@latlng)
+    logger.info res.inspect
     @geoloc = "#{res.city}" # , #{res.country}"
 
     respond_with resource

@@ -36,6 +36,8 @@ namespace :db do
       password = Forgery(:basic).password
       password_confirmation = password
 
+      time = Time.at((2.months.ago.to_f - Time.now.to_f) * rand + Time.now.to_f)
+
       resource = User.new(:email => email, :password => password, :password_confirmation => password_confirmation)
       resource.rolable = Employer.new(:name => name, :position => position,
                                       :company_name => company_name,
@@ -47,7 +49,7 @@ namespace :db do
         num_pars = 1+rand(6)
         description = Forgery(:lorem_ipsum).paragraphs(num_pars)
         positions = 1
-        job = Job.new(:title => title, :description => description, :positions => positions)
+        job = Job.new(:title => title, :description => description, :positions => positions, :created_at => time)
         (1+rand(5)).times do
           job.technologies << Technology.random
         end

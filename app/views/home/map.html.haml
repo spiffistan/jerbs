@@ -30,8 +30,7 @@
     }
   }
 
-#map-canvas-large
+#svgmap{ :style => "height: 650px; width: 400px;"}
 
 :javascript
-  initialize();
-
+  $('#svgmap').svg({ loadURL: "assets/norge.svg", settings: {} });
