@@ -22,6 +22,31 @@ namespace :db do
       technology.save
     end
 
+    # Create fake job seekers
+
+    50.times do
+      name = Forgery(:name).full_name
+      email = Forgery(:email).address
+      password = Forgery(:basic).password
+      password_confirmation = password
+
+      time = Time.at((2.months.ago.to_f - Time.now.to_f) * rand + Time.now.to_f)
+
+      resource = User.new(:email => email, :password => password, :password_confirmation => password_confirmation)
+      resource.rolable = JobSeeker.new(:name => name)
+
+      (1+rand(5)).times do
+        resource.rolable.technologies << Technology.random
+      end
+
+      resource.save
+
+      puts resource.errors.inspect
+
+    end
+
+    # Create fake employers
+
     100.times do
       name = Forgery(:name).full_name
       position = Forgery(:name).job_title

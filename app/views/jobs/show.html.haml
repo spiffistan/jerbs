@@ -15,7 +15,10 @@
 
     .span3.offset1
       - unless user_signed_in? && user_employer?
-        = link_to 'Søk på denne jobben', job_application_path(@job.id), :class => 'btn btn-large btn-success'
+        %p
+          = link_to 'Søk på denne jobben', job_application_path(@job.id), :class => 'btn btn-large btn-success'
+        %p
+          = link_to 'Fortell en venn', job_application_path(@job.id)
 
 
     .span12

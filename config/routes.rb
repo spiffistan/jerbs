@@ -11,6 +11,7 @@ Jerbs::Application.routes.draw do
   resources :jobs
   resources :job_seekers
   resources :employers
+  resources :technologies
 
   # TODO refactor
   match 'jobs/technology/:technology_id' => 'jobs#index_by_technology', :as => :jobs_by_technology, :via => :get

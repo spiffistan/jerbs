@@ -52,6 +52,7 @@ gem 'bluecloth'       # markdown
 gem 'forgery', '0.5.0' # fake data
 gem 'kaminari'        # paging
 gem 'friendly_id'
+gem 'activemerchant', :require => 'active_merchant'
 
 # Life on the edge!
 gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branch => '2.1-stable'

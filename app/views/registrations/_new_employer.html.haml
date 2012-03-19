@@ -54,7 +54,7 @@
       = employer.input :company_description,
         :as => :text, :input_html => { :rows => 7, :style => 'width: 500px !important' }
       = employer.input :company_address, :input_html => { :value => @geoloc, :rows => 3, :style => 'width: 210px !important', :class => 'geolocation' }
-      = render :partial => 'google_maps', :locals => { :location => @geoloc }
+      -#render :partial => 'google_maps', :locals => { :location => @geoloc }
       = employer.input :logo
       = employer.input :location, :as => :hidden, :input_html => { :class => 'geolocation-latlng' }
 
@@ -66,6 +66,45 @@
       = user.input :email, :hint => 'Du bruker epostadressen for å logge deg inn', :hint_class => 'help-block'
       = user.input :password, :hint_class => 'help-block'
       = user.input :password_confirmation, :hint_class => 'help-block'
+
+  %legend Betaling
+  %fieldset
+    = fields_for :credit_card, @credit_card do |card|
+      .part.four
+      .control-group
+        %label.control-label Fornavn
+        .controls
+          = card.text_field :first_name
+      .control-group
+        %label.control-label Etternavn
+        .controls
+          = card.text_field :last_name
+      .control-group
+        %label.control-label Kortnummer
+        .controls
+          = card.text_field :number
+      .control-group
+        %label.control-label Utløpsmåned
+        .controls
+          = card.text_field :month
+      .control-group
+        %label.control-label Utløpsår
+        .controls
+          = card.text_field :year
+      .control-group
+        %label.control-label Sikkerhetskode
+        .controls
+          = card.text_field :verification_value
+
+      -# XXX this is not supported in activemerchant yet:
+      -# https://github.com/Shopify/active_merchant/pull/33
+        = card.first_name
+        = card.last_name
+        = card.number
+        = card.month
+        = card.month
+        = card.year
+        = card.verification_value
 
     = user.actions do
       = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }

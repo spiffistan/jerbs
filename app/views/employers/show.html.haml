@@ -46,13 +46,13 @@
               %th Frist
               %th Lagt inn
               %th Topp tre teknologier
-              %th{ :style => 'width: 90px' }
+              %th
                 %i.icon-pencil
+
             - @employer.jobs.each do |job|
               %tr
-                %td
+                %td{:style => 'width: 150px'}
                   = link_to job.title, job_url(job.id)
-                  %i.icon-arrow-right
                 %td
                   - if job.deadline_asap # TODO translate
                     Snarest

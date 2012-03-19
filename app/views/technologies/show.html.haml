@@ -1,0 +1,56 @@
+.page-header
+  %h1= @technology.name
+
+  .spacer50
+
+  .row.fluid-row
+    .span12
+      %ul.nav-tabs.nav#frontpage-tabs{:data => { :tabs => 'tabs'}}
+        %li.active
+          %a{:href => '#jobs-using-tech', :data => { :toggle => 'tab' }}
+            Jobber som bruker
+            = @technology.shortname
+        %li
+          %a{:href => '#job-seekers-using-tech', :data => { :toggle => 'tab' }}
+            Jobsøkere som bruker
+            = @technology.shortname
+
+      .tab-content
+        .tab-pane.active#jobs-using-tech
+          %table.table.table-striped.table-condensed
+            %tr
+              %th Stilling
+              %th Lagt inn
+              %th Frist
+              %th Topp tre teknologier
+              %th{ :style => 'width: 90px' }
+                %i.icon-pencil
+            - @jobs_with_technology.each do |job|
+              %tr
+                %td
+                  = link_to job.title, job_url(job.id)
+                %td
+                  - if job.deadline_asap # TODO translate
+                    Snarest
+                %td
+                  = distance_of_time_in_words_to_now job.created_at
+                %td
+                  - job.technologies.each_with_index do |tech, i|
+                    - break if (i >= 3)
+                    %span.label.label-tech= tech.shortname
+                %td
+                  = link_to 'Søk på jobben', job_application_path(job.id), :class => 'btn btn-mini btn-success'
+
+        .tab-pane#job-seekers-using-tech
+          %table.table.table-striped.table-condensed
+            %tr
+              %th Navn
+              %th Topp tre teknologier
+            - @job_seekers_with_technology.each do |job_seeker|
+              %tr
+                %td
+                  = link_to job_seeker.name, job_seeker_path(job_seeker.id)
+                %td
+                  - job_seeker.technologies.each_with_index do |tech, i|
+                    - break if (i >= 3)
+                    %span.label.label-tech= tech.shortname

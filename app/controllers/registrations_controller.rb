@@ -8,10 +8,15 @@ class RegistrationsController < Devise::RegistrationsController
     resource = build_resource({})
 
     if(params[:role] == :employer)
+
       resource.rolable = Employer.new
       resource.rolable.jobs << Job.new
+      @credit_card = ActiveMerchant::Billing::CreditCard.new
+
     elsif(params[:role] == :job_seeker)
+
       resource.rolable = JobSeeker.new
+
     end
 
     # ip = request.remote_ip
@@ -34,6 +39,13 @@ class RegistrationsController < Devise::RegistrationsController
       resource.rolable.location = Location.new(params[:location])
       resource.rolable.jobs << Job.new(params[:job])
 
+      # XXX testing. This should probably go somewhere else
+      # ActiveMerchant::Billing::Base.mode = :test
+
+      # TODO save this in employer object?
+      # credit_card = ActiveMerchant::Billing::CreditCard.new(params[:credit_card])
+      # gateway = ActiveMerchant::Billing::BogusGateway
+
       unless resource.valid? && resource.rolable.valid? && resource.rolable.jobs[-1].valid?
         clean_up_passwords resource
         respond_with resource, :location => employer_sign_up_url
@@ -53,6 +65,8 @@ class RegistrationsController < Devise::RegistrationsController
       # TODO edge case
       return
     end
+
+
 
     if resource.save
       if resource.active_for_authentication?

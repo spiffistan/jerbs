@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120315153758) do
+ActiveRecord::Schema.define(:version => 20120319183644) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(:version => 20120315153758) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "slug"
+    t.string   "url"
   end
 
   add_index "employers", ["slug"], :name => "index_employers_on_slug", :unique => true
 
   create_table "job_seekers", :force => true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "url"
     t.integer  "location_id"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20120315153758) do
   end
 
   add_index "job_seekers", ["location_id"], :name => "index_user_profiles_on_location_id"
-  add_index "job_seekers", ["user_id"], :name => "index_user_profiles_on_user_id"
 
   create_table "job_seekers_technologies", :id => false, :force => true do |t|
     t.integer "job_seeker_id"
