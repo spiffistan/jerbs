@@ -4,8 +4,12 @@
 
 $(document).ready ->
 
-  $('#search-controls .search-query').change ->
-    $.getJSON '/jobs/find/' + $(this).val() + '.json', (data) ->
-      console.log(data)
+# $('#search-controls .search-query').change ->
+#    $.getJSON '/jobs/find/' + $(this).val() + '.json', (data) ->
+#      console.log(data)
+
+  # TODO ajaxify
+  $('#search-button').click ->
+    window.location.replace("/jobs/find/" + $('#search-query').val())
 
   $('#search-controls .btn-group').button('toggle')

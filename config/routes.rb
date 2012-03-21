@@ -7,14 +7,9 @@ Jerbs::Application.routes.draw do
     match 'job_seeker/sign_up' => 'registrations#new', :role => :job_seeker
   end
 
-  # TODO flesh out
-  resources :jobs
-  resources :job_seekers
-  resources :employers
-  resources :technologies
-
   # TODO refactor
   match 'jobs/technology/:technology_id' => 'jobs#index_by_technology', :as => :jobs_by_technology, :via => :get
+  match 'jobs/find' => 'jobs#search', :as => :job_search, :via => :get
   match 'jobs/find/:query' => 'jobs#search', :as => :job_search, :via => :get
   match 'jobs/:id/apply' => 'jobs#apply', :as => :job_application, :via => :get
 
@@ -22,6 +17,14 @@ Jerbs::Application.routes.draw do
   match '/' => 'employers#show', :constraints => { :subdomain => /.+/ }
 
   match '/map' => 'home#map', :as => 'map'
+
+  # TODO flesh out
+  resources :jobs
+  resources :job_seekers
+  resources :employers
+  resources :technologies
+
+
   #
 
   # match 'employers/:company_name' => 'employers#show', :as => 'show_employer', :via => :get

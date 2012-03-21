@@ -50,16 +50,20 @@ class JobsController < ApplicationController
   end
 
   def search
-    search = Job.search do
-      keywords params[:query]
+
+    unless params[:query].nil?
+      search = Job.search do
+        keywords params[:query]
+      end
+      @jobs = search.results
+    else
+      @jobs = []
     end
 
-    @jobs = search.results
-
-    logger.info @jobs.inspect
 
     respond_to do |format|
-      format.json { render :json => @jobs }
+      # format.json { render :json => @jobs }
+      format.html { render :html => @jobs }
     end
   end
 

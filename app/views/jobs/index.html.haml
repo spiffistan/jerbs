@@ -1,14 +1,9 @@
-.page-header
-  %h1 Søk etter jobber
-
-.alert.alert-info
-  %strong Jolly awesomecakes!
-  Du kan nå søke med det Latinske Alfabetet.
+= content_for :title, 'Jobber'
 
 %form#search-controls.form-search.row-fluid
   .span4.btn-toolbar
-    %input.search-query
-      %a.btn.btn-success
+    %input.search-query#search-query{ :value => params[:query] }
+      %a#search-button.btn.btn-success
         Søk
   .span8.btn-toolbar
     .btn-group
