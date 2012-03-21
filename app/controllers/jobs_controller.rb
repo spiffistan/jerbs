@@ -57,11 +57,12 @@ class JobsController < ApplicationController
         spellcheck :only_more_popular => true, :count => 1
       end
       @jobs = search.results
-      @suggestion = search.collation
+      unless search.collation.nil?
+        @suggestion = search.collation
+      end
     else
       @jobs = []
     end
-
 
     respond_to do |format|
       # format.json { render :json => @jobs }

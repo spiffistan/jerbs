@@ -61,9 +61,10 @@
                 = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label label-tech'
 
 - if not params[:query].nil? and @jobs.length == 0
-  Ingen resultater for
-  = '"' + params[:query] + '"'
-  %p
-    Mente du
-    = succeed '?' do
-      = link_to @suggestion, job_search_path(@suggestion)
+  %p.center
+    Ingen resultater for
+    = '"' + params[:query] + '".'
+    - unless @suggestion.nil?
+      Mente du
+      = succeed '?' do
+        = link_to @suggestion, job_search_path(@suggestion)
