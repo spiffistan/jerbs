@@ -1,10 +1,10 @@
 = content_for :title, 'Jobber'
 
-%form#search-controls.form-search.row-fluid
+-# TODO split into partial
+%form#search-form.form-search.row-fluid
   .span4.btn-toolbar
     %input.search-query#search-query{ :value => params[:query] }
-      %a#search-button.btn.btn-success
-        Søk
+      %input#search-button.btn.btn-success{ :type => :submit, :value => 'Søk' }
   .span8.btn-toolbar
     .btn-group
       %a.btn.active
@@ -25,6 +25,7 @@
 - if @jobs.length > 9
   = paginate @jobs
 
+-# TODO split into partial
 .search-results
   %table.table.table-striped
     %tr

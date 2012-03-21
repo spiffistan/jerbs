@@ -9,7 +9,9 @@ $(document).ready ->
 #      console.log(data)
 
   # TODO ajaxify
-  $('#search-button').click ->
+  $
+  $('#search-form').submit (event) ->
+    event.preventDefault()
     window.location.replace("/jobs/find/" + $('#search-query').val())
 
   $('#search-controls .btn-group').button('toggle')
