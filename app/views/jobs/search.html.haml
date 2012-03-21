@@ -7,7 +7,7 @@
 -# TODO split into partial
 %form#search-form.form-search.row-fluid
   .span4.btn-toolbar
-    %input.search-query#search-query{ :value => params[:query] }
+    %input.search-query#search-query{ :value => params[:query], :placeholder => 'Søketekst' }
       %input#search-button.btn.btn-success{ :type => :submit, :value => 'Søk' }
   .span8.btn-toolbar
     .btn-group
@@ -30,6 +30,7 @@
 
   -# TODO split into partial
   .search-results
+    %p= pluralize(@jobs.length, 'resultat', 'resultater')
     %table.table.table-striped
       %tr
         %th Stilling
@@ -62,3 +63,7 @@
 - if not params[:query].nil? and @jobs.length == 0
   Ingen resultater for
   = '"' + params[:query] + '"'
+  %p
+    Mente du
+    = succeed '?' do
+      = link_to @suggestion, job_search_path(@suggestion)

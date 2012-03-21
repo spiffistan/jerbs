@@ -3,8 +3,8 @@
 -# TODO split into partial
 %form#search-form.form-search.row-fluid
   .span4.btn-toolbar
-    %input.search-query#search-query{ :value => params[:query] }
-      %input#search-button.btn.btn-success{ :type => :submit, :value => 'Søk' }
+    %input.search-query#search-query{ :value => params[:query], :placeholder => 'Søketekst' }
+      %input#search-button.btn.btn-success{ :type => :submit, :value => 'Søk'  }
   .span8.btn-toolbar
     .btn-group
       %a.btn.active

@@ -54,8 +54,10 @@ class JobsController < ApplicationController
     unless params[:query].nil?
       search = Job.search do
         keywords params[:query]
+        spellcheck :only_more_popular => true, :count => 1
       end
       @jobs = search.results
+      @suggestion = search.collation
     else
       @jobs = []
     end
