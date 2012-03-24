@@ -69,12 +69,18 @@ namespace :db do
                                       :company_description => company_description,
                                       :company_address => company_address)
 
+      # Create 1-4 jobs per employer
+
       (1+rand(3)).times do
         title = Forgery(:name).job_title
         num_pars = 1+rand(6)
         description = Forgery(:lorem_ipsum).paragraphs(num_pars)
+        deadline = (1+rand(24)).weeks.from_now
         positions = 1
-        job = Job.new(:title => title, :description => description, :positions => positions, :created_at => time)
+        job = Job.new(:title => title, :description => description, :positions => positions, :created_at => time, :deadline => deadline)
+
+        # Add some technologies
+
         (1+rand(5)).times do
           job.technologies << Technology.random
         end

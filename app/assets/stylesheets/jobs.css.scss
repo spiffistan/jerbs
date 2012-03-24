@@ -11,6 +11,11 @@
       background-color: #EEFDD8 !important;
       border-top: 1px solid #CAE5A4;
     }
+    tr.expiring td:nth-child(odd),
+    tr.expiring td:nth-child(even), {
+      background-color: #d5d5d5 !important;
+      border-top: 1px solid #bbb;
+    }
   }
 
   i.icon {

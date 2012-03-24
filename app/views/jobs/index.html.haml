@@ -15,9 +15,20 @@
       %a.btn.btn-small.active
         20
       %a.btn.btn-small
-        60
+        50
       %a.btn.btn-small
         100
+    .btn-group#search-sort{:data => { :toggle => 'buttons-radio'}}
+      %a.btn.btn-small.active
+        Lagt til
+      %a.btn.btn-small
+        Frist
+      %a.btn.btn-small
+        Relevans
+      %a.btn.btn-small
+        Frihet
+      %a.btn.btn-small
+        Distanse
     .btn-group{:data => { :toggle => 'buttons-checkbox'}}
       %a.btn.btn-small
         Avansert
@@ -32,11 +43,13 @@
       %th Stilling
       %th Firma
       %th Lagt inn
+      %th Frist
       %th Sted
       %th Topp tre teknologier
 
     - @jobs.each do |job|
       - classes = (job.created_at) > 1.day.ago ? 'today' : ''
+      - classes = (job.deadline) <= 7.days.from_now.to_date ? 'expiring' : ''
       %tr{ :class => classes }
         %td
           = link_to job.title, job_path(job.id)
@@ -45,7 +58,15 @@
         %td
           = link_to job.employer.company_name, employer_path(job.employer.id)
         %td
+          For
           = distance_of_time_in_words_to_now job.created_at
+          siden
+
+        %td
+          Om
+          = distance_of_time_in_words_to_now job.deadline
+          - if (job.deadline) <= 7.days.from_now.to_date
+            <i class="icon-time"></i>
         %td= job.employer.company_address
         %td{:style => 'width: 200px' }
           - job.technologies.each_with_index do |tech, i|

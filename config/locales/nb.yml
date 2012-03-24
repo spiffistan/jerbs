@@ -2,20 +2,26 @@ nb:
   datetime:
     distance_in_words:
       about_x_hours: 
-        one: 'For %{count} time siden'
-        other: 'For %{count} timer siden'
+        one: '%{count} time'
+        other: '%{count} timer'
       x_minutes:
-        one: 'For %{count} minutt siden'
-        other: 'For %{count} minutter siden'
+        one: '%{count} minutt'
+        other: '%{count} minutter'
       less_than_x_minutes:
         one: 'Nå'
-        other: 'For mindre enn %{count} minutter siden'
+        other: 'mindre enn %{count} minutter'
       x_days:
         one: 'I går'
-        other: 'For %{count} dager siden'
+        other: '%{count} dager'
       about_x_months:
-        one: 'For 1 måned siden'
-        other: 'For %{count} måneder siden'
+        one: '1 måned'
+        other: '%{count} måneder'
+      x_months:
+        one: '1 måned'
+        other: '%{count} måneder'
+      over_x_years:
+        one: 'over et år'
+        more: 'over %{count} år'
 
   frontpage:
     search:
