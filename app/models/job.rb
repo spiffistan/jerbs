@@ -15,6 +15,9 @@
 #
 
 class Job < ActiveRecord::Base
+
+  # TODO: visible, active?
+
   belongs_to :employer
   has_and_belongs_to_many :technologies, :join_table => "jobs_technologies"
 
@@ -30,4 +33,8 @@ class Job < ActiveRecord::Base
 
   validates_presence_of :title, :description, :positions
   validates_numericality_of :positions, :greater_than_or_equal_to => 1
+
+  scope :recent, lambda { order('created_at DESC') }
+  scope :expiring, lambda { order('deadline ASC') }
+
 end

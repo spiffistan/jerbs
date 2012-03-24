@@ -3,7 +3,13 @@ class JobsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index, :search, :apply, :index_by_technology]
 
   def index
-    @jobs = Job.order('created_at DESC').page(params[:page])
+
+    unless params[:order].nil?
+      @jobs = Job.order(params[:order]).page(params[:page])
+    else
+      @jobs = Job.page(params[:page])
+    end
+
   end
 
   # XXX should this be here?
