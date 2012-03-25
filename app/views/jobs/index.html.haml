@@ -63,8 +63,12 @@
           siden
 
         %td
-          Om
-          = distance_of_time_in_words_to_now job.deadline
+          - if (job.deadline) < 1.month.from_now.to_date
+            Om
+            = distance_of_time_in_words_to_now job.deadline
+          - else
+            = job.deadline
+
           - if (job.deadline) <= 7.days.from_now.to_date
             <i class="icon-time"></i>
         %td= job.employer.company_address
