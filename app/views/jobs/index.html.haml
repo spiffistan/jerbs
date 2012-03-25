@@ -18,9 +18,7 @@
         50
       %a.btn.btn-small
         100
-    .btn-group#search-sort{:data => { :toggle => 'buttons-radio'}}
-      = link_to_sortable :created_at, 'Lagt til', 'btn btn-small'
-      = link_to_sortable :deadline, 'Frist', 'btn btn-small'
+    .btn-group#search-filter{:data => { :toggle => 'buttons-checkbox'}}
     .btn-group{:data => { :toggle => 'buttons-checkbox'}}
       %a.btn.btn-small
         Avansert
@@ -33,15 +31,15 @@
   %table.table.table-striped
     %tr
       %th
-        = link_to_sortable :title, 'Stilling'
+        = link_to_sortable 'title', 'Stilling'
       %th
-        = link_to_sortable :company_name, 'Firma'
+        = link_to_sortable 'company_name', 'Firma'
       %th
-        = link_to_sortable :created_at, 'Lagt inn'
+        = link_to_sortable 'created_at', 'Lagt inn'
       %th
-        = link_to_sortable :deadline, 'Frist'
+        = link_to_sortable 'deadline', 'Frist'
       %th
-        = link_to_sortable :company_address, 'Sted'
+        = link_to_sortable 'company_address', 'Sted'
       %th Topp tre teknologier
 
     - @jobs.each do |job|
