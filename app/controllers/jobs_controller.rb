@@ -1,14 +1,11 @@
 class JobsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show, :index, :search, :apply, :index_by_technology]
+  helper_method :sort_column, :sort_direction
 
   def index
 
-    unless params[:order].nil?
-      @jobs = Job.order(params[:order]).page(params[:page])
-    else
-      @jobs = Job.page(params[:page])
-    end
+      @jobs = Job.joins(:employer).order("#{sort_column} #{sort_direction}").page(params[:page])
 
   end
 
@@ -79,6 +76,18 @@ class JobsController < ApplicationController
   def apply
     @job = Job.find(params[:id])
 
+  end
+
+  private
+
+  # TODO order by company_name, company_address, etc.
+
+  def sort_column
+    Job.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 end
