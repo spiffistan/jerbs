@@ -57,6 +57,31 @@ header {
     margin-right: 20px;
   }
 
+
+
+}
+
+#login-box {
+  background: rgba(0,0,0,0.5);
+  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.10);
+  display: none;
+
+  .centering {
+    margin: 0 auto;
+    width: 600px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  input {
+    font-size: large;
+    height: 27px;
+    margin-bottom: 0;
+    border: 0px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.10);
+  }
 }
 
 #map-canvas-large {

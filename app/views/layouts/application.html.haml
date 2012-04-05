@@ -9,7 +9,14 @@
 
   %body
     -# TODO move to partial
+    #login-box
+      .centering
+
+        %input{ :placeholder => 'Epost'}
+        %input#password{ :placeholder => 'Passord', :type => 'password' }
+        %span.btn.btn-primary.btn-large Logg inn
     %header
+
       %nav.container
         .row
           %ul.nav.nav-pills#main-navigation
@@ -59,8 +66,10 @@
                 God dag! Du er logget inn som
                 %strong= current_user.email
             - else
-              = link_to "Logg inn", new_user_session_path,
-                :id => 'login-button'
+              -#
+                = link_to "Logg inn", new_user_session_path,
+                  :id => 'login-button'
+              %span#login-button Logg inn
               = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path,
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
               .row

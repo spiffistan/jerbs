@@ -11,3 +11,6 @@ $ ->
   });
 
   $('#frontpage-tabs a:first').tab('show')
+
+  $('#login-button').click ->
+    $('#login-box').slideDown()
