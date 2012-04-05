@@ -11,6 +11,27 @@
       background-color: #EEFDD8 !important;
       border-top: 1px solid #CAE5A4;
     }
+
+    tr {
+      td:nth-child(1) {
+        width: 25%;
+      }
+      td:nth-child(2) {
+        width: 10%;
+      }
+      td:nth-child(3) {
+        width: 15%;
+      }
+      td:nth-child(4) {
+        width: 15%;
+      }
+      td:nth-child(5) {
+        width: 15%;
+      }
+      td:nth-child(6) {
+        width: 15%;
+      }
+    }
     /*
     tr.expiring td:nth-child(odd),
     tr.expiring td:nth-child(even), {

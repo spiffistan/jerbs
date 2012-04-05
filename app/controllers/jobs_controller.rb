@@ -5,7 +5,10 @@ class JobsController < ApplicationController
 
   def index
 
-      @jobs = Job.joins(:employer).order("#{sort_column} #{sort_direction}").page(params[:page])
+      @jobs = Job.joins(:employer)
+                 .order("#{sort_column} #{sort_direction}")
+                 .active # See model scope
+                 .page(params[:page])
 
   end
 
@@ -68,7 +71,7 @@ class JobsController < ApplicationController
     end
 
     respond_to do |format|
-      # format.json { render :json => @jobs }
+      format.json { render :json => @jobs }
       format.html { render :html => @jobs }
     end
   end

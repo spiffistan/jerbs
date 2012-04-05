@@ -11,9 +11,7 @@ class TechnologiesController < ApplicationController
 
   end
 
-  def list_results
-    @technologies = Technology.find(:all)
-  end
+
 
   def new
     @technology = Technology.new
@@ -30,6 +28,20 @@ class TechnologiesController < ApplicationController
 
       else
         format.html { render :action => "new" }
+    end
+  end
+
+  def search
+
+    unless params[:query].nil?
+      @technologies = Technology.where('name LIKE ?', "#{params[:query]}%")
+    else
+      @technologies = []
+    end
+
+    respond_to do |format|
+      format.json { render :json => @technologies }
+      format.html { render :html => @technologies }
     end
   end
 end

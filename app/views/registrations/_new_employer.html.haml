@@ -8,12 +8,6 @@
     = link_to 'Lag konto her', job_seeker_sign_up_path
     %i.icon-arrow-right
 
-
-  -# = form_for(resource, :as => resource_name,
-    :url => registration_path(resource_name),
-    :html => {:class => "new_user form-horizontal"}) do |u|
-
-
 = semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
   :html => {:class => "new_user form-horizontal", :multipart => true }) do |user|
 
@@ -25,21 +19,31 @@
       .part.one
 
       = job.input :title, :hint => "F.eks: 'Systemutvikler'", :hint_class => 'help-block'
+      .control-group
+        %label.control-label Teknologier
+        .controls
+          %input#technology-search{ :placeholder => 'Søk...', :data => { :provide => 'typeahead', :source => (Technology.all.collect {|x| x.name}).to_json } }
+          %span#add-technology-button.btn.btn-info Legg til
+          .row#technology-list
+          -# TODO rating, sanity
+
       = job.input :description, :as => :text,
         :input_html => { :rows => 7, :style => 'width: 500px !important' },
-        :hint => "Du kan bruke Markdown her. Se <a>denne listen</a> for mulighetene.".html_safe, :hint_class => 'help-block'
+        :hint => "Du kan bruke Markdown her. Se <a>denne listen</a> for mulighetene.<br/>Obs: bruk feltene under for å dele opp beskrivelsen i seksjoner.".html_safe, :hint_class => 'help-block'
       .control-group
         .controls
+          Legg til felt:
           %p.help-block
             %i.icon-plus
-            %a Legg til nøkkelkompetanefelt
+            %a Nødvendig kompetanse
           %p.help-block
             %i.icon-plus
-            %a Legg til kvalifikasjonsfelt
-      = job.input :positions, :as => :number, :step => 1, :input_html => { :value => 1 }
+            %a Ønskede egenskaper
+      = job.input :positions, :as => :hidden, :step => 1, :input_html => { :value => 1 }
       = job.input :deadline, :as => :date, :order => [:day,:month,:year], :input_html => { :value => '' }
       = job.input :deadline_asap, :as => :boolean
-      = job.input :technologies, :as => :select,
+
+      = job.input :technologies, :as => :hidden,
         :collection => Technology.all.collect { |x| [x.shortname, x.id]},
         :input_html => { :multiple => true }
 
@@ -56,6 +60,7 @@
       = employer.input :company_address, :input_html => { :value => @geoloc, :rows => 3, :style => 'width: 210px !important', :class => 'geolocation' }
       -#render :partial => 'google_maps', :locals => { :location => @geoloc }
       = employer.input :logo
+      = employer.input :url
       = employer.input :location, :as => :hidden, :input_html => { :class => 'geolocation-latlng' }
 
   %legend Konto

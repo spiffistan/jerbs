@@ -36,5 +36,6 @@ class Job < ActiveRecord::Base
 
   scope :recent, lambda { order('created_at DESC') }
   scope :expiring, lambda { order('deadline ASC') }
+  scope :active, lambda { where('deadline > ?', Date.today )}
 
 end
