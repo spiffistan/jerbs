@@ -20,6 +20,11 @@
           %i.icon-remove.icon-white
     %header
 
+      #whatis
+        .centering
+          %strong
+            Hva er Jerbs?
+          Vi er en ny og bedre måte å finne de riktige jobbene og kandidatene.
       %nav.container
         .row
           %ul.nav.nav-pills#main-navigation
@@ -45,7 +50,10 @@
               %li.inactive= link_to "Kart", map_path
 
           #header-search
+            %span.inside-box
+              %i.icon-search
             %input.search-query{ :placeholder => 'Søk etter jobber' }
+
 
           #user-meta
             - if user_signed_in?

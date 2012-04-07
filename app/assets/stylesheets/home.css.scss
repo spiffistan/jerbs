@@ -8,6 +8,7 @@ $hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: none; // rgba(0,0,0,0.6);
 $header-bgimage: none; // url('header-rainbow.jpg');
 $text-color: #333;
+$nav-border: 1px solid rgba(0,0,0,0.1);
 
 body {
   background-image: url('wood.png');
@@ -63,21 +64,49 @@ header {
     width: 300px;
     float: left;
 
+    .inside-box {
+      margin-right: -25px;
+      top: 2px;
+      position: relative;
+      z-index: 2;
+      opacity: 0.5;
+    }
+
+    .search-query {
+      padding-left: 25px;
+      line-height: 14px;
+      height: 16px;
+
+    }
   }
 
+  #whatis {
+      background: rgba(255,255,255,0.2);
+      border-bottom: $nav-border;
+      padding: 10px 0;
+
+    .centering {
+
+      margin: 0 auto;
+      width: 980px;
+
+    }
+  }
 }
 
 #login-box {
   background: rgba(0,0,0,0.5);
   box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.10);
   display: none;
-  position: relative;
 
   .centering {
     margin: 0 auto;
     width: 600px;
     padding-top: 40px;
     padding-bottom: 40px;
+    padding-right: 200px;
+    padding-left: 200px;
+    position: relative;
   }
 
   input {
@@ -164,11 +193,11 @@ footer {
 }
 
 .nav-pills li:first-child a {
-  border-left: 1px solid rgba(0,0,0,0.1);
+  border-left: $nav-border;
 
 }
 .nav-pills a {
-  border-right: 1px solid rgba(0,0,0,0.1);
+  border-right: $nav-border;
   border-radius: 0px !important;
 }
 
@@ -330,6 +359,7 @@ fieldset {
   background: rbga(0,0,0,0.3);
   border: 2px solid rgba(255,255,255,0.5);
   border-radius: 20px;
+  cursor: pointer;
 }
 
 
