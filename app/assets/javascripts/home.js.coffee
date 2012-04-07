@@ -13,4 +13,8 @@ $ ->
   $('#frontpage-tabs a:first').tab('show')
 
   $('#login-button').click ->
-    $('#login-box').slideDown()
+    $('#login-box').slideToggle()
+
+  $('#close-login').click ->
+    $('#login-box').slideUp()
+    $('#login-button').button('toggle')

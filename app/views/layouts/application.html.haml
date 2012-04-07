@@ -15,6 +15,9 @@
         %input{ :placeholder => 'Epost'}
         %input#password{ :placeholder => 'Passord', :type => 'password' }
         %span.btn.btn-primary.btn-large Logg inn
+
+        #close-login.close-circle
+          %i.icon-remove.icon-white
     %header
 
       %nav.container
@@ -40,6 +43,9 @@
               %li.active= link_to "Kart", map_path
             - else
               %li.inactive= link_to "Kart", map_path
+
+          #header-search
+            %input.search-query{ :placeholder => 'Søk etter jobber' }
 
           #user-meta
             - if user_signed_in?
@@ -69,7 +75,7 @@
               -#
                 = link_to "Logg inn", new_user_session_path,
                   :id => 'login-button'
-              %span#login-button Logg inn
+              %span#login-button.btn.btn-small{:data => {:toggle => 'button'}} Logg inn
               = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path,
                 :class => 'btn btn-small btn-primary', :id => 'register-button'
               .row
