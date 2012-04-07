@@ -18,3 +18,7 @@ $ ->
   $('#close-login').click ->
     $('#login-box').slideUp()
     $('#login-button').button('toggle')
+
+
+  $('#header-search input').change ->
+    $('#header-search-results').slideDown()
