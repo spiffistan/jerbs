@@ -35,43 +35,61 @@
             .span3
               .job-box
                 .new
-                %h3= link_to job.title, job_url(job.id)
-                %p
-                  %strong
-                    = link_to job.employer.company_name, employer_url(job.employer.id)
-                %p
-                  =h truncate(job.description, :length => 250)
-                %p
-                  - job.technologies.each do |tech|
-                    %span.label.label-tech= tech.shortname
+                .top
+                  %h3= link_to job.title, job_url(job.id)
+                  %p
+                    %strong
+                      = link_to job.employer.company_name, employer_url(job.employer.id)
+                .middle
+                  %p.description
+                    =h truncate(job.description, :length => 250)
+                .bottom
+                  %p
+                    %i.icon-map-marker
+                    = job.employer.company_address
+                  %p
+                    - job.technologies.each do |tech|
+                      %span.label.label-tech= tech.shortname
       .tab-pane#new-jobs
         .row
           - @new_jobs.each do |job|
             .span3
               .job-box
                 .new
-                %h3= link_to job.title, job_url(job.id)
-                %p
-                  %strong
-                    = link_to job.employer.company_name, employer_url(job.employer.id)
-                %p
-                  =h truncate(job.description, :length => 250)
-                %p
-                  - job.technologies.each do |tech|
-                    %span.label.label-tech= tech.shortname
+                .top
+                  %h3= link_to job.title, job_url(job.id)
+                  %p
+                    %strong
+                      = link_to job.employer.company_name, employer_url(job.employer.id)
+                .middle
+                  %p.description
+                    =h truncate(job.description, :length => 250)
+                .bottom
+                  %p
+                    %i.icon-map-marker
+                    = job.employer.company_address
+                  %p
+                    - job.technologies.each do |tech|
+                      %span.label.label-tech= tech.shortname
       .tab-pane#popular-jobs
         .row
           - @popular_jobs.each do |job|
             .span3
               .job-box
                 .new
-                %h3= link_to job.title, job_url(job.id)
-                %p
-                  %strong
-                    = link_to job.employer.company_name, employer_url(job.employer.id)
-                %p
-                  =h truncate(job.description, :length => 250)
-                %p
-                  - job.technologies.each do |tech|
-                    %span.label.label-tech= tech.shortname
+                .top
+                  %h3= link_to job.title, job_url(job.id)
+                  %p
+                    %strong
+                      = link_to job.employer.company_name, employer_url(job.employer.id)
+                .middle
+                  %p.description
+                    =h truncate(job.description, :length => 250)
+                .bottom
+                  %p
+                    %i.icon-map-marker
+                    = job.employer.company_address
+                  %p
+                    - job.technologies.each do |tech|
+                      %span.label.label-tech= tech.shortname
 

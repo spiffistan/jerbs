@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $color-gray: #ddd;
+$color-light-gray: #f5f5f5;
 
 $hero-unit-bgcolor: rgba(230,230,230,0.6);
 $header-bgcolor: none; // rgba(0,0,0,0.6);
 $header-bgimage: none; // url('header-rainbow.jpg');
 $text-color: #333;
 $nav-border: 1px solid rgba(0,0,0,0.1);
+
+$font-size-small: 11px;
+$line-height-small: 16px;
 
 body {
   background-image: url('wood.png');
@@ -303,11 +307,31 @@ footer {
 .job-box {
   width: 198px;
   height: 280px;
-  border-radius: 3px;
-  border: 1px solid #fff;
   padding: 10px;
+  border-radius: 3px;
   position: relative;
-  box-shadow: 0px 1px 5px rgba(0,0,0,0.3)
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+
+  .top {
+    height: 60px;
+    h3 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+  .middle {
+    height: 160px;
+    p.description {
+        font-size: $font-size-small;
+        line-height: $line-height-small;
+    }
+  }
+  .bottom {
+    height: 60px;
+    margin: -10px;
+    padding: 10px;
+    background-color: $color-light-gray;
+  }
 }
 
 .job-box .new {

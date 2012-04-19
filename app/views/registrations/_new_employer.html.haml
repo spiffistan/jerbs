@@ -40,7 +40,7 @@
             %i.icon-plus
             %a Ønskede egenskaper
       = job.input :positions, :as => :hidden, :step => 1, :input_html => { :value => 1 }
-      = job.input :deadline, :as => :date, :order => [:day,:month,:year], :input_html => { :value => '' }
+      = job.input :deadline, :as => :string, :order => [:day,:month,:year], :input_html => { :value => '', :class => 'datepicker' }
       = job.input :deadline_asap, :as => :boolean
 
       = job.input :technologies, :as => :hidden,

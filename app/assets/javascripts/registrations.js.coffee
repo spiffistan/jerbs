@@ -4,6 +4,9 @@
 #
 $ ->
   $('#technology-search').typeahead({ source: $('#technology-search').data('source') })
+
+  $('.datepicker').datepicker()
+
   $('#add-technology-button').click ->
     tech = $('#technology-search').val()
     # TODO sanity
