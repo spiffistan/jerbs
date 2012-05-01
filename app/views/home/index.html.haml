@@ -2,15 +2,14 @@
   %h1= t 'frontpage.search.title'
   %p= (t 'frontpage.search.info') % [@num_jobs, @num_users]
 
-  %form.form-horizontal#primary-search
-    %input.input-search{:placeholder => (t 'frontpage.search.input.placeholder')}
-      %button.btn.btn-large.btn-primary= t 'frontpage.search.input.button'
-
   .add-job
     = link_to (t 'frontpage.search.company_new') % 1000, employer_sign_up_path
--#
-  #case-study
-    .placeholder case study carousel
+
+  #top-techs
+    %h3 Populære teknologier
+    - @top_techs.each do |tech|
+      = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label label-tech'
+
 
 
 -#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

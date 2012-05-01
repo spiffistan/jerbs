@@ -21,7 +21,7 @@ class JobsController < ApplicationController
                .group('jobs.id')
                .page(params[:page])
 
-    render 'index'
+    @tech = Technology.find(params[:technology_id])
 
   end
 
