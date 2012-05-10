@@ -38,21 +38,26 @@ gem 'jquery-rails'
 #
 gem 'geokit-rails3'   # geolocation
 gem 'devise'          # authentication
+
+# Search
 gem 'sunspot'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
+# Markup and frontend utils
 gem 'spine-rails'     # ajax clientside modelling
 gem 'haml-rails'      # blazing templating
 gem 'less-rails-bootstrap'
 
-gem 'yaml_db'         # rake db:data:{load,dump}
-gem 'paperclip'       # image assets
-gem 'bluecloth'       # markdown
+# Misc
+gem 'yaml_db'          # rake db:data:{load,dump}
+gem 'paperclip'        # image assets
+gem 'bluecloth'        # markdown
 gem 'forgery', '0.5.0' # fake data
-gem 'kaminari'        # paging
-gem 'friendly_id'
+gem 'kaminari'         # paging
+gem 'friendly_id'      # slugs
 gem 'activemerchant', :require => 'active_merchant'
+gem 'oauth'
 
 # Life on the edge!
 gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branch => '2.1-stable'
