@@ -2,16 +2,17 @@
 #
 # Table name: jobs
 #
-#  id          :integer         not null, primary key
-#  title       :string(255)
-#  description :text(255)
-#  deadline    :date
-#  positions   :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  freedom     :float
-#  percentage  :integer
-#  employer_id :integer
+#  id            :integer         not null, primary key
+#  title         :string(255)
+#  description   :text(255)
+#  deadline      :date
+#  positions     :integer
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#  freedom       :float
+#  percentage    :integer
+#  employer_id   :integer
+#  deadline_asap :boolean         default(TRUE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

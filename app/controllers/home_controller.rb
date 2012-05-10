@@ -11,5 +11,6 @@ class HomeController < ApplicationController
 
   def map
     @locations = Location.all
+    logger.info @locations.inspect
   end
 end

@@ -1,4 +1,5 @@
 require 'forgery'
+require 'cgi'
 include Geokit::Geocoders
 
 namespace :db do
@@ -24,7 +25,7 @@ namespace :db do
 
     # Create fake job seekers
 
-    50.times do
+    10.times do
       name = Forgery(:name).full_name
       email = Forgery(:email).address
       password = Forgery(:basic).password
@@ -47,15 +48,19 @@ namespace :db do
 
     # Create fake employers
 
-    100.times do
+    20.times do
       name = Forgery(:name).full_name
       position = Forgery(:name).job_title
       company_name = Forgery(:name).company_name
       num_pars = 1+rand(6)
       company_description = Forgery(:lorem_ipsum).paragraphs(num_pars)
       company_address = Forgery(:jerbs).nor_cities
-      # location = Location.new()
-      # latlng = GoogleGeocoder.geocode(company_address)
+      latlng = MultiGeocoder.geocode(CGI.escape(company_address))
+      location = Location.new
+      location.lat = latlng.lat
+      location.lng = latlng.lng
+
+      location.save
 
       email = Forgery(:email).address
       password = Forgery(:basic).password
@@ -67,7 +72,8 @@ namespace :db do
       resource.rolable = Employer.new(:name => name, :position => position,
                                       :company_name => company_name,
                                       :company_description => company_description,
-                                      :company_address => company_address)
+                                      :company_address => company_address,
+                                      :location => location)
 
       # Create 1-4 jobs per employer
 

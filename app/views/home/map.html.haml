@@ -6,7 +6,7 @@
   var markersArray = [];
   var locations = #{@locations.to_json};
 
-  function initialize() {
+  function initialize_google_map() {
     geocoder = new google.maps.Geocoder();
     var myOptions = {
       center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
@@ -30,7 +30,12 @@
     }
   }
 
-#svgmap{ :style => "height: 650px; width: 400px;"}
-
+#map-canvas-large
 :javascript
-  $('#svgmap').svg({ loadURL: "assets/norge.svg", settings: {} });
+  initialize_google_map()
+
+-#
+  #svgmap{ :style => "height: 650px; width: 400px;"}
+
+  :javascript
+    $('#svgmap').svg({ loadURL: "assets/norge.svg", settings: {} });

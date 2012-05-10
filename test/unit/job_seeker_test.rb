@@ -3,7 +3,6 @@
 # Table name: job_seekers
 #
 #  id          :integer         not null, primary key
-#  user_id     :integer
 #  name        :string(255)
 #  url         :string(255)
 #  location_id :integer

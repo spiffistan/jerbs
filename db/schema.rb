@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405154449) do
+ActiveRecord::Schema.define(:version => 20120510184634) do
 
   create_table "employers", :force => true do |t|
     t.string   "name"
@@ -68,10 +68,12 @@ ActiveRecord::Schema.define(:version => 20120405154449) do
   end
 
   create_table "locations", :force => true do |t|
-    t.decimal  "lat",        :precision => 15, :scale => 10
-    t.decimal  "lng",        :precision => 15, :scale => 10
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "lat",            :precision => 15, :scale => 10
+    t.decimal  "lng",            :precision => 15, :scale => 10
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.integer  "locatable_id"
+    t.string   "locatable_type"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
