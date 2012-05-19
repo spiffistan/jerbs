@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'mixins.scss';
+
 #employer-profile {
 
   position: relative;
@@ -13,10 +15,39 @@
 
   }
 
-  & .company_description {
-
-
+  #employer-meta {
+    float: right;
+    width: 250px;
+    margin-left: 20px;
+    padding: 20px;
+    @include shadowbox;
   }
+
+}
+
+#company-website-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#employer-technologies {
+  width: 940px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 10px 20px;
+  background-color: #ffffef;
+  border-bottom: 1px dotted #ddd;
+  border-top: 1px dotted #ddd;
+  margin-bottom: 20px;
+}
+
+.employer-map-canvas {
+  width: 270px;
+  height: 150px;
+  float: right;
+  padding: 20px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.45);
 }
 
 .spacer300 {

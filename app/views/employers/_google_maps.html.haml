@@ -19,7 +19,7 @@
       mapTypeControl: false,
       scrollwheel: false
     }
-    map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+    map = new google.maps.Map(document.getElementById(#{canvas_id.to_json}), myOptions);
   }
 
   function clearOverlays() {
@@ -47,8 +47,5 @@
     });
   }
 
-#map-canvas.thumbnail{ :style => 'width: 210px; height: 210px' }
-
-:javascript
   initialize();
   codeAddress();

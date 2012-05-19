@@ -1,5 +1,10 @@
-#employer-profile
 
+= link_to 'Webside', 'http://www.google.com', id: 'company-website-link', class: 'btn btn-inverse'
+= content_for :title do
+  = @employer.company_name
+  %small#employer_company_address= @employer.company_address
+
+= content_for :info do
   - if @employer.user == current_user
     .alert.alert-info
       %p
@@ -7,26 +12,24 @@
         Dette er din profil.
       %a.btn Endre profilen
 
-  .page-header
-    %h1
-      = @employer.company_name
-      %small#employer_company_address= @employer.company_address
-
+#employer-profile
 
   .row.fluid-row
-    .span8.company_description
+    .employer-map-canvas#employer-map-canvas
+      = render partial: 'google_maps', locals: {canvas_id: 'employer-map-canvas'}
+    .span8#employer-description
       = BlueCloth.new(@employer.company_description).to_html.html_safe
 
     .span3.offset1
       - if @employer.logo?
         #logo= image_tag @employer.logo.url(:small)
-      = render :partial => 'google_maps' # TODO normalize?
 
-    .span12
+    .span8
       %h3 Teknologier vi bruker
       %p
         - @techs.each do |tech|
           %span.label.label-tech= tech.shortname
+
 
   .spacer50
 

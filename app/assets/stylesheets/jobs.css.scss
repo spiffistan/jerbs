@@ -76,9 +76,8 @@
 }
 
 #job-meta {
-  float: left;
+  float: right;
   width: 250px;
-  border-left: 1px solid #eee;
   margin-left: 20px;
   padding: 20px;
   @include shadowbox;
@@ -89,4 +88,15 @@
     line-height: 30px;
     font-size: 20px;
   }
+}
+
+#job-technologies {
+  width: 940px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 10px 20px;
+  background-color: #ffffef;
+  border-bottom: 1px dotted #ddd;
+  border-top: 1px dotted #ddd;
+  margin-bottom: 20px;
 }

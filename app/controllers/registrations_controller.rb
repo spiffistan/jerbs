@@ -14,19 +14,17 @@ class RegistrationsController < Devise::RegistrationsController
       @credit_card = ActiveMerchant::Billing::CreditCard.new
 
     elsif(params[:role] == :job_seeker)
-
       resource.rolable = JobSeeker.new
-
     end
 
-    # ip = request.remote_ip
+    ip = request.remote_ip
     # ip = '195.214.206.132'
 
-#    @latlng = MultiGeocoder.geocode(ip)
-#    res = GoogleGeocoder.reverse_geocode(@latlng)
+    @latlng = MultiGeocoder.geocode(ip)
+    res = MultiGeocoder.reverse_geocode(@latlng)
 #    logger.info res.inspect
-#    @geoloc = "#{res.city}" # , #{res.country}"
-#
+    @geoloc = "#{res.city}" # , #{res.country}"
+
     respond_with resource
   end
 

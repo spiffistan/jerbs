@@ -502,7 +502,21 @@ fieldset {
   line-height: 17px;
 }
 
+.label-tech-large {
+  display: inline-block;
+  margin: 2px 0px 2px 0;
+  padding: 1px 5px;
+  line-height: 22px;
+  height: 22px;
+  font-size: 16px;
+}
+
 p.center {
   text-align: center;
 
+}
+
+#map-canvas-large img {
+  max-width: none;
+  width: auto; display:inline;
 }
