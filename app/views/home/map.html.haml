@@ -1,39 +1,63 @@
-= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false'
+-#= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false'
+= stylesheet_link_tag '//code.leafletjs.com/leaflet-0.3.1/leaflet.css'
+= javascript_include_tag '//code.leafletjs.com/leaflet-0.3.1/leaflet.js'
+= javascript_include_tag '//maps.stamen.com/js/tile.stamen.js'
 
-:javascript
-  var geocoder;
-  var map;
-  var markersArray = [];
-  var locations = #{@locations.to_json};
+-#
+  :javascript
+    var geocoder;
+    var map;
+    var markersArray = [];
+    var locations = #{@locations.to_json};
 
-  function initialize_google_map() {
-    geocoder = new google.maps.Geocoder();
-    var myOptions = {
-      center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      zoom: 8,
-      zoomControl: true,
-      rotateControl: true,
-      panControl: true,
-      streetViewControl: false,
-      mapTypeControl: false,
-      scrollwheel: false
+    function initialize_google_map() {
+      geocoder = new google.maps.Geocoder();
+      var myOptions = {
+        center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoom: 8,
+        zoomControl: true,
+        rotateControl: true,
+        panControl: true,
+        streetViewControl: false,
+        mapTypeControl: false,
+        scrollwheel: false
+      }
+
+      map = new google.maps.Map(document.getElementById("map-canvas-large"), myOptions);
+
+      for (var i in locations) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(locations[i].lat, locations[i].lng)
+        });
+      }
     }
 
-    map = new google.maps.Map(document.getElementById("map-canvas-large"), myOptions);
-
-    for (var i in locations) {
-      var marker = new google.maps.Marker({
-        map: map,
-        position: new google.maps.LatLng(locations[i].lat, locations[i].lng)
-      });
-    }
-  }
 
 #map-canvas-large
 :javascript
-  initialize_google_map()
 
+  var locations = #{@locations.to_json};
+
+  var layer = new L.StamenTileLayer("toner");
+  var map = new L.Map("map-canvas-large", {
+      center: new L.LatLng(59.11, 10.75),
+      zoom: 8
+  });
+  map.addLayer(layer);
+
+
+  // add tile layer, set the location and zoom
+  //  var bx = new L.LatLng(40.85, -73.866); // geographical point (longitude and latitude)
+  // map.setView(bx, 10).addLayer(layer);
+
+  // create a marker in the given location and add it to the map
+  for (var i in locations) {
+    var markerLocation = L.LatLng(locations[i].lat, locations[i].lng);
+    var marker = new L.Marker(markerLocation);
+    map.addLayer(marker);
+  }
 -#
   #svgmap{ :style => "height: 650px; width: 400px;"}
 

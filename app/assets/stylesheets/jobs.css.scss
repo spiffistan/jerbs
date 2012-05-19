@@ -49,6 +49,27 @@
   }
 }
 
+#search-box {
+
+  .inside-box {
+    margin-right: -25px;
+    margin-left: 10px;
+    top: 2px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.5;
+  }
+
+  .search-query {
+    padding-left: 25px;
+    line-height: 14px;
+    height: 21px;
+    font-size: 15px;
+    border-radius: 21px;
+  }
+
+}
+
 .label-new {
   background-color: rgba(0,0,0,0.2);
 }

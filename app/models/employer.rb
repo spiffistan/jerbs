@@ -30,7 +30,7 @@ class Employer < ActiveRecord::Base
   acts_as_mappable :through => :location
 
   attr_accessible :name, :position, :company_name, :company_description,
-                  :company_address, :location, :logo
+                  :company_address, :location, :logo, :url
 
   validates_presence_of :name, :position, :company_name
   validates_uniqueness_of :company_name

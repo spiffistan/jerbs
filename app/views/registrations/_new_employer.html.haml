@@ -43,7 +43,7 @@
       = job.input :deadline, :as => :string, :order => [:day,:month,:year], :input_html => { :value => '', :class => 'datepicker' }
       = job.input :deadline_asap, :as => :boolean
 
-      = job.input :technologies, :as => :hidden,
+      = job.input :technologies,
         :collection => Technology.all.collect { |x| [x.shortname, x.id]},
         :input_html => { :multiple => true }
 
@@ -60,8 +60,8 @@
       = employer.input :company_address, :input_html => { :value => @geoloc, :rows => 3, :style => 'width: 210px !important', :class => 'geolocation' }
       -#render :partial => 'google_maps', :locals => { :location => @geoloc }
       = employer.input :logo
-      = employer.input :url
-      = employer.input :location, :as => :hidden, :input_html => { :class => 'geolocation-latlng' }
+      = employer.input :url, :input_html => { :class => 'input-prepend'}
+      -#= employer.input :location, :as => :hidden, :input_html => { :class => 'geolocation-latlng' }
 
   %legend Konto
   %fieldset

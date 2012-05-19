@@ -20,13 +20,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     # ip = request.remote_ip
-    ip = '195.214.206.132'
+    # ip = '195.214.206.132'
 
-    @latlng = MultiGeocoder.geocode(ip)
-    res = GoogleGeocoder.reverse_geocode(@latlng)
-    logger.info res.inspect
-    @geoloc = "#{res.city}" # , #{res.country}"
-
+#    @latlng = MultiGeocoder.geocode(ip)
+#    res = GoogleGeocoder.reverse_geocode(@latlng)
+#    logger.info res.inspect
+#    @geoloc = "#{res.city}" # , #{res.country}"
+#
     respond_with resource
   end
 
@@ -36,7 +36,17 @@ class RegistrationsController < Devise::RegistrationsController
     if(params[:role] == 'employer')
       resource = build_resource(params[:user])
       resource.rolable = Employer.new(params[:employer])
-      resource.rolable.location = Location.new(params[:location])
+
+      unless params[:company_address].nil?
+        location = Location.new
+        res = MultiGeocoder.geocode(params[:company_address])
+        if res.success?
+          location.lat = res.lat
+          location.lng = res.lng
+          resource.rolable.location = location
+        end
+      end
+
       resource.rolable.jobs << Job.new(params[:job])
 
       # XXX testing. This should probably go somewhere else
@@ -51,6 +61,7 @@ class RegistrationsController < Devise::RegistrationsController
         respond_with resource, :location => employer_sign_up_url
         return
       end
+
     elsif (params[:role] == 'job_seeker')
       resource = build_resource
       resource.rolable = JobSeeker.new(params[:job_seeker])

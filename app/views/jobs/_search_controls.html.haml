@@ -1,0 +1,23 @@
+%form#search-form.form-search.row-fluid
+  .span4.btn-toolbar#search-box
+    %span.inside-box
+      %i.icon-search
+    %input.search-query#search-query{ :value => params[:query], :placeholder => 'Søk' }
+
+  .span8.btn-toolbar
+    .btn-group
+      %a.btn.active
+        %i.icon-th-list
+      %a.btn
+        %i.icon-th
+    .btn-group#search-list-quantity{:data => { :toggle => 'buttons-radio'}}
+      %a.btn.btn-small.active
+        20
+      %a.btn.btn-small
+        50
+      %a.btn.btn-small
+        100
+    .btn-group#search-filter{:data => { :toggle => 'buttons-checkbox'}}
+    .btn-group{:data => { :toggle => 'buttons-checkbox'}}
+      %a.btn.btn-small
+        Avansert
