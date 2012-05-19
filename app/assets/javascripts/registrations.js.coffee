@@ -13,3 +13,10 @@ $ ->
     if tech != ''
       $('#technology-list').append('<span class="label">' + tech)
 
+  $('#necessary-skills-link').click ->
+    $('#necessary-skills').slideDown()
+    $('#necessary-skills-link').fadeOut('fast')
+
+  $('#desired-qualities-link').click ->
+    $('#desired-qualities').slideDown()
+    $('#desired-qualities-link').fadeOut('fast')

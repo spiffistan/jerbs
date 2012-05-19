@@ -1,7 +1,8 @@
 // Place all the styles related to the Jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//
+
+@import "mixins.scss";
 
 .search-results {
 
@@ -72,4 +73,20 @@
 
 .label-new {
   background-color: rgba(0,0,0,0.2);
+}
+
+#job-meta {
+  float: left;
+  width: 250px;
+  border-left: 1px solid #eee;
+  margin-left: 20px;
+  padding: 20px;
+  @include shadowbox;
+
+  #main-application-button {
+    width: 220px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+  }
 }

@@ -1,0 +1,33 @@
+#user-meta
+  - if user_signed_in?
+    .btn-toolbar
+      - if current_user.rolable_type == 'Employer'
+        .btn-group
+          = link_to 'Ny jobb', new_job_url,
+            :class => 'btn btn-inverse btn-small'
+        .btn-group
+          = link_to 'Min firmaprofil', employer_url(current_user.rolable_id),
+            :class => 'btn btn-primary btn-small'
+      - elsif current_user.rolable_type == 'JobSeeker'
+        .btn-group
+          = link_to 'Min profil', job_seeker_url(current_user.rolable_id),
+            :class => 'btn btn-primary btn-small'
+      .btn-group
+        = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),
+          destroy_user_session_path,
+          :method => :delete,
+          :class => 'btn btn-info btn-small'
+        %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
+          %span.caret
+    .row
+      God dag! Du er logget inn som
+      %strong= current_user.email
+  - else
+    -#
+      = link_to "Logg inn", new_user_session_path,
+        :id => 'login-button'
+    %span#login-button.btn.btn-small{:data => {:toggle => 'button'}} Logg inn
+    = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path,
+      :class => 'btn btn-small btn-primary', :id => 'register-button'
+    .row
+      #employer-link= link_to (t 'frontpage.menu.employer'), employer_sign_up_path

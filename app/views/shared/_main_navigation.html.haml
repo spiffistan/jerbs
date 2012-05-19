@@ -1,0 +1,31 @@
+%nav.container
+  .row
+    %ul.nav.nav-pills#main-navigation
+      - if params[:controller] == 'home' && params[:action] == 'index'
+        -# TODO split into helper
+        %li.active= link_to "Forsiden", root_path
+      - else
+        %li.inactive= link_to "Forsiden", root_path
+
+      - if params[:controller] == 'jobs'
+        %li.active= link_to "Jerbs", jobs_path
+      - else
+        %li.inactive= link_to "Jerbs", jobs_path
+
+      - if params[:controller] == 'job_seekers'
+        %li.active= link_to "Profiler", job_seekers_path
+      - else
+        %li.inactive= link_to "Profiler", job_seekers_path
+
+      - if params[:controller] == 'home' && params[:action] == 'map'
+        %li.active= link_to "Kart", map_path
+      - else
+        %li.inactive= link_to "Kart", map_path
+
+    #header-search
+      %span.inside-box
+        %i.icon-search
+      %input.search-query{ :placeholder => 'Søk etter jobber' }
+
+
+    = render 'shared/user_meta'

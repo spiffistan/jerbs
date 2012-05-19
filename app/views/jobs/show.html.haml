@@ -1,24 +1,46 @@
+-# TODO translation
+
+= content_for :title, "#{@job.title}<small> hos #{link_to @job.employer.company_name, employer_path(@job.employer.id)}</small>".html_safe
+
+- if @job.employer.user == current_user
+  = content_for :info do
+    %p
+      %strong Morn!
+      Dette er en av dine jobber.
+    %a.btn Endre jobben
+
 #job-container
 
-  - if @job.employer.user == current_user
-    .alert.alert-info
-      %p
-        %strong Morn!
-        Dette er en av dine jobber.
-      %a.btn Endre jobben
-
-  = content_for :title, "#{@job.title}<small> hos #{link_to @job.employer.company_name, employer_path(@job.employer.id)}</small>".html_safe
-
   .row.fluid-row
-    .span8.company_description
+    .span8#job-description
+      %h3 Beskrivelse
       = BlueCloth.new(@job.description).to_html.html_safe
+      - if @job.necessary_skills
+        %h3 Nødvendig kompetanse
+        = BlueCloth.new(@job.necessary_skills).to_html.html_safe
+      - if @job.desired_qualities
+        %h3 Ønskede egenskaper
+        = BlueCloth.new(@job.desired_qualities).to_html.html_safe
 
-    .span3.offset1
+    -# TODO add buttons to add text if this is your job
+
+    #job-meta
       - unless user_signed_in? && user_employer?
         %p
-          = link_to 'Søk på denne jobben', job_application_path(@job.id), :class => 'btn btn-large btn-success'
+          = link_to 'Søk på denne jobben', job_application_path(@job.id), :class => 'btn btn-large btn-success',
+            :id => 'main-application-button'
         %p
           = link_to 'Fortell en venn', job_application_path(@job.id)
+      %p
+        Lagt inn for
+        = distance_of_time_in_words_to_now @job.created_at
+        siden
+      %p
+        Oppdatert for
+        = distance_of_time_in_words_to_now @job.updated_at
+        siden
+
+
 
 
     .span12

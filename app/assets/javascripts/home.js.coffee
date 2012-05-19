@@ -11,6 +11,9 @@ fetchResults = (query) ->
 
     $('#search-spinner').spin( { 'preset': 'medium', speed: 2 }, 'white')
 
+    # Search and fetch data
+    # TODO index related objects, such as employer name and location etc.
+
     $.getJSON '/jobs/find/' + query + '.json', (data) ->
 
       $('#search-spinner').spin(false)
@@ -19,13 +22,15 @@ fetchResults = (query) ->
         $('#search-info').html('Ingen resultater.') # TODO i18n
         return
 
+      # Process results
       $.each data, (i, job) ->
+
+        # TODO convert to templates
 
         if i % 4 == 0
           $('#results-carousel .carousel-inner').append('<div class="item">')
           $('.carousel-inner div.item:last-child')
-            .append('<div class="job-box result-box small"><h4 class="top"> <a href="/jobs/' + job.id + '">' + job.title)
-
+            .append('<div class="job-box result-box small"><h4 class="top"> <a href="/jobs/' + job.id + '">' + job.title + '</h4>')
         else
           $('.carousel-inner div.item:last-child')
             .append('<div class="job-box result-box small"><h4 class="top"> <a href="/jobs/' + job.id + '">' + job.title)

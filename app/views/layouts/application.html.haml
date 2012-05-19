@@ -8,16 +8,8 @@
     = csrf_meta_tags
 
   %body
-    -# TODO move to partial
-    #login-box
-      .centering
+    = render 'shared/login_box'
 
-        %input{ :placeholder => 'Epost'}
-        %input#password{ :placeholder => 'Passord', :type => 'password' }
-        %span.btn.btn-primary.btn-large Logg inn
-
-        #close-login.close-circle
-          %i.icon-remove.icon-white
     %header
 
       #whatis
@@ -25,77 +17,19 @@
           %strong
             Hva er Jerbs?
           Vi er en ny og bedre måte å finne de riktige jobbene og kandidatene.
-      %nav.container
-        .row
-          %ul.nav.nav-pills#main-navigation
-            - if params[:controller] == 'home' && params[:action] == 'index'
-              -# TODO split into helper
-              %li.active= link_to "Forsiden", root_path
-            - else
-              %li.inactive= link_to "Forsiden", root_path
 
-            - if params[:controller] == 'jobs'
-              %li.active= link_to "Jerbs", jobs_path
-            - else
-              %li.inactive= link_to "Jerbs", jobs_path
+      = render 'shared/main_navigation'
 
-            - if params[:controller] == 'job_seekers'
-              %li.active= link_to "Profiler", job_seekers_path
-            - else
-              %li.inactive= link_to "Profiler", job_seekers_path
-
-            - if params[:controller] == 'home' && params[:action] == 'map'
-              %li.active= link_to "Kart", map_path
-            - else
-              %li.inactive= link_to "Kart", map_path
-
-          #header-search
-            %span.inside-box
-              %i.icon-search
-            %input.search-query{ :placeholder => 'Søk etter jobber' }
-
-
-          #user-meta
-            - if user_signed_in?
-              .btn-toolbar
-                - if current_user.rolable_type == 'Employer'
-                  .btn-group
-                    = link_to 'Ny jobb', new_job_url,
-                      :class => 'btn btn-inverse btn-small'
-                  .btn-group
-                    = link_to 'Min firmaprofil', employer_url(current_user.rolable_id),
-                      :class => 'btn btn-primary btn-small'
-                - elsif current_user.rolable_type == 'JobSeeker'
-                  .btn-group
-                    = link_to 'Min profil', job_seeker_url(current_user.rolable_id),
-                      :class => 'btn btn-primary btn-small'
-                .btn-group
-                  = link_to (raw '<i class="icon-user icon-white"></i> Logg ut'),
-                    destroy_user_session_path,
-                    :method => :delete,
-                    :class => 'btn btn-info btn-small'
-                  %a.btn.btn-info.dropdown-toggle{:href => '#', :data => { :toggle => 'dropdown' }}
-                    %span.caret
-              .row
-                God dag! Du er logget inn som
-                %strong= current_user.email
-            - else
-              -#
-                = link_to "Logg inn", new_user_session_path,
-                  :id => 'login-button'
-              %span#login-button.btn.btn-small{:data => {:toggle => 'button'}} Logg inn
-              = link_to (t 'frontpage.menu.job_seeker'), job_seeker_sign_up_path,
-                :class => 'btn btn-small btn-primary', :id => 'register-button'
-              .row
-                #employer-link= link_to (t 'frontpage.menu.employer'), employer_sign_up_path
-
-    #header-search-results
-      .container.carousel#results-carousel
-        .carousel-inner
-        #search-spinner
-        #search-info
+      #header-search-results
+        .container.carousel#results-carousel
+          .carousel-inner
+          #search-spinner
+          #search-info
 
     .container#main
+      - if content_for? :info
+        .alert.alert-info
+          = yield :info
       - if content_for? :title
         .page-header
           %h1= yield :title
@@ -104,5 +38,6 @@
 
     %footer
       .container A Capasit Labs Project
+
     = javascript_include_tag '/javascripts/chroma-hash.js'
     <script> $(document).ready(function() { $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6, height: 20}); }); </script>

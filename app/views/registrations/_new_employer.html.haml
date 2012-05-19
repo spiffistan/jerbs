@@ -32,13 +32,21 @@
         :hint => "Du kan bruke Markdown her. Se <a>denne listen</a> for mulighetene.<br/>Obs: bruk feltene under for å dele opp beskrivelsen i seksjoner.".html_safe, :hint_class => 'help-block'
       .control-group
         .controls
-          Legg til felt:
-          %p.help-block
+          %p.help-block#necessary-skills-link
             %i.icon-plus
             %a Nødvendig kompetanse
-          %p.help-block
+          %p.help-block#desired-qualities-link
             %i.icon-plus
             %a Ønskede egenskaper
+
+      #necessary-skills{style: 'display: none'}
+        = job.input :necessary_skills, :as => :text,
+          :input_html => { :rows => 7, :style => 'width: 500px !important; ' },
+
+      #desired-qualities{style: 'display: none'}
+        = job.input :desired_qualities, :as => :text,
+          :input_html => { :rows => 7, :style => 'width: 500px !important;' },
+
       = job.input :positions, :as => :hidden, :step => 1, :input_html => { :value => 1 }
       = job.input :deadline, :as => :string, :order => [:day,:month,:year], :input_html => { :value => '', :class => 'datepicker' }
       = job.input :deadline_asap, :as => :boolean

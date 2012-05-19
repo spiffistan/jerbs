@@ -1,10 +1,15 @@
-= content_for :title, (@job.title + " <small>hos #{@job.employer.company_name}</small>").html_safe
+= content_for :title do
+  Søknad:
+  = @job.title
+  %small
+    hos
+    = link_to @job.employer.company_name, job_path(@job.id)
 
 %p= @job.description
 
 = semantic_form_for(:job_application, :html => {:class => "new_user form-horizontal"}) do |job_application|
 
-  %legend Om deg
+  %legend Søknad
   = job_application.input :name
   = job_application.input :email
   = job_application.input :telephone
