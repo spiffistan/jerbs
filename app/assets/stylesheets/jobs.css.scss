@@ -18,7 +18,8 @@
 
   table {
 
-
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
     tr.today td:nth-child(odd),
     tr.today td:nth-child(even), {
@@ -26,11 +27,9 @@
       border-top: 1px solid #CAE5A4;
     }
 
-    tr {
-
+    tr.main {
 
       td:nth-child(1) {
-        height: 40px;
         width: 22%;
         padding-left: 20px;
       }
@@ -54,6 +53,10 @@
         width: 17%;
       }
     }
+
+    tr.aux td {
+      border-top: 1px solid transparent;
+    }
     /*
     tr.expiring td:nth-child(odd),
     tr.expiring td:nth-child(even), {
@@ -72,7 +75,8 @@
 }
 
 #jobs-map-canvas {
-  width: 279px;
+  width: 260px;
+  margin: 10px;
   height: 300px;
 }
 
@@ -98,12 +102,9 @@
 }
 
 #search-sidebar {
-  width: 279px;
+  width: 280px;
   height: 800px;
-  border-left: 1px solid #ddd;
-  border-top: 1px solid #ddd;
   float: right;
-  background-color: whitesmoke;
 }
 
 .label-new {
@@ -134,4 +135,8 @@
   border-bottom: 1px dotted #ddd;
   border-top: 1px dotted #ddd;
   margin-bottom: 20px;
+}
+
+.table-nohover tbody tr:hover td, .table tbody tr:hover th {
+  background-color: transparent;
 }

@@ -5,8 +5,8 @@
   -#- if @jobs.length > 9
     = paginate @jobs
 
-  %table.table.table-striped
-    %tr
+  %table.table.table-nohover
+    %tr.main
       %th= link_to_sortable 'title', 'Stilling'
       %th= link_to_sortable 'company_name', 'Firma'
       %th= link_to_sortable 'created_at', 'Lagt inn'
@@ -17,11 +17,11 @@
       - classes = (job.created_at) > 1.day.ago ? 'today' : ''
       - classes = (job.deadline) <= 7.days.from_now.to_date ? 'expiring' : ''
       %tr{ :class => classes }
-        %td
+        %td{rowspan: 2}
           = link_to job.title, job_path(job.id)
           - if job.created_at > 1.day.ago
             %span.label.label-new NY
-        %td
+        %td{rowspan: 2}
           = link_to job.employer.company_name, employer_path(job.employer.id)
         %td
           For
@@ -38,9 +38,10 @@
           - if (job.deadline) <= 7.days.from_now.to_date
             %i.icon-time
         %td= job.employer.company_address
-        -#%td{:style => 'width: 200px' }
+      %tr.aux
+        %td{style: 'width: 200px', colspan: 3}
           - job.technologies.each_with_index do |tech, i|
-            - break if (i >= 1)
+            - break if (i >= 4)
             - if user_signed_in? && user_job_seeker? && current_user.rolable.technologies.include?(tech)
               = link_to tech.shortname, jobs_by_technology_path(tech.id),
                 :class => 'label label-tech label-warning'
