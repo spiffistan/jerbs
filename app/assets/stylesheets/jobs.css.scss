@@ -4,9 +4,22 @@
 
 @import "mixins.scss";
 
-.search-results {
+#jobs-container {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+#jobs-search-results {
+
+  width: 700px;
+  float: left;
 
   table {
+
+
+
     tr.today td:nth-child(odd),
     tr.today td:nth-child(even), {
       background-color: #EEFDD8 !important;
@@ -14,8 +27,16 @@
     }
 
     tr {
+
+
       td:nth-child(1) {
-        width: 25%;
+        height: 40px;
+        width: 22%;
+        padding-left: 20px;
+      }
+      th:nth-child(1) {
+        width: 22%;
+        padding-left: 20px;
       }
       td:nth-child(2) {
         width: 10%;
@@ -30,7 +51,7 @@
         width: 15%;
       }
       td:nth-child(6) {
-        width: 15%;
+        width: 17%;
       }
     }
     /*
@@ -48,6 +69,11 @@
   i.icon {
     opacity: 0.5;
   }
+}
+
+#jobs-map-canvas {
+  width: 279px;
+  height: 300px;
 }
 
 #search-box {
@@ -69,6 +95,15 @@
     border-radius: 21px;
   }
 
+}
+
+#search-sidebar {
+  width: 279px;
+  height: 800px;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  float: right;
+  background-color: whitesmoke;
 }
 
 .label-new {

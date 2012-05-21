@@ -3,6 +3,7 @@
 :javascript
   var geocoder;
   var map;
+  var locations = #{locations.to_json}
   var markersArray = [];
 
   function initialize() {
@@ -30,22 +31,27 @@
     }
   }
 
-  function codeAddress() {
-    var address = document.getElementById("employer_company_address").innerHTML;
-    geocoder.geocode( { 'address': address + ', Norway'}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        clearOverlays();
-        markersArray.push(marker);
-      } else {
-        // Handle error
-      }
-    });
+  function addMarkers() {
+    for (i in locations) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(locations[i].lat, locations[i].lng)
+      });
+      markersArray.push(marker);
+      //bounds.extend(locations[i]);
+    }
+  }
+
+  function fitBounds() {
+    var bounds = new google.maps.LatLngBounds();
+    for (i in markersArray) {
+      bounds.extend(markersArray[i].position);
+    }
+    map.fitBounds(bounds);
   }
 
   initialize();
-  codeAddress();
+  addMarkers();
+  fitBounds();
+
+  // codeAddress();

@@ -1,0 +1,50 @@
+
+
+#jobs-search-results
+
+  -#- if @jobs.length > 9
+    = paginate @jobs
+
+  %table.table.table-striped
+    %tr
+      %th= link_to_sortable 'title', 'Stilling'
+      %th= link_to_sortable 'company_name', 'Firma'
+      %th= link_to_sortable 'created_at', 'Lagt inn'
+      %th= link_to_sortable 'deadline', 'Frist'
+      %th= link_to_sortable 'company_address', 'Sted'
+
+    - @jobs.each do |job|
+      - classes = (job.created_at) > 1.day.ago ? 'today' : ''
+      - classes = (job.deadline) <= 7.days.from_now.to_date ? 'expiring' : ''
+      %tr{ :class => classes }
+        %td
+          = link_to job.title, job_path(job.id)
+          - if job.created_at > 1.day.ago
+            %span.label.label-new NY
+        %td
+          = link_to job.employer.company_name, employer_path(job.employer.id)
+        %td
+          For
+          = distance_of_time_in_words_to_now job.created_at
+          siden
+
+        %td
+          - if (job.deadline) < 1.month.from_now.to_date
+            Om
+            = distance_of_time_in_words_to_now job.deadline
+          - else
+            = job.deadline
+
+          - if (job.deadline) <= 7.days.from_now.to_date
+            %i.icon-time
+        %td= job.employer.company_address
+        -#%td{:style => 'width: 200px' }
+          - job.technologies.each_with_index do |tech, i|
+            - break if (i >= 1)
+            - if user_signed_in? && user_job_seeker? && current_user.rolable.technologies.include?(tech)
+              = link_to tech.shortname, jobs_by_technology_path(tech.id),
+                :class => 'label label-tech label-warning'
+            - else
+              = link_to tech.shortname, jobs_by_technology_path(tech.id), :class => 'label label-tech'
+  = paginate @jobs
+  = (page_entries_info @jobs).html_safe

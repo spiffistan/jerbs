@@ -37,7 +37,7 @@
     = location.input :lat, :as => :hidden, :input_html => { :class => 'geolocation-lat' }
     = location.input :lng, :as => :hidden, :input_html => { :class => 'geolocation-lng' }
 
-    = render :partial => 'google_maps', :locals => { :location => @geoloc, :latlng => @latlng }
+    // = render :partial => 'google_maps', :locals => { :location => @geoloc, :latlng => @latlng }
 
   = user.actions do
     = user.action :submit, :button_html => { :value => 'Lag konto', :class => 'btn-primary btn-large' }
