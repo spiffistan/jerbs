@@ -27,16 +27,18 @@
       border-top: 1px solid #CAE5A4;
     }
 
+    th:nth-child(1) {
+      width: 22%;
+      padding-left: 20px;
+    }
+
     tr.main {
 
       td:nth-child(1) {
         width: 22%;
         padding-left: 20px;
       }
-      th:nth-child(1) {
-        width: 22%;
-        padding-left: 20px;
-      }
+
       td:nth-child(2) {
         width: 10%;
       }

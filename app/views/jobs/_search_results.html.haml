@@ -6,7 +6,7 @@
     = paginate @jobs
 
   %table.table.table-nohover
-    %tr.main
+    %tr
       %th= link_to_sortable 'title', 'Stilling'
       %th= link_to_sortable 'company_name', 'Firma'
       %th= link_to_sortable 'created_at', 'Lagt inn'
@@ -16,7 +16,7 @@
     - @jobs.each do |job|
       - classes = (job.created_at) > 1.day.ago ? 'today' : ''
       - classes = (job.deadline) <= 7.days.from_now.to_date ? 'expiring' : ''
-      %tr{ :class => classes }
+      %tr.main{ :class => classes }
         %td{rowspan: 2}
           = link_to job.title, job_path(job.id)
           - if job.created_at > 1.day.ago
