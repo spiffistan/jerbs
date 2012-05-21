@@ -13,7 +13,7 @@
       %th= link_to_sortable 'deadline', 'Frist'
       %th= link_to_sortable 'company_address', 'Sted'
 
-    - @jobs.each do |job|
+    - @jobs.each_with_index do |job, i|
       - classes = (job.created_at) > 1.day.ago ? 'today' : ''
       - classes = (job.deadline) <= 7.days.from_now.to_date ? 'expiring' : ''
       %tr.main{ :class => classes }
