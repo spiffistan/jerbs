@@ -22,10 +22,7 @@
       .control-group
         %label.control-label Teknologier
         .controls
-          %input#technology-search{ :placeholder => 'Søk...', :data => { :provide => 'typeahead', :source => (Technology.all.collect {|x| x.name}).to_json } }
-          %span#add-technology-button.btn.btn-info Legg til
-          .row#technology-list
-          -# TODO rating, sanity
+          %input#technology-select{ style: 'width: 500px !important; ', name: 'technologies' }
 
       = job.input :description, :as => :text,
         :input_html => { :rows => 7, :style => 'width: 500px !important' },
@@ -51,9 +48,6 @@
       = job.input :deadline, :as => :string, :order => [:day,:month,:year], :input_html => { :value => '', :class => 'datepicker' }
       = job.input :deadline_asap, :as => :boolean
 
-      = job.input :technologies,
-        :collection => Technology.all.collect { |x| [x.shortname, x.id]},
-        :input_html => { :multiple => true }
 
   %legend Om firmaet
   %fieldset

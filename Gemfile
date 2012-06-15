@@ -64,3 +64,4 @@ gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branc
 gem 'formtastic-bootstrap', :git => 'https://github.com/cgunther/formtastic-bootstrap.git', :branch => 'bootstrap2-rails3-2-formtastic-2-1'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # model annotation
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'select2-rails'

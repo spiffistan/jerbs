@@ -3,15 +3,28 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
 $ ->
-  $('#technology-search').typeahead({ source: $('#technology-search').data('source') })
+
+  $('#technology-select').select2({
+    multiple: true,
+    ajax: {
+      url: "/technologies/find.json",
+      dataType: 'jsonp',
+      quietMillis: 100,
+      data: (term, page) ->
+        return { query: term }
+      results: (data, page) ->
+        return { results: data }
+    }
+
+    formatResult: (technology) ->
+      return technology.name
+
+    formatSelection: (technology) ->
+      return technology.name
+
+  });
 
   $('.datepicker').datepicker()
-
-  $('#add-technology-button').click ->
-    tech = $('#technology-search').val()
-    # TODO sanity
-    if tech != ''
-      $('#technology-list').append('<span class="label">' + tech)
 
   $('#necessary-skills-link').click ->
     $('#necessary-skills').slideDown()

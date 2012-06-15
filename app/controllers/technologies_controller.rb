@@ -11,8 +11,6 @@ class TechnologiesController < ApplicationController
 
   end
 
-
-
   def new
     @technology = Technology.new
 
@@ -32,7 +30,6 @@ class TechnologiesController < ApplicationController
   end
 
   def search
-
     unless params[:query].nil?
       @technologies = Technology.where('name LIKE ?', "#{params[:query]}%")
     else
@@ -40,7 +37,7 @@ class TechnologiesController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render :json => @technologies }
+      format.json { render :json => @technologies, :callback => params[:callback] }
       format.html { render :html => @technologies }
     end
   end

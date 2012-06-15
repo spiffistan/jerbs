@@ -12,7 +12,7 @@ Jerbs::Application.routes.draw do
   match 'jobs/find' => 'jobs#search', :as => :job_search, :via => :get
   match 'jobs/find/:query' => 'jobs#search', :as => :job_search, :via => :get
   match 'jobs/:id/apply' => 'jobs#apply', :as => :job_application, :via => :get
-  match 'technologies/find/:query' => 'technologies#search', :as => :technology_search, :via => :get
+  match 'technologies/find' => 'technologies#search', :as => :technology_search, :via => :get
 
   match '/' => 'home#index', :constraints => { :subdomain => 'www' }
   match '/' => 'employers#show', :constraints => { :subdomain => /.+/ }
