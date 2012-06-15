@@ -86,11 +86,11 @@ class JobsController < ApplicationController
   # TODO order by company_name, company_address, etc.
 
   def sort_column
-    Job.column_names.include? (params[:sort]) ? params[:sort] : 'created_at'
+    Job.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
   end
 
   def sort_direction
-    %w[asc desc].include? (params[:direction]) ? params[:direction] : 'desc'
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 
 end
